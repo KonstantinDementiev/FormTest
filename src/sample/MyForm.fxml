@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="44.0" prefWidth="993.0" style="-fx-background-color: #F00A0A;" />
+      <TabPane layoutX="1.0" layoutY="44.0" prefHeight="652.0" prefWidth="993.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="                    Клапани                    ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="623.0" prefWidth="985.0">
+                     <children>
+                        <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="33.0" prefWidth="320.0" style="-fx-background-color: #D8D8D8;" />
+                        <AnchorPane layoutX="7.0" layoutY="40.0" prefHeight="195.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;" />
+                        <AnchorPane layoutX="335.0" layoutY="7.0" prefHeight="33.0" prefWidth="320.0" style="-fx-background-color: #D8D8D8;" />
+                        <AnchorPane layoutX="335.0" layoutY="40.0" prefHeight="195.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;" />
+                        <AnchorPane layoutX="662.0" layoutY="7.0" prefHeight="33.0" prefWidth="320.0" style="-fx-background-color: #D8D8D8;" />
+                        <AnchorPane layoutX="662.0" layoutY="40.0" prefHeight="195.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;" />
+                        <TableView layoutX="7.0" layoutY="242.0" prefHeight="379.0" prefWidth="770.0">
+                          <columns>
+                            <TableColumn prefWidth="88.0" text="Артикул" />
+                            <TableColumn prefWidth="58.0" text="Kvs" />
+                              <TableColumn prefWidth="46.0" text="DN" />
+                              <TableColumn prefWidth="57.0" text="Ходи" />
+                              <TableColumn prefWidth="58.0" text="PN" />
+                              <TableColumn prefWidth="113.0" text="Темп. води" />
+                              <TableColumn prefWidth="122.0" text="З'єднання" />
+                              <TableColumn prefWidth="126.0" text="Тип клапана" />
+                              <TableColumn prefWidth="101.0" text="Ціна, євро" />
+                          </columns>
+                        </TableView>
+                        <ImageView fitHeight="199.0" fitWidth="197.0" layoutX="784.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/image/F40351.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="199.0" fitWidth="87.0" layoutX="894.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/image/62201.jpg" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="785.0" layoutY="595.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Друк">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="888.0" layoutY="595.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Вихід">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="784.0" layoutY="455.0" text="Накидні гайки" underline="true" />
+                        <Label layoutX="784.0" layoutY="472.0" text="Артикул:" />
+                        <Label layoutX="784.0" layoutY="489.0" text="0000000" />
+                        <Label layoutX="783.0" layoutY="506.0" text="Ціна:" />
+                        <Label layoutX="783.0" layoutY="523.0" text="00,00" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="                    Приводи                    ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
