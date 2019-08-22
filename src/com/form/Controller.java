@@ -1,4 +1,4 @@
-package sample;
+package com.form;
 
 public class Controller {
 
