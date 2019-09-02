@@ -1,18 +1,18 @@
 package com.form;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WindowCalcFlow extends Main {
+public class ControllerCalcFlow {
+
+    private Stage thisStage;
+    private ControllerMain controllerMain;
 
     @FXML
     private TextField textField4, textField5;
@@ -23,29 +23,32 @@ public class WindowCalcFlow extends Main {
     @FXML
     private Button buttonClose2;
 
+    ControllerCalcFlow(ControllerMain controllerMain) {
+        this.controllerMain = controllerMain;
+        thisStage = new Stage();
 
-    @FXML
-    public void initialize() {
-    }
-
-    void showWindowCalcFlow() {
         try {
-            Parent root2 = FXMLLoader.load(getClass().getResource("/MyForm3.fxml"));
-            Stage secondaryStage = new Stage();
-            secondaryStage.setTitle("Розрахунок витрати води");
-            secondaryStage.setScene(new Scene(root2, 500, 170));
-            secondaryStage.initModality(Modality.APPLICATION_MODAL);
-            secondaryStage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CalcFlowForm.fxml"));
+            loader.setController(this);
+            thisStage.setScene(new Scene(loader.load(), 500, 170));
+            thisStage.setTitle("Розрахунок витрати води");
+            thisStage.initModality(Modality.APPLICATION_MODAL);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void calcFlow() {
+    public void initialize() {
+        buttonClose2.setOnAction(event -> closeWindow());
+    }
+
+    @FXML
+    private Double calcFlow() {
         double q = 0;
         int dt = 1;
-        double f;
+        double f = 0;
 
         if (textField4.getText().equals("") || textField5.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Заповніть всі поля для вихідних даних!", ButtonType.CLOSE);
@@ -65,30 +68,18 @@ public class WindowCalcFlow extends Main {
                 }
                 if (!isInt(tf5)) {
                     textField5.setStyle("-fx-background-color: #F89393");
-
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "Введене значення не є числовим або невірний формат числа!", ButtonType.CLOSE);
-                    alert.show();
-                    e.printStackTrace();
                 }
+
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Введене значення не є числовим або невірний формат числа!", ButtonType.CLOSE);
+                alert.show();
+                e.printStackTrace();
+
             }
 
             f = q / dt / 1.163;
             label3.setText(String.format("%.1f", f));
-
-
-
-
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            try {
-                fxmlLoader.load(getClass().getResource("/MyForm2.fxml").openStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Main controller = fxmlLoader.getController();
-
-            controller.setFlowInField(f);
-
         }
+        return f;
     }
 
     @FXML
@@ -101,10 +92,32 @@ public class WindowCalcFlow extends Main {
         textField5.setStyle(null);
     }
 
-    @FXML
-    private void closeWindow()  {
+    private void closeWindow() {
+        controllerMain.setTextFromCalcForm(label3.getText());
         Stage stage = (Stage) buttonClose2.getScene().getWindow();
         stage.close();
+    }
+
+    void showStage() {
+        thisStage.showAndWait();
+    }
+
+    private boolean isInt(String x) throws NumberFormatException {
+        try {
+            Integer.parseInt(x);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean isDouble(String x) throws NumberFormatException {
+        try {
+            Double.parseDouble(x);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
