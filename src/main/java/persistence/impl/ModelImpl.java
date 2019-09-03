@@ -14,12 +14,12 @@ import java.util.Scanner;
 
 public class ModelImpl {
 
-    private static List<Model> models = new ArrayList<Model>();
+    private static List<Model> models = new ArrayList<>();
     private static final Logger LOG = LoggerFactory.getLogger(ActuatorImpl.class);
     private Scanner scanner;
     private Session session;
 
-    public void find(String tableName, String columnName) {
+    protected void find(String tableName, String columnName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert " + columnName + " to find: ");
@@ -33,16 +33,16 @@ public class ModelImpl {
         session.close();
     }
 
-    public void findAll(String tableName) {
+    protected List findAll(String tableName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         Query queryFindAll = session.createQuery("FROM " + tableName);
         models = queryFindAll.list();
-        printModel(models);
         session.close();
+        return models;
     }
 
-    public void add(Model model) {
+    protected void add(Model model) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert article of new " + model.getClass().getSimpleName() + ":");
@@ -54,7 +54,7 @@ public class ModelImpl {
         session.close();
     }
 
-    public void del(String tableName, String columnName) {
+    protected void del(String tableName, String columnName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert " + columnName + " for deleting: ");
@@ -71,7 +71,7 @@ public class ModelImpl {
         session.close();
     }
 
-    public void update() {
+    protected void update() {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert name for updating: ");

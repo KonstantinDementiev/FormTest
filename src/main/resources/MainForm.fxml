@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.form.Main">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="44.0" prefWidth="1000.0" style="-fx-background-color: #F00A0A;">
          <children>
@@ -61,25 +61,25 @@
                               <Label layoutX="223.0" layoutY="63.0" text="°С" />
                               <Label layoutX="14.0" layoutY="89.0" text="Вміст гліколю" />
                               <Label layoutX="223.0" layoutY="89.0" text="\%" />
-                              <Button layoutX="266.0" layoutY="6.0" mnemonicParsing="false" onAction="#button2Action" prefHeight="102.0" prefWidth="47.0" text="Q">
+                              <Button fx:id="button2" layoutX="266.0" layoutY="6.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="47.0" text="Q">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Button>
                               <Label layoutX="14.0" layoutY="119.0" text="Щільність води/розчину" />
-                              <Label layoutX="228.0" layoutY="119.0" text="кг/м3" />
+                              <Label layoutX="239.0" layoutY="119.0" text="кг/м3" />
                               <Label layoutX="14.0" layoutY="138.0" text="Необхідний Kv клапана">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="228.0" layoutY="138.0" text="м3/г">
+                              <Label layoutX="241.0" layoutY="138.0" text="м3/г">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="label1" alignment="CENTER" layoutX="175.0" layoutY="120.0" text="0" />
-                              <Label fx:id="label2" alignment="CENTER" layoutX="177.0" layoutY="139.0" text="0">
+                              <Label fx:id="label1" alignment="CENTER" layoutX="166.0" layoutY="120.0" prefHeight="17.0" prefWidth="60.0" text="0" />
+                              <Label fx:id="label2" alignment="CENTER" layoutX="166.0" layoutY="138.0" prefHeight="17.0" prefWidth="60.0" text="0">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -88,9 +88,15 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="338.0" layoutY="40.0" prefHeight="159.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;">
                            <children>
-                              <Label alignment="CENTER" layoutX="199.0" layoutY="29.0" text="м3/г" />
-                              <Label alignment="CENTER" layoutX="260.0" layoutY="29.0" text="кПа" />
-                              <Label alignment="CENTER" layoutX="200.0" layoutY="7.0" text="Kvs">
+                              <Label alignment="CENTER" layoutX="188.0" layoutY="24.0" text="м3/г">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></Label>
+                              <Label alignment="CENTER" layoutX="261.0" layoutY="24.0" text="кПа">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></Label>
+                              <Label alignment="CENTER" layoutX="188.0" layoutY="7.0" text="Kvs">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -100,29 +106,29 @@
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="24.0" layoutY="58.0" text="Клапан з меншим Kvs" />
-                              <Label layoutX="24.0" layoutY="84.0" text="Оптимальний клапан">
+                              <Label layoutX="13.0" layoutY="55.0" text="Клапан з меншим Kvs" />
+                              <Label layoutX="13.0" layoutY="81.0" text="Оптимальний клапан">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="24.0" layoutY="108.0" text="Клапан з більшим Kvs" />
-                              <Label alignment="CENTER" layoutX="207.0" layoutY="58.0" text="0" />
-                              <Label alignment="CENTER" layoutX="267.0" layoutY="58.0" text="0" />
-                              <Label alignment="CENTER" layoutX="207.0" layoutY="84.0" text="0">
+                              <Label layoutX="13.0" layoutY="105.0" text="Клапан з більшим Kvs" />
+                              <Label fx:id="label3" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="55.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label fx:id="label6" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="55.0" prefHeight="17.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label fx:id="label4" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="81.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="267.0" layoutY="84.0" text="0">
+                              <Label fx:id="label7" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="81.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="207.0" layoutY="108.0" text="0" />
-                              <Label alignment="CENTER" layoutX="267.0" layoutY="108.0" text="0" />
-                              <Label layoutX="24.0" layoutY="133.0" prefHeight="17.0" prefWidth="202.0" style="-fx-background-color: #BDBDBD;" text="Фактична швидкість води в клапані" />
-                              <Label alignment="CENTER" layoutX="235.0" layoutY="133.0" prefHeight="17.0" prefWidth="33.0" style="-fx-background-color: #BDBDBD;" text="0" />
+                              <Label fx:id="label5" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label fx:id="label8" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label layoutX="13.0" layoutY="133.0" prefHeight="17.0" prefWidth="202.0" style="-fx-background-color: #BDBDBD;" text="Фактична швидкість води в клапані" />
+                              <Label alignment="CENTER" layoutX="221.0" layoutY="133.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="0" />
                               <Label alignment="CENTER" layoutX="277.0" layoutY="133.0" prefHeight="17.0" prefWidth="27.0" style="-fx-background-color: #BDBDBD;" text="м/с" />
                            </children></AnchorPane>
                         <AnchorPane layoutX="669.0" layoutY="40.0" prefHeight="195.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;">
@@ -171,7 +177,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="889.0" layoutY="589.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Вихід" textFill="#d30d0d">
+                        <Button fx:id="buttonClose1" layoutX="889.0" layoutY="589.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="30.0" prefWidth="100.0" text="Вихід" textFill="#d30d0d">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

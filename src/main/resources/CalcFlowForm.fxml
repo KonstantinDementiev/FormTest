@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.form.WindowCalcFlow">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="124.0" mnemonicParsing="false" onAction="#calcFlow" prefHeight="25.0" prefWidth="210.0" text="Розрахувати" textAlignment="CENTER" textFill="#2b750d">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="buttonClose2" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="124.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="25.0" prefWidth="210.0" text="Застосувати" textAlignment="CENTER">
+      <Button fx:id="buttonClose2" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="124.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" text="Застосувати" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

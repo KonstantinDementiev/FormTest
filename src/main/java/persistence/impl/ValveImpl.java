@@ -1,8 +1,11 @@
 package persistence.impl;
 
+import entity.Model;
 import entity.Valve;
 
-public class ValveImpl extends ModelImpl{
+import java.util.List;
+
+public class ValveImpl extends ModelImpl {
 
     private String tableName = "Valve";
     private ModelImpl modelImpl = new ModelImpl();
@@ -11,8 +14,8 @@ public class ValveImpl extends ModelImpl{
         modelImpl.find(tableName, "article");
     }
 
-    public void findAllValve() {
-        modelImpl.findAll(tableName);
+    public List<Valve> findAllValve() {
+        return modelImpl.findAll(tableName);
     }
 
     public void addValve() {
@@ -21,7 +24,7 @@ public class ValveImpl extends ModelImpl{
     }
 
     public void delValveByArticle() {
-        modelImpl.del(tableName,"article");
+        modelImpl.del(tableName, "article");
     }
 
 }
