@@ -40,28 +40,28 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="7.0" layoutY="40.0" prefHeight="195.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;">
                            <children>
-                              <Button layoutX="8.0" layoutY="164.0" mnemonicParsing="false" onAction="#button1Action" prefHeight="25.0" prefWidth="150.0" text="Розрахувати" textFill="#2b750d">
+                              <Button layoutX="8.0" layoutY="164.0" mnemonicParsing="false" onAction="#buttonCalculateAction" prefHeight="25.0" prefWidth="150.0" text="Розрахувати" textFill="#2b750d">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button cancelButton="true" layoutX="163.0" layoutY="164.0" mnemonicParsing="false" onAction="#clearAllTextField" prefHeight="25.0" prefWidth="150.0" text="Очистити">
+                              <Button cancelButton="true" layoutX="163.0" layoutY="164.0" mnemonicParsing="false" onAction="#clearAllKvs" prefHeight="25.0" prefWidth="150.0" text="Очистити">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
                               <Label layoutX="14.0" layoutY="11.0" text="Витрата теплоносія" />
-                              <TextField fx:id="textField1" layoutX="142.0" layoutY="6.0" onKeyPressed="#backColorTextField1" prefHeight="25.0" prefWidth="70.0" />
+                              <TextField fx:id="textFieldFlow" layoutX="142.0" layoutY="6.0" onKeyPressed="#backColorTextField1" prefHeight="25.0" prefWidth="70.0" />
                               <Label layoutX="223.0" layoutY="11.0" text="м3/г" />
                               <Label layoutX="14.0" layoutY="37.0" text="Перепад тиску" />
-                              <TextField fx:id="textField2" layoutX="142.0" layoutY="32.0" onKeyPressed="#backColorTextField2" prefHeight="25.0" prefWidth="70.0" />
+                              <TextField fx:id="textFieldDp" layoutX="142.0" layoutY="32.0" onKeyPressed="#backColorTextField2" prefHeight="25.0" prefWidth="70.0" />
                               <Label layoutX="223.0" layoutY="37.0" text="кПа" />
                               <Label layoutX="14.0" layoutY="63.0" text="Температура" />
-                              <TextField fx:id="textField3" layoutX="142.0" layoutY="58.0" onKeyPressed="#backColorTextField3" prefHeight="25.0" prefWidth="70.0" />
+                              <TextField fx:id="textFieldDtemp" layoutX="142.0" layoutY="58.0" onKeyPressed="#backColorTextField3" prefHeight="25.0" prefWidth="70.0" />
                               <Label layoutX="223.0" layoutY="63.0" text="°С" />
                               <Label layoutX="14.0" layoutY="89.0" text="Вміст гліколю" />
                               <Label layoutX="223.0" layoutY="89.0" text="\%" />
-                              <Button fx:id="button2" layoutX="266.0" layoutY="6.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="47.0" text="Q">
+                              <Button fx:id="buttonCalcFlow" layoutX="266.0" layoutY="6.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="47.0" text="Q">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
@@ -78,13 +78,13 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="label1" alignment="CENTER" layoutX="166.0" layoutY="120.0" prefHeight="17.0" prefWidth="60.0" text="0" />
-                              <Label fx:id="label2" alignment="CENTER" layoutX="166.0" layoutY="138.0" prefHeight="17.0" prefWidth="60.0" text="0">
+                              <Label fx:id="labelDensityMix" alignment="CENTER" layoutX="166.0" layoutY="120.0" prefHeight="17.0" prefWidth="60.0" text="0" />
+                              <Label fx:id="labelKv" alignment="CENTER" layoutX="166.0" layoutY="138.0" prefHeight="17.0" prefWidth="60.0" text="0">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="comboBox1" layoutX="142.0" layoutY="84.0" prefHeight="25.0" prefWidth="70.0" promptText="0" />
+                              <ComboBox fx:id="comboBoxDensityMix" layoutX="142.0" layoutY="84.0" prefHeight="25.0" prefWidth="70.0" promptText="0" />
                            </children></AnchorPane>
                         <AnchorPane layoutX="338.0" layoutY="40.0" prefHeight="159.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;">
                            <children>
@@ -113,20 +113,20 @@
                                  </font>
                               </Label>
                               <Label layoutX="13.0" layoutY="105.0" text="Клапан з більшим Kvs" />
-                              <Label fx:id="label3" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="55.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
-                              <Label fx:id="label6" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="55.0" prefHeight="17.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
-                              <Label fx:id="label4" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="81.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+                              <Label fx:id="labelMinKvs" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="55.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label fx:id="labelMinDp" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="55.0" prefHeight="17.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label fx:id="labelOptimalKvs" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="81.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="label7" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="81.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+                              <Label fx:id="labelOptimalDp" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="81.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="label5" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
-                              <Label fx:id="label8" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label fx:id="labelMaxKvs" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
+                              <Label fx:id="labelMaxDp" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
                               <Label layoutX="13.0" layoutY="133.0" prefHeight="17.0" prefWidth="202.0" style="-fx-background-color: #BDBDBD;" text="Фактична швидкість води в клапані" />
                               <Label alignment="CENTER" layoutX="221.0" layoutY="133.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="0" />
                               <Label alignment="CENTER" layoutX="277.0" layoutY="133.0" prefHeight="17.0" prefWidth="27.0" style="-fx-background-color: #BDBDBD;" text="м/с" />
@@ -135,40 +135,40 @@
                            <children>
                               <Label layoutX="20.0" layoutY="9.0" text="Kvs" />
                               <Label layoutX="271.0" layoutY="9.0" text="м3/г" />
-                              <ChoiceBox layoutX="163.0" layoutY="5.0" prefHeight="25.0" prefWidth="98.0" />
                               <Label layoutX="20.0" layoutY="35.0" text="Діаметр" />
                               <Label layoutX="271.0" layoutY="35.0" text="мм" />
-                              <ChoiceBox layoutX="163.0" layoutY="31.0" prefHeight="25.0" prefWidth="98.0" />
                               <Label layoutX="20.0" layoutY="61.0" text="Кількість виходів" />
-                              <ChoiceBox layoutX="163.0" layoutY="57.0" prefHeight="25.0" prefWidth="98.0" />
                               <Label layoutX="20.0" layoutY="87.0" text="Клас PN" />
-                              <ChoiceBox layoutX="163.0" layoutY="83.0" prefHeight="25.0" prefWidth="98.0" />
                               <Label layoutX="20.0" layoutY="113.0" text="З'єднання" />
-                              <ChoiceBox layoutX="163.0" layoutY="109.0" prefHeight="25.0" prefWidth="150.0" />
                               <Label layoutX="20.0" layoutY="139.0" text="Тип клапана" />
-                              <ChoiceBox layoutX="163.0" layoutY="135.0" prefHeight="25.0" prefWidth="150.0" />
-                              <Button layoutX="8.0" layoutY="165.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Підібрати" textFill="#2b750d">
+                              <Button layoutX="8.0" layoutY="165.0" mnemonicParsing="false" onAction="#buttonFindValveAction" prefHeight="25.0" prefWidth="150.0" text="Підібрати" textFill="#2b750d">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button cancelButton="true" layoutX="163.0" layoutY="165.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Очистити">
+                              <Button cancelButton="true" layoutX="163.0" layoutY="165.0" mnemonicParsing="false" onAction="#clearAllValves" prefHeight="25.0" prefWidth="150.0" text="Очистити">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
+                              <ComboBox fx:id="comboKvs" layoutX="163.0" layoutY="5.0" prefHeight="25.0" prefWidth="98.0" />
+                              <ComboBox fx:id="comboDn" layoutX="163.0" layoutY="31.0" prefHeight="25.0" prefWidth="98.0" />
+                              <ComboBox fx:id="comboPorts" layoutX="163.0" layoutY="57.0" prefHeight="25.0" prefWidth="98.0" />
+                              <ComboBox fx:id="comboPn" layoutX="163.0" layoutY="83.0" prefHeight="25.0" prefWidth="98.0" />
+                              <ComboBox fx:id="comboConnection" layoutX="163.0" layoutY="109.0" prefHeight="25.0" prefWidth="150.0" />
+                              <ComboBox fx:id="comboType" layoutX="163.0" layoutY="135.0" prefHeight="25.0" prefWidth="150.0" />
                            </children></AnchorPane>
-                        <TableView layoutX="7.0" layoutY="242.0" prefHeight="379.0" prefWidth="761.0">
+                        <TableView fx:id="valveTableView" fixedCellSize="0.0" layoutX="7.0" layoutY="242.0" onMouseClicked="#handleRowSelect" prefHeight="379.0" prefWidth="761.0">
                           <columns>
-                            <TableColumn prefWidth="88.0" text="Артикул" />
-                            <TableColumn prefWidth="58.0" text="Kvs" />
-                              <TableColumn prefWidth="46.0" text="DN" />
-                              <TableColumn prefWidth="57.0" text="Ходи" />
-                              <TableColumn prefWidth="58.0" text="PN" />
-                              <TableColumn prefWidth="101.0" text="Темп. води" />
-                              <TableColumn prefWidth="116.0" text="З'єднання" />
-                              <TableColumn prefWidth="127.0" text="Тип клапана" />
-                              <TableColumn prefWidth="109.0" text="Ціна, євро" />
+                            <TableColumn fx:id="articleColumn" prefWidth="88.0" style="-fx-alignment: CENTER;" text="Артикул" />
+                            <TableColumn fx:id="kvsColumn" prefWidth="58.0" style="-fx-alignment: CENTER;" text="Kvs" />
+                              <TableColumn fx:id="dnColumn" prefWidth="46.0" style="-fx-alignment: CENTER;" text="DN" />
+                              <TableColumn fx:id="portsColumn" prefWidth="57.0" style="-fx-alignment: CENTER;" text="Ходи" />
+                              <TableColumn fx:id="pnColumn" prefWidth="58.0" style="-fx-alignment: CENTER;" text="PN" />
+                              <TableColumn fx:id="temperatureColumn" prefWidth="95.0" style="-fx-alignment: CENTER;" text="Темп. води" />
+                              <TableColumn fx:id="connectionColumn" prefWidth="143.0" style="-fx-alignment: CENTER;" text="З'єднання" />
+                              <TableColumn fx:id="typeColumn" prefWidth="97.0" style="-fx-alignment: CENTER;" text="Тип клапана" />
+                              <TableColumn fx:id="priceColumn" prefWidth="116.0" style="-fx-alignment: CENTER;" text="Ціна, євро" />
                           </columns>
                         </TableView>
 
@@ -177,7 +177,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonClose1" layoutX="889.0" layoutY="589.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="30.0" prefWidth="100.0" text="Вихід" textFill="#d30d0d">
+                        <Button fx:id="buttonClose" layoutX="889.0" layoutY="589.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="30.0" prefWidth="100.0" text="Вихід" textFill="#d30d0d">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -187,12 +187,12 @@
                         <Label layoutX="784.0" layoutY="509.0" text="0000000" />
                         <Label layoutX="783.0" layoutY="526.0" text="Ціна:" />
                         <Label layoutX="783.0" layoutY="543.0" text="00,00" />
-                        <ImageView fitHeight="212.0" fitWidth="212.0" layoutX="777.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageValve" fitHeight="212.0" fitWidth="212.0" layoutX="777.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/77621.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="108.0" fitWidth="105.0" layoutX="883.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageNuts" fitHeight="108.0" fitWidth="105.0" layoutX="883.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/62201.jpg" />
                            </image>
@@ -215,7 +215,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <Button cancelButton="true" layoutX="337.0" layoutY="208.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="320.0" text="Про програму">
+                        <Button fx:id="buttonAboutProgram" cancelButton="true" layoutX="337.0" layoutY="208.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="320.0" text="Про програму">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

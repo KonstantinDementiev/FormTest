@@ -17,6 +17,7 @@ public class Valve extends Model {
     private String type;
     private String temperature;
     private double price;
+    private String imageurl;
 
     @ManyToMany(mappedBy = "valves")
     private Set<Actuator> actuators = new HashSet<Actuator>();
@@ -105,8 +106,16 @@ public class Valve extends Model {
         this.actuators = actuators;
     }
 
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
+
     @Override
     public String toString() {
-        return "Valve{" + "article='" + article + '\'' + ", kvs=" + kvs + ", dn=" + dn + ", ports=" + ports + ", pn='" + pn + '\'' + ", connection='" + connection + '\'' + ", type='" + type + '\'' + ", temperature='" + temperature + '\'' + ", price=" + price + ", actuators=" + actuators + '}';
+        return "Valve{" + "article='" + article + '\'' + ", kvs=" + kvs + ", dn=" + dn + ", ports=" + ports + ", pn='" + pn + '\'' + ", connection='" + connection + '\'' + ", type='" + type + '\'' + ", temperature='" + temperature + '\'' + ", price=" + price +  '}';
     }
 }

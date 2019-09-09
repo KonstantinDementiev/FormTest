@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ModelImpl {
+class ModelImpl {
 
     private static List<Model> models = new ArrayList<>();
     private static final Logger LOG = LoggerFactory.getLogger(ActuatorImpl.class);
     private Scanner scanner;
     private Session session;
 
-    protected void find(String tableName, String columnName) {
+    void find(String tableName, String columnName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert " + columnName + " to find: ");
@@ -33,7 +33,8 @@ public class ModelImpl {
         session.close();
     }
 
-    protected List findAll(String tableName) {
+
+    List findAll(String tableName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         Query queryFindAll = session.createQuery("FROM " + tableName);
@@ -42,7 +43,7 @@ public class ModelImpl {
         return models;
     }
 
-    protected void add(Model model) {
+    void add(Model model) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert article of new " + model.getClass().getSimpleName() + ":");
@@ -54,7 +55,7 @@ public class ModelImpl {
         session.close();
     }
 
-    protected void del(String tableName, String columnName) {
+    void del(String tableName, String columnName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert " + columnName + " for deleting: ");
@@ -71,7 +72,7 @@ public class ModelImpl {
         session.close();
     }
 
-    protected void update() {
+    void update() {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert name for updating: ");
@@ -92,53 +93,6 @@ public class ModelImpl {
         System.out.println(models.size() + " element(s) has been updated!");
         scanner.close();
         session.close();
-    }
-
-
-    public void crud(String tableName, String columnName) {
-        Model model= new Model();
-        try {
-            System.out.println("Please, choose your operation: 1 - Find, 2 - Find all, 3 - Add, 4 - Delete, 5 - Update");
-            scanner = new Scanner(System.in);
-            int operation = scanner.nextInt();
-
-            switch (operation) {
-                case 1:
-                    find(tableName, columnName);
-                    break;
-
-                case 2:
-                    findAll(columnName);
-                    break;
-
-                case 3:
-                    add(model);
-                    break;
-
-                case 4:
-                    del(tableName, columnName);
-                    break;
-
-                case 5:
-                    update();
-                    break;
-
-                default:
-                    System.out.println("You did not enter a number from 1 to 4");
-                    scanner.close();
-                    break;
-            }
-
-            System.out.println("Transaction successful!");
-            LOG.info("Transaction successful!");
-        } catch (HibernateException e) {
-            session.getTransaction().rollback();
-            System.out.println("Transaction failed!");
-            LOG.error("Transaction failed!", e);
-            e.printStackTrace();
-        } finally {
-            HibernateSessionFactory.shutdown();
-        }
     }
 
     private void printModel(List<Model> models) {

@@ -9,8 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import persistence.impl.ValveImpl;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -19,15 +23,44 @@ public class ControllerMain {
     private final Stage thisStage;
 
     @FXML
-    private TextField textField1, textField2, textField3;
+    private TextField textFieldFlow, textFieldDp, textFieldDtemp;
     @FXML
-    private ComboBox<Integer> comboBox1;
+    private ComboBox<Integer> comboBoxDensityMix, comboDn, comboPorts;
     @FXML
-    private Label label1, label2, label3, label4, label5, label6, label7, label8;
+    private ComboBox<Double> comboKvs;
     @FXML
-    private Button buttonClose1, button2;
+    private ComboBox<String> comboPn, comboConnection, comboType;
+    @FXML
+    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp;
+    @FXML
+    private Button buttonClose, buttonCalcFlow, buttonAboutProgram;
+
+    @FXML
+    private TableView<Valve> valveTableView = new TableView<>();
+    @FXML
+    private TableColumn<Valve, String> articleColumn;
+    @FXML
+    private TableColumn<Valve, Double> kvsColumn;
+    @FXML
+    private TableColumn<Valve, Integer> dnColumn;
+    @FXML
+    private TableColumn<Valve, Integer> portsColumn;
+    @FXML
+    private TableColumn<Valve, String> pnColumn;
+    @FXML
+    private TableColumn<Valve, String> connectionColumn;
+    @FXML
+    private TableColumn<Valve, String> typeColumn;
+    @FXML
+    private TableColumn<Valve, String> temperatureColumn;
+    @FXML
+    private TableColumn<Valve, Double> priceColumn;
+    @FXML
+    private ImageView imageValve, imageNuts;
+
 
     private ValveImpl valveImpl = new ValveImpl();
+    private List<Valve> allValves = valveImpl.findAllValve();
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
 
@@ -49,45 +82,53 @@ public class ControllerMain {
 
     @FXML
     public void initialize() {
-        ObservableList<Integer> percentGlikol = FXCollections.observableArrayList(0, 10, 15, 20, 25, 30, 35, 40, 45, 50);
-        comboBox1.setItems(percentGlikol);
-        comboBox1.setValue(0);
-        button2.setOnAction(event -> openCalcForm());
-        List<Valve> allValves = valveImpl.findAllValve();
-        sortedArrayKvs = bubbleSortKvs(allValves);
+
+        buttonCalcFlow.setOnAction(event -> openCalcForm());
+        buttonAboutProgram.setOnAction(event -> openAboutProgramForm());
+        fillingCombo(allValves);
         //printSortedKvs();
 
     }
 
     @FXML
-    public void button1Action() {
+    public void buttonCalculateAction() {
         Kvs kvs = new Kvs();
         KvsKlapana kvsKlapana = new KvsKlapana();
 
-        if (textField1.getText().equals("") || textField2.getText().equals("") || textField3.getText().equals("")) {
+        if (textFieldFlow.getText().equals("") || textFieldDp.getText().equals("") || textFieldDtemp.getText().equals("")) {
+
+            if (textFieldFlow.getText().equals("")) {
+                textFieldFlow.setStyle("-fx-background-color: #F89393");
+            }
+            if (textFieldDp.getText().equals("")) {
+                textFieldDp.setStyle("-fx-background-color: #F89393");
+            }
+            if (textFieldDtemp.getText().equals("")) {
+                textFieldDtemp.setStyle("-fx-background-color: #F89393");
+            }
             Alert alert = new Alert(Alert.AlertType.ERROR, "Заповніть всі поля для вихідних даних!", ButtonType.CLOSE);
             alert.show();
 
         } else {
-            String tf1 = textField1.getText().replaceAll(",", ".");
-            String tf2 = textField2.getText().replaceAll(",", ".");
-            String tf3 = textField3.getText().replaceAll(",", ".");
+            String tf1 = textFieldFlow.getText().replaceAll(",", ".");
+            String tf2 = textFieldDp.getText().replaceAll(",", ".");
+            String tf3 = textFieldDtemp.getText().replaceAll(",", ".");
 
             try {
                 kvs.setFlow(Double.parseDouble(tf1));
                 kvs.setPressureDrop(Integer.parseInt(tf2));
                 kvs.setTemperature(Integer.parseInt(tf3));
-                kvs.setGlikol(comboBox1.getValue());
+                kvs.setGlikol(comboBoxDensityMix.getValue());
 
             } catch (NumberFormatException e) {
                 if (!isDouble(tf1)) {
-                    textField1.setStyle("-fx-background-color: #F89393");
+                    textFieldFlow.setStyle("-fx-background-color: #F89393");
                 }
                 if (!isInt(tf2)) {
-                    textField2.setStyle("-fx-background-color: #F89393");
+                    textFieldDp.setStyle("-fx-background-color: #F89393");
                 }
                 if (!isInt(tf3)) {
-                    textField3.setStyle("-fx-background-color: #F89393");
+                    textFieldDtemp.setStyle("-fx-background-color: #F89393");
                 }
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Введене значення не є числовим або невірний формат числа!", ButtonType.CLOSE);
                 alert.show();
@@ -96,43 +137,34 @@ public class ControllerMain {
         }
         kvs.setDensityMix(kvsKlapana.calcDensityMix(kvs.getGlikol(), kvs.getTemperature()));
         kvs.setKv(kvsKlapana.calcKv(kvs.getPressureDrop(), kvs.getFlow(), kvs.getDensityMix()));
-        label1.setText(String.format("%.1f", kvs.getDensityMix()));
-        label2.setText(String.format("%.1f", kvs.getKv()));
+        labelDensityMix.setText(String.format("%.1f", kvs.getDensityMix()));
+        labelKv.setText(String.format("%.1f", kvs.getKv()));
         currentFlow = kvs.getFlow();
         findOptimalKvs(kvs.getKv());
     }
 
-    private List<Double> bubbleSortKvs(List<Valve> arr) {
-
-        SortedSet<Double> sortedKvs = new TreeSet<>();
-        for (int i = 0; i < arr.size() - 1; i++) {
-            sortedKvs.add(arr.get(i).getKvs());
-        }
-        return new ArrayList<>(sortedKvs);
-    }
-
     private void findOptimalKvs(Double calcKv) {
 
-        label3.setText("");
-        label4.setText("");
-        label5.setText("");
-        label6.setText("");
-        label7.setText("");
-        label8.setText("");
+        labelMinKvs.setText("");
+        labelOptimalKvs.setText("");
+        labelMaxKvs.setText("");
+        labelMinDp.setText("");
+        labelOptimalDp.setText("");
+        labelMaxDp.setText("");
 
         int optimalIndex = 0;
 
         if (calcKv < sortedArrayKvs.get(0)) {
-            label4.setText(String.valueOf(sortedArrayKvs.get(0)).replaceAll("[.]", ","));
-            label5.setText(String.valueOf(sortedArrayKvs.get(1)).replaceAll("[.]", ","));
-            label7.setText(dpKvs(0));
-            label8.setText(dpKvs(1));
+            labelOptimalKvs.setText(String.valueOf(sortedArrayKvs.get(0)).replaceAll("[.]", ","));
+            labelMaxKvs.setText(String.valueOf(sortedArrayKvs.get(1)).replaceAll("[.]", ","));
+            labelOptimalDp.setText(dpKvs(0));
+            labelMaxDp.setText(dpKvs(1));
         } else {
             if (calcKv > sortedArrayKvs.get(sortedArrayKvs.size() - 1) || calcKv > sortedArrayKvs.get(sortedArrayKvs.size() - 2)) {
-                label3.setText(String.valueOf(sortedArrayKvs.get(sortedArrayKvs.size() - 2)).replaceAll("[.]", ","));
-                label4.setText(String.valueOf(sortedArrayKvs.get(sortedArrayKvs.size() - 1)).replaceAll("[.]", ","));
-                label6.setText(dpKvs(sortedArrayKvs.size() - 2));
-                label7.setText(dpKvs(sortedArrayKvs.size() - 1));
+                labelMinKvs.setText(String.valueOf(sortedArrayKvs.get(sortedArrayKvs.size() - 2)).replaceAll("[.]", ","));
+                labelOptimalKvs.setText(String.valueOf(sortedArrayKvs.get(sortedArrayKvs.size() - 1)).replaceAll("[.]", ","));
+                labelMinDp.setText(dpKvs(sortedArrayKvs.size() - 2));
+                labelOptimalDp.setText(dpKvs(sortedArrayKvs.size() - 1));
 
             } else {
                 for (int i = 0; i < sortedArrayKvs.size() - 1; i++) {
@@ -140,50 +172,61 @@ public class ControllerMain {
                         optimalIndex = i;
                     }
                 }
-                label3.setText(String.valueOf(sortedArrayKvs.get(optimalIndex - 1)).replaceAll("[.]", ","));
-                label4.setText(String.valueOf(sortedArrayKvs.get(optimalIndex)).replaceAll("[.]", ","));
-                label5.setText(String.valueOf(sortedArrayKvs.get(optimalIndex + 1)).replaceAll("[.]", ","));
-                label6.setText(dpKvs(optimalIndex -1));
-                label7.setText(dpKvs(optimalIndex));
-                label8.setText(dpKvs(optimalIndex +1));
+                labelMinKvs.setText(String.valueOf(sortedArrayKvs.get(optimalIndex - 1)).replaceAll("[.]", ","));
+                labelOptimalKvs.setText(String.valueOf(sortedArrayKvs.get(optimalIndex)).replaceAll("[.]", ","));
+                labelMaxKvs.setText(String.valueOf(sortedArrayKvs.get(optimalIndex + 1)).replaceAll("[.]", ","));
+                labelMinDp.setText(dpKvs(optimalIndex - 1));
+                labelOptimalDp.setText(dpKvs(optimalIndex));
+                labelMaxDp.setText(dpKvs(optimalIndex + 1));
             }
         }
     }
 
     @FXML
     private void backColorTextField1() {
-        textField1.setStyle(null);
+        textFieldFlow.setStyle(null);
     }
 
     @FXML
     private void backColorTextField2() {
-        textField2.setStyle(null);
+        textFieldDp.setStyle(null);
     }
 
     @FXML
     private void backColorTextField3() {
-        textField3.setStyle(null);
+        textFieldDtemp.setStyle(null);
     }
 
     @FXML
-    private void clearAllTextField() {
-        textField1.setText("");
-        textField2.setText("");
-        textField3.setText("");
-        comboBox1.setValue(0);
-        label1.setText("0");
-        label2.setText("0");
-        label3.setText("0");
-        label4.setText("0");
-        label5.setText("0");
-        label6.setText("0");
-        label7.setText("0");
-        label8.setText("0");
+    private void clearAllKvs() {
+        textFieldFlow.setText("");
+        textFieldDp.setText("");
+        textFieldDtemp.setText("");
+        comboBoxDensityMix.setValue(0);
+        labelDensityMix.setText("0");
+        labelKv.setText("0");
+        labelMinKvs.setText("0");
+        labelOptimalKvs.setText("0");
+        labelMaxKvs.setText("0");
+        labelMinDp.setText("0");
+        labelOptimalDp.setText("0");
+        labelMaxDp.setText("0");
+    }
+
+    @FXML
+    private void clearAllValves() {
+        comboKvs.setValue(null);
+        comboDn.setValue(null);
+        comboPorts.setValue(null);
+        comboPn.setValue(null);
+        comboConnection.setValue(null);
+        comboType.setValue(null);
+        valveTableView.getItems().clear();
     }
 
     @FXML
     private void closeWindow() {
-        Stage stage = (Stage) buttonClose1.getScene().getWindow();
+        Stage stage = (Stage) buttonClose.getScene().getWindow();
         stage.close();
     }
 
@@ -196,8 +239,13 @@ public class ControllerMain {
         controllerCalcFlow.showStage();
     }
 
+    private void openAboutProgramForm() {
+        ControllerAboutProgram controllerAboutProgram = new ControllerAboutProgram(this);
+        controllerAboutProgram.showStage();
+    }
+
     void setTextFromCalcForm(String text) {
-        textField1.setText(text);
+        textFieldFlow.setText(text);
     }
 
     private boolean isInt(String x) throws NumberFormatException {
@@ -229,4 +277,78 @@ public class ControllerMain {
         return String.format("%.1f", dp);
     }
 
+    public void fillingCombo(List<Valve> arr) {
+
+        ObservableList<Integer> percentGlikol = FXCollections.observableArrayList(0, 10, 15, 20, 25, 30, 35, 40, 45, 50);
+        comboBoxDensityMix.setItems(percentGlikol);
+        comboBoxDensityMix.setValue(0);
+
+        ObservableList<Integer> fillingPorts = FXCollections.observableArrayList(2, 3, 4);
+        comboPorts.setItems(fillingPorts);
+
+        SortedSet<Double> sortedKvs = new TreeSet<>();
+        SortedSet<Integer> sortedDn = new TreeSet<>();
+        SortedSet<String> sortedPn = new TreeSet<>();
+        SortedSet<String> sortedConnection = new TreeSet<>();
+        SortedSet<String> sortedType = new TreeSet<>();
+
+        for (int i = 0; i < arr.size() - 1; i++) {
+
+            sortedKvs.add(arr.get(i).getKvs());
+            sortedDn.add(arr.get(i).getDn());
+            sortedPn.add(arr.get(i).getPn());
+            sortedConnection.add(arr.get(i).getConnection());
+            sortedType.add(arr.get(i).getType());
+        }
+
+        sortedArrayKvs = new ArrayList<>(sortedKvs);
+        ObservableList<Double> fillingKvs = FXCollections.observableArrayList(sortedArrayKvs);
+        comboKvs.setItems(fillingKvs);
+
+        ObservableList<Integer> fillingDn = FXCollections.observableArrayList(new ArrayList<>(sortedDn));
+        comboDn.setItems(fillingDn);
+
+        ObservableList<String> fillingPn = FXCollections.observableArrayList(new ArrayList<>(sortedPn));
+        comboPn.setItems(fillingPn);
+
+        ObservableList<String> fillingConnection = FXCollections.observableArrayList(new ArrayList<>(sortedConnection));
+        comboConnection.setItems(fillingConnection);
+
+        ObservableList<String> fillingType = FXCollections.observableArrayList(new ArrayList<>(sortedType));
+        comboType.setItems(fillingType);
+    }
+
+    @FXML
+    public void buttonFindValveAction() {
+
+        ObservableList<Valve> arrValveForTable = FXCollections.observableArrayList(valveImpl.findValveByComboBox(comboKvs.getValue(), comboDn.getValue(), comboPorts.getValue(), comboPn.getValue(), comboConnection.getValue(), comboType.getValue()));
+
+        articleColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
+        kvsColumn.setCellValueFactory(new PropertyValueFactory<>("kvs"));
+        dnColumn.setCellValueFactory(new PropertyValueFactory<>("dn"));
+        portsColumn.setCellValueFactory(new PropertyValueFactory<>("ports"));
+        pnColumn.setCellValueFactory(new PropertyValueFactory<>("pn"));
+        connectionColumn.setCellValueFactory(new PropertyValueFactory<>("connection"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        temperatureColumn.setCellValueFactory(new PropertyValueFactory<>("temperature"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        valveTableView.setItems(arrValveForTable);
+
+        //imageValve.setImage(new Image("images/21371.jpg"));
+    }
+
+    @FXML
+    private void handleRowSelect() {
+        //valveTableView.setRowFactory(tv -> {
+            TableRow<Valve> row = new TableRow<>();
+            //row.setOnMouseClicked(event -> {
+                if (!row.isEmpty()) {
+                    Valve rowData = row.getItem();
+                    imageValve.setImage(new Image(rowData.getImageurl()));
+                }
+            //});
+            //return row;
+      //  });
+    }
 }
