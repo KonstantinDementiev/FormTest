@@ -184,9 +184,9 @@
                         </Button>
                         <Label layoutX="784.0" layoutY="475.0" text="Накидні гайки" underline="true" />
                         <Label layoutX="784.0" layoutY="492.0" text="Артикул:" />
-                        <Label layoutX="784.0" layoutY="509.0" text="0000000" />
+                        <Label fx:id="nutArticle" layoutX="784.0" layoutY="509.0" />
                         <Label layoutX="783.0" layoutY="526.0" text="Ціна:" />
-                        <Label layoutX="783.0" layoutY="543.0" text="00,00" />
+                        <Label fx:id="nutPrice" layoutX="783.0" layoutY="543.0" />
                         <ImageView fx:id="imageValve" fitHeight="212.0" fitWidth="212.0" layoutX="777.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/0.jpg" />

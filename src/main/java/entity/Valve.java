@@ -22,6 +22,10 @@ public class Valve extends Model {
     @ManyToMany(mappedBy = "valves")
     private Set<Actuator> actuators = new HashSet<Actuator>();
 
+    @ManyToOne
+    @JoinColumn (name = "nutsart")
+    private Nuts nuts;
+
 
     public Valve() {
     }
@@ -112,6 +116,14 @@ public class Valve extends Model {
 
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
+    }
+
+    public Nuts getNuts() {
+        return nuts;
+    }
+
+    public void setNuts(Nuts nuts_art) {
+        this.nuts = nuts_art;
     }
 
     @Override

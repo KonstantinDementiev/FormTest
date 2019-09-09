@@ -33,7 +33,7 @@ public class ControllerMain {
     @FXML
     private ComboBox<String> comboPn, comboConnection, comboType;
     @FXML
-    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp;
+    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp, labelNutsArticle, labelNutsPrice;
     @FXML
     private Button buttonClose, buttonCalcFlow, buttonAboutProgram;
 
@@ -224,7 +224,9 @@ public class ControllerMain {
         comboConnection.setValue(null);
         comboType.setValue(null);
         valveTableView.getItems().clear();
-        imageValve.setImage(null);
+        imageValve.setImage(new Image("images/0.jpg"));
+        imageNuts.setImage(new Image("images/0.jpg"));
+
     }
 
     @FXML
@@ -344,11 +346,22 @@ public class ControllerMain {
     private void handleRowSelect() {
 
         TableView.TableViewSelectionModel<Valve> selectionValve = valveTableView.getSelectionModel();
-        selectionValve.selectedItemProperty().addListener(new ChangeListener<Valve>(){
+        selectionValve.selectedItemProperty().addListener(new ChangeListener<Valve>() {
 
             @Override
             public void changed(ObservableValue<? extends Valve> observable, Valve oldValue, Valve newValue) {
-                if (newValue!=null) imageValve.setImage(new Image(newValue.getImageurl()));
+                if (newValue != null) {
+                    imageValve.setImage(new Image(newValue.getImageurl()));
+                    if (newValue.getConnection().equals("Зовнішня різьба")) {
+                        imageNuts.setImage(new Image("images/62201.jpg"));
+                        labelNutsArticle.setText(newValue.getNuts().getArticle());
+                        labelNutsPrice.setText(String.valueOf(newValue.getNuts().getPrice()));
+                    }else {
+                        imageNuts.setImage(new Image("images/0.jpg"));
+                        labelNutsArticle.setText("");
+                        labelNutsPrice.setText("");
+                    }
+                }
             }
         });
 
