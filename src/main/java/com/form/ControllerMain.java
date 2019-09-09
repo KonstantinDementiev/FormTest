@@ -3,6 +3,8 @@ package com.form;
 import calculations.Kvs;
 import calculations.KvsKlapana;
 import entity.Valve;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -222,6 +224,7 @@ public class ControllerMain {
         comboConnection.setValue(null);
         comboType.setValue(null);
         valveTableView.getItems().clear();
+        imageValve.setImage(null);
     }
 
     @FXML
@@ -334,21 +337,20 @@ public class ControllerMain {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         valveTableView.setItems(arrValveForTable);
-
-        //imageValve.setImage(new Image("images/21371.jpg"));
+        imageValve.setImage(new Image(arrValveForTable.get(0).getImageurl()));
     }
 
     @FXML
     private void handleRowSelect() {
-        //valveTableView.setRowFactory(tv -> {
-            TableRow<Valve> row = new TableRow<>();
-            //row.setOnMouseClicked(event -> {
-                if (!row.isEmpty()) {
-                    Valve rowData = row.getItem();
-                    imageValve.setImage(new Image(rowData.getImageurl()));
-                }
-            //});
-            //return row;
-      //  });
+
+        TableView.TableViewSelectionModel<Valve> selectionValve = valveTableView.getSelectionModel();
+        selectionValve.selectedItemProperty().addListener(new ChangeListener<Valve>(){
+
+            @Override
+            public void changed(ObservableValue<? extends Valve> observable, Valve oldValue, Valve newValue) {
+                if (newValue!=null) imageValve.setImage(new Image(newValue.getImageurl()));
+            }
+        });
+
     }
 }

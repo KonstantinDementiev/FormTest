@@ -189,12 +189,12 @@
                         <Label layoutX="783.0" layoutY="543.0" text="00,00" />
                         <ImageView fx:id="imageValve" fitHeight="212.0" fitWidth="212.0" layoutX="777.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/77621.jpg" />
+                              <Image url="@images/0.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="imageNuts" fitHeight="108.0" fitWidth="105.0" layoutX="883.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/62201.jpg" />
+                              <Image url="@images/0.jpg" />
                            </image>
                         </ImageView>
                         <AnchorPane layoutX="338.0" layoutY="7.0" prefHeight="33.0" prefWidth="320.0" style="-fx-background-color: linear-gradient(#BDBDBD,#D8D8D8); -fx-border-color: #BDBDBD;">
