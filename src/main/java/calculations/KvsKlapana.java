@@ -47,6 +47,7 @@ public class KvsKlapana {
     public double calcKv(Integer pressureDrop, double flow, double densityMix) {
 
         kvs.setKv(flow / (Math.sqrt(pressureDrop * 10 / densityMix)));
+
         return kvs.getKv();
     }
 

@@ -128,7 +128,7 @@
                               <Label fx:id="labelMaxKvs" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
                               <Label fx:id="labelMaxDp" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
                               <Label layoutX="13.0" layoutY="133.0" prefHeight="17.0" prefWidth="202.0" style="-fx-background-color: #BDBDBD;" text="Фактична швидкість води в клапані" />
-                              <Label alignment="CENTER" layoutX="221.0" layoutY="133.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="0" />
+                              <Label fx:id="labelWaterSpeed" alignment="CENTER" layoutX="221.0" layoutY="133.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="0" />
                               <Label alignment="CENTER" layoutX="277.0" layoutY="133.0" prefHeight="17.0" prefWidth="27.0" style="-fx-background-color: #BDBDBD;" text="м/с" />
                            </children></AnchorPane>
                         <AnchorPane layoutX="669.0" layoutY="40.0" prefHeight="195.0" prefWidth="320.0" style="-fx-background-color: #E6E6E6;">

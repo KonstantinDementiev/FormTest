@@ -33,7 +33,7 @@ public class ControllerMain {
     @FXML
     private ComboBox<String> comboPn, comboConnection, comboType;
     @FXML
-    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp, labelNutsArticle, labelNutsPrice;
+    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp, labelNutsArticle, labelNutsPrice, labelWaterSpeed;
     @FXML
     private Button buttonClose, buttonCalcFlow, buttonAboutProgram;
 
@@ -65,6 +65,7 @@ public class ControllerMain {
     private List<Valve> allValves = valveImpl.findAllValve();
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
+    private Kvs kvs = new Kvs();
 
 
     ControllerMain() {
@@ -94,7 +95,7 @@ public class ControllerMain {
 
     @FXML
     public void buttonCalculateAction() {
-        Kvs kvs = new Kvs();
+
         KvsKlapana kvsKlapana = new KvsKlapana();
 
         if (textFieldFlow.getText().equals("") || textFieldDp.getText().equals("") || textFieldDtemp.getText().equals("")) {
@@ -226,7 +227,6 @@ public class ControllerMain {
         valveTableView.getItems().clear();
         imageValve.setImage(new Image("images/0.jpg"));
         imageNuts.setImage(new Image("images/0.jpg"));
-
     }
 
     @FXML
@@ -278,7 +278,10 @@ public class ControllerMain {
     }
 
     private String dpKvs(int indexOfSortedList) {
-        Double dp = Math.pow(0.01 * currentFlow / sortedArrayKvs.get(indexOfSortedList) * 1000, 2);
+
+        //Double dp = Math.pow(0.01 * currentFlow / sortedArrayKvs.get(indexOfSortedList) * 1000, 2);
+        Double dp = kvs.getDensityMix() * Math.pow(currentFlow / sortedArrayKvs.get(indexOfSortedList), 2) / 10;
+
         return String.format("%.1f", dp);
     }
 
@@ -340,6 +343,7 @@ public class ControllerMain {
 
         valveTableView.setItems(arrValveForTable);
         imageValve.setImage(new Image(arrValveForTable.get(0).getImageurl()));
+        handleRowSelect();
     }
 
     @FXML
@@ -352,11 +356,16 @@ public class ControllerMain {
             public void changed(ObservableValue<? extends Valve> observable, Valve oldValue, Valve newValue) {
                 if (newValue != null) {
                     imageValve.setImage(new Image(newValue.getImageurl()));
+
+                    //Double speed = 4 * kvs.getFlow() / (3600 * Math.PI * Math.pow(newValue.getDn() / 1000.0, 2));
+                    Double speed = 4 * kvs.getFlow() / (3600 * Math.PI * Math.pow(newValue.getDn()*newValue.getKvs()/(kvs.getKv()) / 1000.0, 2));
+                    labelWaterSpeed.setText(String.format("%.1f", speed));
+
                     if (newValue.getConnection().equals("Зовнішня різьба")) {
                         imageNuts.setImage(new Image("images/62201.jpg"));
                         labelNutsArticle.setText(newValue.getNuts().getArticle());
                         labelNutsPrice.setText(String.valueOf(newValue.getNuts().getPrice()));
-                    }else {
+                    } else {
                         imageNuts.setImage(new Image("images/0.jpg"));
                         labelNutsArticle.setText("");
                         labelNutsPrice.setText("");
