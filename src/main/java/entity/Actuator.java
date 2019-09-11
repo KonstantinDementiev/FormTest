@@ -16,7 +16,6 @@ public class Actuator extends Model {
     private String timePos;
     private String power;
     private String stroke;
-    private String temperature;
     private double price;
 
     @ManyToMany
@@ -89,14 +88,6 @@ public class Actuator extends Model {
 
     public void setStroke(String stroke) {
         this.stroke = stroke;
-    }
-
-    public String getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
     }
 
     public double getPrice() {

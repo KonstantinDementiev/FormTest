@@ -2,6 +2,7 @@ package com.form;
 
 import calculations.Kvs;
 import calculations.KvsKlapana;
+import entity.Actuator;
 import entity.Valve;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import persistence.impl.ActuatorImpl;
 import persistence.impl.ValveImpl;
 
 import java.io.IOException;
@@ -24,6 +26,7 @@ public class ControllerMain {
 
     private final Stage thisStage;
 
+    //---------------------------------------------------------------------------VALVES-----------------------------------------------------------
     @FXML
     private TextField textFieldFlow, textFieldDp, textFieldDtemp;
     @FXML
@@ -33,14 +36,14 @@ public class ControllerMain {
     @FXML
     private ComboBox<String> comboPn, comboConnection, comboType;
     @FXML
-    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp, labelNutsArticle, labelNutsPrice, labelWaterSpeed;
+    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp, labelNutsArticle1, labelNutsArticle2, labelNutsPrice1, labelNutsPrice2, labelWaterSpeed;
     @FXML
     private Button buttonClose, buttonCalcFlow, buttonAboutProgram;
 
     @FXML
     private TableView<Valve> valveTableView = new TableView<>();
     @FXML
-    private TableColumn<Valve, String> articleColumn;
+    private TableColumn<Valve, String> articleValveColumn;
     @FXML
     private TableColumn<Valve, Double> kvsColumn;
     @FXML
@@ -56,17 +59,51 @@ public class ControllerMain {
     @FXML
     private TableColumn<Valve, String> temperatureColumn;
     @FXML
-    private TableColumn<Valve, Double> priceColumn;
+    private TableColumn<Valve, Double> priceValveColumn;
     @FXML
-    private ImageView imageValve, imageNuts;
+    private ImageView imageValve1, imageNuts1, imageValve2, imageNuts2;
+
+    //---------------------------------------------------------------------------ACTUATORS-----------------------------------------------------------
+    @FXML
+    private Label label;
+    @FXML
+    private ComboBox<String> comboVoltage, comboSignal, comboContacts, comboEndSwitch, comboTimeWay, comboPower, comboStock;
+    @FXML
+    private TextField TextFieldArtValveForActuator;
+
+    @FXML
+    private TableView<Actuator> actuatorTableView = new TableView<>();
+
+    @FXML
+    private TableColumn<Actuator, String> articleActuatorColumn;
+    @FXML
+    private TableColumn<Actuator, String> voltageColumn;
+    @FXML
+    private TableColumn<Actuator, String> signalColumn;
+    @FXML
+    private TableColumn<Actuator, String> noncColumn;
+    @FXML
+    private TableColumn<Actuator, String> endposColumn;
+    @FXML
+    private TableColumn<Actuator, String> timeposColumn;
+    @FXML
+    private TableColumn<Actuator, String> powerColumn;
+    @FXML
+    private TableColumn<Actuator, String> strokeColumn;
+    @FXML
+    private TableColumn<Actuator, Double> priceActuatorColumn;
+
+    @FXML
+    private ImageView imageActuator, imageAdapter;
 
 
     private ValveImpl valveImpl = new ValveImpl();
+    private ActuatorImpl actuatorImpl = new ActuatorImpl();
     private List<Valve> allValves = valveImpl.findAllValve();
+    private List<Actuator> allActuators = actuatorImpl.findAllActuator();
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
     private Kvs kvs = new Kvs();
-
 
     ControllerMain() {
 
@@ -88,7 +125,8 @@ public class ControllerMain {
 
         buttonCalcFlow.setOnAction(event -> openCalcForm());
         buttonAboutProgram.setOnAction(event -> openAboutProgramForm());
-        fillingCombo(allValves);
+        fillingValveCombo(allValves);
+        fillingActuatorCombo(allActuators);
         //printSortedKvs();
 
     }
@@ -225,9 +263,25 @@ public class ControllerMain {
         comboConnection.setValue(null);
         comboType.setValue(null);
         valveTableView.getItems().clear();
-        imageValve.setImage(new Image("images/0.jpg"));
-        imageNuts.setImage(new Image("images/0.jpg"));
+        imageValve1.setImage(new Image("images/0.jpg"));
+        imageNuts1.setImage(new Image("images/0.jpg"));
+        imageValve2.setImage(new Image("images/0.jpg"));
+        imageNuts2.setImage(new Image("images/0.jpg"));
         labelWaterSpeed.setText("0");
+    }
+
+    @FXML
+    private void clearAllActuators() {
+        comboVoltage.setValue(null);
+        comboSignal.setValue(null);
+        comboContacts.setValue(null);
+        comboEndSwitch.setValue(null);
+        comboTimeWay.setValue(null);
+        comboPower.setValue(null);
+        comboStock.setValue(null);
+        actuatorTableView.getItems().clear();
+        imageActuator.setImage(new Image("images/0.jpg"));
+        imageAdapter.setImage(new Image("images/0.jpg"));
     }
 
     @FXML
@@ -286,7 +340,7 @@ public class ControllerMain {
         return String.format("%.1f", dp);
     }
 
-    public void fillingCombo(List<Valve> arr) {
+    public void fillingValveCombo(List<Valve> arr) {
 
         ObservableList<Integer> percentGlikol = FXCollections.observableArrayList(0, 10, 15, 20, 25, 30, 35, 40, 45, 50);
         comboBoxDensityMix.setItems(percentGlikol);
@@ -327,12 +381,42 @@ public class ControllerMain {
         comboType.setItems(fillingType);
     }
 
+    public void fillingActuatorCombo(List<Actuator> arr) {
+
+        ObservableList<String> fillingVoltage = FXCollections.observableArrayList("230 В", "24 В");
+        comboVoltage.setItems(fillingVoltage);
+        ObservableList<String> fillingSignal = FXCollections.observableArrayList("Відкр./Закр.", "3 точки", "0-10 В");
+        comboSignal.setItems(fillingSignal);
+        ObservableList<String> fillingContacts = FXCollections.observableArrayList("НВ", "НЗ", "НВ/НЗ");
+        comboContacts.setItems(fillingContacts);
+        ObservableList<String> fillingEndSwitch = FXCollections.observableArrayList("Ні", "Сигн полож", "Кінц вим");
+        comboEndSwitch.setItems(fillingEndSwitch);
+
+        SortedSet<String> sortedTimeWay = new TreeSet<>();
+        SortedSet<String> sortedPower = new TreeSet<>();
+        SortedSet<String> sortedStock = new TreeSet<>();
+
+        for (int i = 0; i < arr.size() - 1; i++) {
+
+            sortedTimeWay.add(arr.get(i).getTimePos());
+            sortedPower.add(arr.get(i).getPower());
+            sortedStock.add(arr.get(i).getStroke());
+        }
+
+        ObservableList<String> fillingTimeWay = FXCollections.observableArrayList(new ArrayList<>(sortedTimeWay));
+        comboTimeWay.setItems(fillingTimeWay);
+        ObservableList<String> fillingPower = FXCollections.observableArrayList(new ArrayList<>(sortedPower));
+        comboPower.setItems(fillingPower);
+        ObservableList<String> fillingStock = FXCollections.observableArrayList(new ArrayList<>(sortedStock));
+        comboStock.setItems(fillingStock);
+    }
+
     @FXML
     public void buttonFindValveAction() {
 
         ObservableList<Valve> arrValveForTable = FXCollections.observableArrayList(valveImpl.findValveByComboBox(comboKvs.getValue(), comboDn.getValue(), comboPorts.getValue(), comboPn.getValue(), comboConnection.getValue(), comboType.getValue()));
 
-        articleColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
+        articleValveColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
         kvsColumn.setCellValueFactory(new PropertyValueFactory<>("kvs"));
         dnColumn.setCellValueFactory(new PropertyValueFactory<>("dn"));
         portsColumn.setCellValueFactory(new PropertyValueFactory<>("ports"));
@@ -340,15 +424,37 @@ public class ControllerMain {
         connectionColumn.setCellValueFactory(new PropertyValueFactory<>("connection"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         temperatureColumn.setCellValueFactory(new PropertyValueFactory<>("temperature"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceValveColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         valveTableView.setItems(arrValveForTable);
-        imageValve.setImage(new Image(arrValveForTable.get(0).getImageurl()));
-        handleRowSelect();
+        imageValve1.setImage(new Image(arrValveForTable.get(0).getImageurl()));
+        imageValve2.setImage(imageValve1.getImage());
+        handleRowValveSelect();
     }
 
     @FXML
-    private void handleRowSelect() {
+    public void buttonFindActuatorAction() {
+
+        ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(valveImpl.findValveByComboBox(comboKvs.getValue(), comboDn.getValue(), comboPorts.getValue(), comboPn.getValue(), comboConnection.getValue(), comboType.getValue()));
+
+        articleValveColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
+        kvsColumn.setCellValueFactory(new PropertyValueFactory<>("kvs"));
+        dnColumn.setCellValueFactory(new PropertyValueFactory<>("dn"));
+        portsColumn.setCellValueFactory(new PropertyValueFactory<>("ports"));
+        pnColumn.setCellValueFactory(new PropertyValueFactory<>("pn"));
+        connectionColumn.setCellValueFactory(new PropertyValueFactory<>("connection"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        temperatureColumn.setCellValueFactory(new PropertyValueFactory<>("temperature"));
+        priceValveColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        valveTableView.setItems(arrValveForTable);
+        imageValve1.setImage(new Image(arrValveForTable.get(0).getImageurl()));
+        imageValve2.setImage(imageValve1.getImage());
+        handleRowValveSelect();
+    }
+
+    @FXML
+    private void handleRowValveSelect() {
 
         TableView.TableViewSelectionModel<Valve> selectionValve = valveTableView.getSelectionModel();
         selectionValve.selectedItemProperty().addListener(new ChangeListener<Valve>() {
@@ -356,20 +462,28 @@ public class ControllerMain {
             @Override
             public void changed(ObservableValue<? extends Valve> observable, Valve oldValue, Valve newValue) {
                 if (newValue != null) {
-                    imageValve.setImage(new Image(newValue.getImageurl()));
+                    imageValve1.setImage(new Image(newValue.getImageurl()));
+                    imageValve2.setImage(imageValve1.getImage());
 
                     //Double speed = 4 * kvs.getFlow() / (3600 * Math.PI * Math.pow(newValue.getDn() / 1000.0, 2));
                     Double speed = kvs.getFlow() * 10000 / (newValue.getKvs() * 828);
                     labelWaterSpeed.setText(String.format("%.1f", speed));
+                    TextFieldArtValveForActuator.setText(newValue.getArticle());
 
                     if (newValue.getConnection().equals("Зовнішня різьба")) {
-                        imageNuts.setImage(new Image("images/62201.jpg"));
-                        labelNutsArticle.setText(newValue.getNuts().getArticle());
-                        labelNutsPrice.setText(String.valueOf(newValue.getNuts().getPrice()));
+                        imageNuts1.setImage(new Image("images/62201.jpg"));
+                        imageNuts2.setImage(imageNuts1.getImage());
+                        labelNutsArticle1.setText(newValue.getNuts().getArticle());
+                        labelNutsArticle2.setText(labelNutsArticle1.getText());
+                        labelNutsPrice1.setText(String.valueOf(newValue.getNuts().getPrice()));
+                        labelNutsPrice2.setText(labelNutsPrice1.getText());
                     } else {
-                        imageNuts.setImage(new Image("images/0.jpg"));
-                        labelNutsArticle.setText("");
-                        labelNutsPrice.setText("");
+                        imageNuts1.setImage(new Image("images/0.jpg"));
+                        imageNuts2.setImage(imageNuts1.getImage());
+                        labelNutsArticle1.setText("");
+                        labelNutsPrice1.setText("");
+                        labelNutsArticle2.setText("");
+                        labelNutsPrice2.setText("");
                     }
                 }
             }
