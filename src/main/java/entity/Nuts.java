@@ -11,8 +11,8 @@ public class Nuts extends Model {
     private String article;
     private double price;
 
-    @OneToMany (mappedBy = "nuts")
-    private Set<Valve> valves = new HashSet<Valve>();
+//    @OneToMany (mappedBy = "nuts")
+//    private Set<Valve> valves = new HashSet<Valve>();
 
 
     public Nuts() {

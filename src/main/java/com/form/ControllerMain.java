@@ -227,6 +227,7 @@ public class ControllerMain {
         valveTableView.getItems().clear();
         imageValve.setImage(new Image("images/0.jpg"));
         imageNuts.setImage(new Image("images/0.jpg"));
+        labelWaterSpeed.setText("0");
     }
 
     @FXML
@@ -358,7 +359,7 @@ public class ControllerMain {
                     imageValve.setImage(new Image(newValue.getImageurl()));
 
                     //Double speed = 4 * kvs.getFlow() / (3600 * Math.PI * Math.pow(newValue.getDn() / 1000.0, 2));
-                    Double speed = 4 * kvs.getFlow() / (3600 * Math.PI * Math.pow(newValue.getDn()*newValue.getKvs()/(kvs.getKv()) / 1000.0, 2));
+                    Double speed = kvs.getFlow() * 10000 / (newValue.getKvs() * 828);
                     labelWaterSpeed.setText(String.format("%.1f", speed));
 
                     if (newValue.getConnection().equals("Зовнішня різьба")) {
