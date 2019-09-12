@@ -126,10 +126,10 @@
                               </Label>
                               <Label fx:id="labelMaxKvs" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
                               <Label fx:id="labelMaxDp" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="106.0" prefWidth="65.0" text="0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
-                              <Label layoutX="13.0" layoutY="133.0" prefHeight="17.0" prefWidth="148.0" style="-fx-background-color: #BDBDBD;" text="Фактична швидкість води" />
-                              <Label fx:id="labelWaterSpeed" alignment="CENTER" layoutX="223.0" layoutY="133.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="0" />
+                              <Label layoutX="13.0" layoutY="133.0" prefHeight="17.0" prefWidth="205.0" style="-fx-background-color: #BDBDBD;" text=" Факт. швидкість                   клапана" />
+                              <Label fx:id="labelWaterSpeed" alignment="CENTER" layoutX="223.0" layoutY="133.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="0,0" />
                               <Label alignment="CENTER" layoutX="278.0" layoutY="133.0" prefHeight="17.0" prefWidth="27.0" style="-fx-background-color: #BDBDBD;" text="м/с" />
-                              <Label layoutX="158.0" layoutY="133.0" prefHeight="17.0" prefWidth="61.0" style="-fx-background-color: #BDBDBD;" text="в клапані">
+                              <Label layoutX="107.0" layoutY="133.0" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: #BDBDBD;" text="на конусі">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -162,7 +162,7 @@
                               <ComboBox fx:id="comboConnection" layoutX="163.0" layoutY="109.0" prefHeight="25.0" prefWidth="150.0" />
                               <ComboBox fx:id="comboType" layoutX="163.0" layoutY="135.0" prefHeight="25.0" prefWidth="150.0" />
                            </children></AnchorPane>
-                        <TableView fx:id="valveTableView" fixedCellSize="0.0" layoutX="7.0" layoutY="242.0" onMouseClicked="#handleRowValveSelect" prefHeight="379.0" prefWidth="761.0">
+                        <TableView fx:id="valveTableView" fixedCellSize="0.0" layoutX="7.0" layoutY="242.0" onKeyPressed="#handleRowValveSelect" onMouseClicked="#handleRowValveSelect" onSort="#handleRowValveSelect" prefHeight="379.0" prefWidth="761.0">
                           <columns>
                             <TableColumn fx:id="articleValveColumn" prefWidth="88.0" style="-fx-alignment: CENTER;" text="Артикул" />
                             <TableColumn fx:id="kvsColumn" prefWidth="58.0" style="-fx-alignment: CENTER;" text="Kvs" />
@@ -188,9 +188,9 @@
                         </Button>
                         <Label layoutX="784.0" layoutY="475.0" text="Накидні гайки" underline="true" />
                         <Label layoutX="784.0" layoutY="492.0" text="Артикул:" />
-                        <Label fx:id="labelNutsArticle1" layoutX="784.0" layoutY="509.0" text="0000000" />
+                        <Label fx:id="labelNutsArticle1" layoutX="784.0" layoutY="509.0" />
                         <Label layoutX="783.0" layoutY="526.0" text="Ціна:" />
-                        <Label fx:id="labelNutsPrice1" layoutX="783.0" layoutY="543.0" text="00,00" />
+                        <Label fx:id="labelNutsPrice1" layoutX="783.0" layoutY="543.0" />
                         <ImageView fx:id="imageValve1" fitHeight="212.0" fitWidth="212.0" layoutX="777.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/0.jpg" />
@@ -277,24 +277,24 @@
                               <ComboBox fx:id="comboTimeWay" layoutX="165.0" layoutY="110.0" prefHeight="25.0" prefWidth="120.0" />
                               <ComboBox fx:id="comboPower" layoutX="165.0" layoutY="136.0" prefHeight="25.0" prefWidth="120.0" />
                               <ComboBox fx:id="comboStock" layoutX="165.0" layoutY="162.0" prefHeight="25.0" prefWidth="120.0" />
-                              <TextField fx:id="TextFieldArtValveForActuator" alignment="CENTER" layoutX="296.0" layoutY="72.0" prefHeight="30.0" prefWidth="85.0">
+                              <TextField fx:id="TextFieldArtValveForActuator" alignment="CENTER" layoutX="296.0" layoutY="72.0" prefHeight="30.0" prefWidth="85.0" style="-fx-text-inner-color: #8f0a20;">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </TextField>
                            </children>
                         </AnchorPane>
-                        <TableView layoutX="7.0" layoutY="242.0" prefHeight="379.0" prefWidth="777.0">
+                        <TableView fx:id="actuatorTableView" layoutX="7.0" layoutY="242.0" onMouseClicked="#handleRowActuatorSelect" prefHeight="379.0" prefWidth="777.0">
                            <columns>
-                              <TableColumn fx:id="articleActuatorColumn" prefWidth="88.0" text="Артикул" />
-                              <TableColumn fx:id="voltageColumn" prefWidth="74.0" text="Напруга" />
-                              <TableColumn fx:id="signalColumn" prefWidth="71.0" text="Керув." />
-                              <TableColumn fx:id="noncColumn" prefWidth="71.0" text="НВ/НЗ" />
-                              <TableColumn fx:id="endposColumn" prefWidth="88.0" text="Кінц. вим." />
-                              <TableColumn fx:id="timeposColumn" prefWidth="95.0" text="Час ходу" />
-                              <TableColumn fx:id="powerColumn" prefWidth="86.0" text="Зусилля" />
-                              <TableColumn fx:id="strokeColumn" prefWidth="89.0" text="Хід штока" />
-                              <TableColumn fx:id="priceActuatorColumn" prefWidth="114.0" text="Ціна, євро" />
+                              <TableColumn fx:id="articleActuatorColumn" prefWidth="88.0" style="-fx-alignment: CENTER;" text="Артикул" />
+                              <TableColumn fx:id="voltageColumn" prefWidth="74.0" style="-fx-alignment: center;" text="Напруга" />
+                              <TableColumn fx:id="signalColumn" prefWidth="71.0" style="-fx-alignment: center;" text="Керув." />
+                              <TableColumn fx:id="noncColumn" prefWidth="71.0" style="-fx-alignment: center;" text="НВ/НЗ" />
+                              <TableColumn fx:id="endposColumn" prefWidth="88.0" style="-fx-alignment: center;" text="Кінц. вим." />
+                              <TableColumn fx:id="timeposColumn" prefWidth="95.0" style="-fx-alignment: center;" text="Час ходу" />
+                              <TableColumn fx:id="powerColumn" prefWidth="84.0" style="-fx-alignment: center;" text="Зусилля" />
+                              <TableColumn fx:id="strokeColumn" prefWidth="91.0" style="-fx-alignment: center;" text="Хід штока" />
+                              <TableColumn fx:id="priceActuatorColumn" prefWidth="111.0" style="-fx-alignment: center;" text="Ціна, євро" />
                            </columns>
                         </TableView>
                         <Label layoutX="797.0" layoutY="498.0" text="Накидні гайки" underline="true" />

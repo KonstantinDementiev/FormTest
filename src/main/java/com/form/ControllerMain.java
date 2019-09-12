@@ -427,30 +427,36 @@ public class ControllerMain {
         priceValveColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         valveTableView.setItems(arrValveForTable);
-        imageValve1.setImage(new Image(arrValveForTable.get(0).getImageurl()));
-        imageValve2.setImage(imageValve1.getImage());
+
+        valveTableView.requestFocus();
         handleRowValveSelect();
+        valveTableView.getSelectionModel().select(0);
+        valveTableView.getFocusModel().focus(0);
     }
 
     @FXML
     public void buttonFindActuatorAction() {
 
-        ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(valveImpl.findValveByComboBox(comboKvs.getValue(), comboDn.getValue(), comboPorts.getValue(), comboPn.getValue(), comboConnection.getValue(), comboType.getValue()));
+        ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(
+                comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(),comboStock.getValue()));
 
-        articleValveColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
-        kvsColumn.setCellValueFactory(new PropertyValueFactory<>("kvs"));
-        dnColumn.setCellValueFactory(new PropertyValueFactory<>("dn"));
-        portsColumn.setCellValueFactory(new PropertyValueFactory<>("ports"));
-        pnColumn.setCellValueFactory(new PropertyValueFactory<>("pn"));
-        connectionColumn.setCellValueFactory(new PropertyValueFactory<>("connection"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        temperatureColumn.setCellValueFactory(new PropertyValueFactory<>("temperature"));
-        priceValveColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        articleActuatorColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
+        voltageColumn.setCellValueFactory(new PropertyValueFactory<>("voltage"));
+        signalColumn.setCellValueFactory(new PropertyValueFactory<>("signal"));
+        noncColumn.setCellValueFactory(new PropertyValueFactory<>("nonc"));
+        endposColumn.setCellValueFactory(new PropertyValueFactory<>("endpos"));
+        timeposColumn.setCellValueFactory(new PropertyValueFactory<>("timepos"));
+        powerColumn.setCellValueFactory(new PropertyValueFactory<>("power"));
+        strokeColumn.setCellValueFactory(new PropertyValueFactory<>("stroke"));
+        priceActuatorColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        valveTableView.setItems(arrValveForTable);
-        imageValve1.setImage(new Image(arrValveForTable.get(0).getImageurl()));
-        imageValve2.setImage(imageValve1.getImage());
-        handleRowValveSelect();
+        actuatorTableView.setItems(arrActuatorForTable);
+
+        actuatorTableView.requestFocus();
+        handleRowActuatorSelect();
+        actuatorTableView.getSelectionModel().select(0);
+        actuatorTableView.getFocusModel().focus(0);
+
     }
 
     @FXML
@@ -490,4 +496,23 @@ public class ControllerMain {
         });
 
     }
+
+
+    @FXML
+    private void handleRowActuatorSelect() {
+
+        TableView.TableViewSelectionModel<Actuator> selectionActuator = actuatorTableView.getSelectionModel();
+        selectionActuator.selectedItemProperty().addListener(new ChangeListener<Actuator>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Actuator> observable, Actuator oldValue, Actuator newValue) {
+                if (newValue != null) {
+                    imageActuator.setImage(new Image(newValue.getImageurl()));
+
+                }
+            }
+        });
+
+    }
+
 }

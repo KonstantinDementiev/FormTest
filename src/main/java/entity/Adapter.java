@@ -1,15 +1,23 @@
 package entity;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity
-public class Nuts extends Model {
+public class Adapter extends Model{
 
     @Id
     private String article;
     private double price;
 
-    public Nuts() {
+    @OneToMany
+    private Set<Valve> valve = new HashSet<Valve>();
+    @OneToMany
+    private Set<Actuator> actuator = new HashSet<Actuator>();
+
+
+    public Adapter() {
     }
 
     @Override
@@ -30,11 +38,9 @@ public class Nuts extends Model {
         this.price = price;
     }
 
-
-
     @Override
     public String toString() {
-        return "Nuts{" +
+        return "Adapter{" +
                 "article='" + article + '\'' +
                 ", price=" + price +
                 '}';

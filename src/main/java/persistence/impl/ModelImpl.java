@@ -2,6 +2,7 @@ package persistence.impl;
 
 import entity.Model;
 import entity.Valve;
+import javafx.scene.control.ComboBox;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.HibernateSessionFactory;
 
+import javax.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -96,102 +98,35 @@ class ModelImpl {
         session.close();
     }
 
-    public List<Model> findModelByComboBox(List<Object> listComboBoxes, Model tableName) {
+     List findModelByComboBox(Object[][] listComboBoxes, String tableName) {
 
-
-        //Double desiredKvs, Integer desiredDn, Integer desiredPorts, String desiredPn, String desiredConn, String desiredType
-
-        StringBuilder strQuery = new StringBuilder("FROM " + tableName.getClass().getSimpleName());
+        StringBuilder strQuery = new StringBuilder("FROM " + tableName);
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
 
 
-        for (int i = 0; i < listComboBoxes.size(); i++) {
+        for (int i = 0; i < listComboBoxes.length-1; i++) {
 
-            if (listComboBoxes.get(i) != null) {
-                if (strQuery.toString().equals("FROM " + tableName.getClass().getSimpleName())) {
-                    strQuery.append(" WHERE " +  = :paramKvs");
+            if (listComboBoxes[i][0] != null) {
+                if (strQuery.toString().equals("FROM " + tableName)) {
+                    strQuery.append(" WHERE ").append(listComboBoxes[i][1]).append(" = :param").append(listComboBoxes[i][1]);
                 } else {
-                    strQuery.append(" AND kvs = :paramKvs");
+                    strQuery.append(" AND ").append(listComboBoxes[i][1]).append(" = :param").append(listComboBoxes[i][1]);
                 }
-            }
-
-
-        }
-
-
-        if (desiredKvs != null) {
-            if (strQuery.toString().equals("FROM Valve")) {
-                strQuery.append(" WHERE kvs = :paramKvs");
-            } else {
-                strQuery.append(" AND kvs = :paramKvs");
-            }
-        }
-
-        if (desiredDn != null) {
-            if (strQuery.toString().equals("FROM Valve")) {
-                strQuery.append(" WHERE dn = :paramDn");
-            } else {
-                strQuery.append(" AND dn = :paramDn");
-            }
-        }
-
-        if (desiredPorts != null) {
-            if (strQuery.toString().equals("FROM Valve")) {
-                strQuery.append(" WHERE ports = :paramPorts");
-            } else {
-                strQuery.append(" AND ports = :paramPorts");
-            }
-        }
-
-        if (desiredPn != null) {
-            if (strQuery.toString().equals("FROM Valve")) {
-                strQuery.append(" WHERE pn = :paramPn");
-            } else {
-                strQuery.append(" AND pn = :paramPn");
-            }
-        }
-
-        if (desiredConn != null) {
-            if (strQuery.toString().equals("FROM Valve")) {
-                strQuery.append(" WHERE connection = :paramConnection");
-            } else {
-                strQuery.append(" AND connection = :paramConnection");
-            }
-        }
-
-        if (desiredType != null) {
-            if (strQuery.toString().equals("FROM Valve")) {
-                strQuery.append(" WHERE type = :paramType");
-            } else {
-                strQuery.append(" AND type = :paramType");
             }
         }
 
         Query queryFind = session.createQuery(strQuery.toString());
 
-        if (desiredKvs != null) {
-            queryFind.setParameter("paramKvs", desiredKvs);
-        }
-        if (desiredDn != null) {
-            queryFind.setParameter("paramDn", desiredDn);
-        }
-        if (desiredPorts != null) {
-            queryFind.setParameter("paramPorts", desiredPorts);
-        }
-        if (desiredPn != null) {
-            queryFind.setParameter("paramPn", desiredPn);
-        }
-        if (desiredConn != null) {
-            queryFind.setParameter("paramConnection", desiredConn);
-        }
-        if (desiredType != null) {
-            queryFind.setParameter("paramType", desiredType);
+        for (int i = 0; i < listComboBoxes.length-1; i++) {
+            if (listComboBoxes[i][0] != null) {
+                queryFind.setParameter("param" + listComboBoxes[i][1], listComboBoxes[i][0]);
+            }
         }
 
-        List<Valve> findedValves = queryFind.list();
+        List<Model> findedModels = queryFind.list();
         session.close();
-        return findedValves;
+        return findedModels;
     }
 
 

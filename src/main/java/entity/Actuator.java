@@ -17,6 +17,7 @@ public class Actuator extends Model {
     private String power;
     private String stroke;
     private double price;
+    private String imageurl;
 
     @ManyToMany
     @JoinTable(name = "kit", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
@@ -106,6 +107,13 @@ public class Actuator extends Model {
         this.valves = valves;
     }
 
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
 
     @Override
     public String toString() {
