@@ -12,8 +12,8 @@ public class Actuator extends Model {
     private String voltage;
     private String signal;
     private String nonc;
-    private String endPos;
-    private String timePos;
+    private String endpos;
+    private String timepos;
     private String power;
     private String stroke;
     private double price;
@@ -59,20 +59,20 @@ public class Actuator extends Model {
         this.nonc = nonc;
     }
 
-    public String getEndPos() {
-        return endPos;
+    public String getEndpos() {
+        return endpos;
     }
 
-    public void setEndPos(String endPos) {
-        this.endPos = endPos;
+    public void setEndpos(String endPos) {
+        this.endpos = endPos;
     }
 
-    public String getTimePos() {
-        return timePos;
+    public String getTimepos() {
+        return timepos;
     }
 
-    public void setTimePos(String timePos) {
-        this.timePos = timePos;
+    public void setTimepos(String timePos) {
+        this.timepos = timePos;
     }
 
     public String getPower() {

@@ -104,6 +104,7 @@ public class ControllerMain {
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
     private Kvs kvs = new Kvs();
+    private Valve candidateValve;
 
     ControllerMain() {
 
@@ -398,7 +399,7 @@ public class ControllerMain {
 
         for (int i = 0; i < arr.size() - 1; i++) {
 
-            sortedTimeWay.add(arr.get(i).getTimePos());
+            sortedTimeWay.add(arr.get(i).getTimepos());
             sortedPower.add(arr.get(i).getPower());
             sortedStock.add(arr.get(i).getStroke());
         }
@@ -438,7 +439,7 @@ public class ControllerMain {
     public void buttonFindActuatorAction() {
 
         ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(
-                comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(),comboStock.getValue()));
+                comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(),comboStock.getValue(), candidateValve));
 
         articleActuatorColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
         voltageColumn.setCellValueFactory(new PropertyValueFactory<>("voltage"));
@@ -475,6 +476,7 @@ public class ControllerMain {
                     Double speed = kvs.getFlow() * 10000 / (newValue.getKvs() * 828);
                     labelWaterSpeed.setText(String.format("%.1f", speed));
                     TextFieldArtValveForActuator.setText(newValue.getArticle());
+                    candidateValve = newValue;
 
                     if (newValue.getConnection().equals("Зовнішня різьба")) {
                         imageNuts1.setImage(new Image("images/62201.jpg"));
