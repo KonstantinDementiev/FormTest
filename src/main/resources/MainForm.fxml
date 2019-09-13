@@ -243,7 +243,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="7.0" layoutY="40.0" prefHeight="195.0" prefWidth="390.0" style="-fx-background-color: #E6E6E6;">
                            <children>
-                              <Button layoutX="296.0" layoutY="134.0" mnemonicParsing="false" onAction="#buttonFindActuatorAction" prefHeight="25.0" prefWidth="85.0" text="Підібрати" textFill="#2b750d">
+                              <Button fx:id="buttonFindActuator" layoutX="296.0" layoutY="134.0" mnemonicParsing="false" onAction="#buttonFindActuatorAction" prefHeight="25.0" prefWidth="85.0" text="Підібрати" textFill="#2b750d">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -277,7 +277,7 @@
                               <ComboBox fx:id="comboTimeWay" layoutX="165.0" layoutY="110.0" prefHeight="25.0" prefWidth="120.0" />
                               <ComboBox fx:id="comboPower" layoutX="165.0" layoutY="136.0" prefHeight="25.0" prefWidth="120.0" />
                               <ComboBox fx:id="comboStock" layoutX="165.0" layoutY="162.0" prefHeight="25.0" prefWidth="120.0" />
-                              <TextField fx:id="TextFieldArtValveForActuator" alignment="CENTER" layoutX="296.0" layoutY="72.0" prefHeight="30.0" prefWidth="85.0" style="-fx-text-inner-color: #8f0a20;">
+                              <TextField fx:id="TextFieldArtValveForActuator" alignment="CENTER" layoutX="296.0" layoutY="72.0" onMouseClicked="#setFocusOnButton" prefHeight="30.0" prefWidth="85.0" style="-fx-text-inner-color: #8f0a20;">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -334,9 +334,9 @@
                            </image>
                         </ImageView>
                         <Label layoutX="797.0" layoutY="224.0" text="Артикул:" />
-                        <Label layoutX="797.0" layoutY="241.0" text="0000000" />
+                        <Label fx:id="labelAdapterArticle2" layoutX="797.0" layoutY="241.0" text="0000000" />
                         <Label layoutX="797.0" layoutY="258.0" text="Ціна:" />
-                        <Label layoutX="798.0" layoutY="274.0" text="00,00" />
+                        <Label fx:id="labelAdapterPrice2" layoutX="798.0" layoutY="274.0" text="00,00" />
                         <AnchorPane layoutX="403.0" layoutY="7.0" prefHeight="68.0" prefWidth="381.0" style="-fx-background-color: #E6E6E6;">
                            <children>
                               <Label alignment="CENTER" layoutY="2.0" prefHeight="68.0" prefWidth="381.0" text="HERZ Select 3.0">
@@ -367,14 +367,19 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="207.0" layoutY="34.0" text="0000000" />
-                              <Label alignment="CENTER" layoutX="304.0" layoutY="34.0" text="00,00" />
-                              <Label alignment="CENTER" layoutX="207.0" layoutY="54.0" text="0000000" />
-                              <Label alignment="CENTER" layoutX="304.0" layoutY="54.0" text="00,00" />
-                              <Label alignment="CENTER" layoutX="207.0" layoutY="74.0" text="0000000" />
-                              <Label alignment="CENTER" layoutX="304.0" layoutY="74.0" text="00,00" />
-                              <Label alignment="CENTER" layoutX="207.0" layoutY="94.0" text="0000000" />
-                              <Label alignment="CENTER" layoutX="304.0" layoutY="94.0" text="00,00" />
+                              <Label fx:id="labelActuatorArticle" alignment="CENTER" layoutX="207.0" layoutY="34.0" text="0000000" />
+                              <Label fx:id="labelActuatorPrice" alignment="CENTER" layoutX="304.0" layoutY="34.0" text="00,00" />
+                              <Label fx:id="labelAdapterArticle1" alignment="CENTER" layoutX="207.0" layoutY="54.0" text="0000000" />
+                              <Label fx:id="labelAdapterPrice1" alignment="CENTER" layoutX="304.0" layoutY="54.0" text="00,00" />
+                              <Label fx:id="labelValveArticle" alignment="CENTER" layoutX="207.0" layoutY="74.0" text="0000000" />
+                              <Label fx:id="labelValvePrice" alignment="CENTER" layoutX="304.0" layoutY="74.0" text="00,00" />
+                              <Label fx:id="labelNutsArticle3" alignment="CENTER" layoutX="207.0" layoutY="94.0" text="0000000" />
+                              <Label fx:id="labelNutsPrice3" alignment="CENTER" layoutX="304.0" layoutY="94.0" text="00,00" />
+                              <Label fx:id="labelSumm" alignment="CENTER" layoutX="304.0" layoutY="122.0" text="00,00">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>

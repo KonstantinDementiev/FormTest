@@ -36,7 +36,7 @@ public class ControllerMain {
     @FXML
     private ComboBox<String> comboPn, comboConnection, comboType;
     @FXML
-    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp, labelNutsArticle1, labelNutsArticle2, labelNutsPrice1, labelNutsPrice2, labelWaterSpeed;
+    private Label labelDensityMix, labelKv, labelMinKvs, labelOptimalKvs, labelMaxKvs, labelMinDp, labelOptimalDp, labelMaxDp, labelNutsArticle1, labelNutsArticle2, labelNutsPrice1, labelNutsPrice2, labelWaterSpeed, labelValveArticle, labelValvePrice, labelNutsArticle3, labelNutsPrice3;
     @FXML
     private Button buttonClose, buttonCalcFlow, buttonAboutProgram;
 
@@ -70,6 +70,10 @@ public class ControllerMain {
     private ComboBox<String> comboVoltage, comboSignal, comboContacts, comboEndSwitch, comboTimeWay, comboPower, comboStock;
     @FXML
     private TextField TextFieldArtValveForActuator;
+    @FXML
+    private Label labelActuatorArticle, labelActuatorPrice, labelAdapterArticle1, labelAdapterPrice1, labelAdapterArticle2, labelAdapterPrice2, labelSumm;
+    @FXML
+    private Button buttonFindActuator;
 
     @FXML
     private TableView<Actuator> actuatorTableView = new TableView<>();
@@ -96,7 +100,7 @@ public class ControllerMain {
     @FXML
     private ImageView imageActuator, imageAdapter;
 
-
+    private Valve candidateValve = new Valve();
     private ValveImpl valveImpl = new ValveImpl();
     private ActuatorImpl actuatorImpl = new ActuatorImpl();
     private List<Valve> allValves = valveImpl.findAllValve();
@@ -104,7 +108,7 @@ public class ControllerMain {
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
     private Kvs kvs = new Kvs();
-    private Valve candidateValve;
+
 
     ControllerMain() {
 
@@ -283,6 +287,12 @@ public class ControllerMain {
         actuatorTableView.getItems().clear();
         imageActuator.setImage(new Image("images/0.jpg"));
         imageAdapter.setImage(new Image("images/0.jpg"));
+        labelActuatorArticle.setText("");
+        labelActuatorPrice.setText("");
+        labelAdapterArticle1.setText("");
+        labelAdapterArticle2.setText("");
+        labelAdapterPrice1.setText("");
+        labelAdapterPrice2.setText("");
     }
 
     @FXML
@@ -438,8 +448,10 @@ public class ControllerMain {
     @FXML
     public void buttonFindActuatorAction() {
 
-        ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(
-                comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(),comboStock.getValue(), candidateValve));
+        ValveImpl findArt = new ValveImpl();
+        candidateValve = findArt.findValveByArticle(TextFieldArtValveForActuator.getText());
+
+        ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(), comboStock.getValue(), candidateValve));
 
         articleActuatorColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
         voltageColumn.setCellValueFactory(new PropertyValueFactory<>("voltage"));
@@ -471,20 +483,32 @@ public class ControllerMain {
                 if (newValue != null) {
                     imageValve1.setImage(new Image(newValue.getImageurl()));
                     imageValve2.setImage(imageValve1.getImage());
+                    labelValveArticle.setText(newValue.getArticle());
+                    labelValvePrice.setText(String.valueOf(newValue.getPrice()));
+                    clearAllActuators();
+                    labelActuatorArticle.setText("");
+                    labelActuatorPrice.setText("");
+                    labelAdapterArticle1.setText("");
+                    labelAdapterArticle2.setText("");
+                    labelAdapterPrice1.setText("");
+                    labelAdapterPrice2.setText("");
 
                     //Double speed = 4 * kvs.getFlow() / (3600 * Math.PI * Math.pow(newValue.getDn() / 1000.0, 2));
                     Double speed = kvs.getFlow() * 10000 / (newValue.getKvs() * 828);
                     labelWaterSpeed.setText(String.format("%.1f", speed));
                     TextFieldArtValveForActuator.setText(newValue.getArticle());
-                    candidateValve = newValue;
 
                     if (newValue.getConnection().equals("Зовнішня різьба")) {
                         imageNuts1.setImage(new Image("images/62201.jpg"));
                         imageNuts2.setImage(imageNuts1.getImage());
                         labelNutsArticle1.setText(newValue.getNuts().getArticle());
                         labelNutsArticle2.setText(labelNutsArticle1.getText());
+                        labelNutsArticle3.setText(labelNutsArticle1.getText());
                         labelNutsPrice1.setText(String.valueOf(newValue.getNuts().getPrice()));
                         labelNutsPrice2.setText(labelNutsPrice1.getText());
+                        labelNutsPrice3.setText(labelNutsPrice1.getText());
+
+
                     } else {
                         imageNuts1.setImage(new Image("images/0.jpg"));
                         imageNuts2.setImage(imageNuts1.getImage());
@@ -492,6 +516,8 @@ public class ControllerMain {
                         labelNutsPrice1.setText("");
                         labelNutsArticle2.setText("");
                         labelNutsPrice2.setText("");
+                        labelNutsArticle3.setText("");
+                        labelNutsPrice3.setText("");
                     }
                 }
             }
@@ -510,11 +536,26 @@ public class ControllerMain {
             public void changed(ObservableValue<? extends Actuator> observable, Actuator oldValue, Actuator newValue) {
                 if (newValue != null) {
                     imageActuator.setImage(new Image(newValue.getImageurl()));
+                    labelActuatorArticle.setText(newValue.getArticle());
+                    labelActuatorPrice.setText(String.valueOf(newValue.getPrice()));
 
+                    double summ = candidateValve.getPrice();
+
+                    if (newValue.getPrice() != 0.0) {
+                        summ = summ + newValue.getPrice();
+                    }
+                    if (candidateValve.getNuts().getPrice() != 0.0) {
+                        summ = summ + candidateValve.getNuts().getPrice();
+                    }
+                    labelSumm.setText(String.format("%.2f", summ));
                 }
             }
         });
+    }
 
+    @FXML
+    private void setFocusOnButton() {
+        buttonFindActuator.setDefaultButton(true);
     }
 
 }

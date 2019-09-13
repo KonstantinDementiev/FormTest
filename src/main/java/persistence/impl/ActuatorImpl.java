@@ -11,8 +11,8 @@ public class ActuatorImpl extends ModelImpl {
 
     private ModelImpl modelImpl = new ModelImpl();
 
-    public void findActuatorByArticle() {
-        modelImpl.find("Actuator", "article");
+    public void findActuatorByArticle(String article) {
+        modelImpl.find("Actuator", "article", article);
     }
 
     public List<Actuator> findAllActuator() {
@@ -28,18 +28,19 @@ public class ActuatorImpl extends ModelImpl {
         modelImpl.del("Actuator", "article");
     }
 
+
     public List<Actuator> findActuatorByComboBox(String desiredVoltage, String desiredSignal, String desiredNonc, String desiredEndpos, String desiredTimepos, String desiredPower, String desiredStroke, Valve candidateValve) {
 
         Object[][] listComboBoxes = {{desiredVoltage, "voltage"}, {desiredSignal, "signal"}, {desiredNonc, "nonc"}, {desiredEndpos, "endpos"}, {desiredTimepos, "timepos"}, {desiredPower, "power"}, {desiredStroke, "stroke"}};
-        List<Actuator> listWithValve = new ArrayList<>();
-        List<Actuator> listWithoutValve = modelImpl.findModelByComboBox(listComboBoxes, "Actuator");
+        List<Actuator> listActuatorsWithValve = new ArrayList<>();
+        List<Actuator> listActuatorsWithoutValve = modelImpl.findModelByComboBox(listComboBoxes, "Actuator");
         int j = 0;
-        for (int i = 0; i < listWithoutValve.size() - 1; i++) {
-            if (listWithoutValve.get(i).getValves().contains(candidateValve.getArticle())) {
-                listWithValve.add(j, listWithoutValve.get(i));
+        for (int i = 0; i < listActuatorsWithoutValve.size(); i++) {
+            if (listActuatorsWithoutValve.get(i).getValves().contains(candidateValve)) {
+                listActuatorsWithValve.add(j, listActuatorsWithoutValve.get(i));
                 j++;
             }
         }
-        return listWithValve;
+        return listActuatorsWithValve;
     }
 }

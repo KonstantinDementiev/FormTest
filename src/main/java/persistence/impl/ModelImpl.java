@@ -22,18 +22,14 @@ class ModelImpl {
     private Scanner scanner;
     private Session session;
 
-    void find(String tableName, String columnName) {
+    Model find(String tableName, String columnName, String article) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
-        System.out.println("Insert " + columnName + " to find: ");
-        scanner = new Scanner(System.in);
-        String queryName = scanner.nextLine();
         Query queryFind = session.createQuery("FROM " + tableName + " WHERE " + columnName + " = :paramName");
-        queryFind.setParameter("paramName", queryName);
+        queryFind.setParameter("paramName", article);
         models = queryFind.list();
-        printModel(models);
-        scanner.close();
         session.close();
+        return models.get(0);
     }
 
 

@@ -1,5 +1,6 @@
 package persistence.impl;
 
+import entity.Model;
 import entity.Valve;
 import java.util.List;
 
@@ -8,8 +9,8 @@ public class ValveImpl extends ModelImpl {
 
     private ModelImpl modelImpl = new ModelImpl();
 
-    public void findValveByArticle() {
-        modelImpl.find("Valve", "article");
+    public Valve findValveByArticle(String article) {
+        return (Valve) modelImpl.find("Valve", "article", article);
     }
 
     public List<Valve> findAllValve() {

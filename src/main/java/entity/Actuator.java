@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class Actuator extends Model {
     private double price;
     private String imageurl;
 
-    @ManyToMany
+    @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "kit", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
     private Set<Valve> valves = new HashSet<Valve>();
 
@@ -116,7 +117,30 @@ public class Actuator extends Model {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Actuator actuator = (Actuator) o;
+        if (this.hashCode()== actuator.hashCode())return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(this.article);
+        buffer.append(this.voltage);
+        buffer.append(this.signal);
+        buffer.append(this.nonc);
+        buffer.append(this.endpos);
+        buffer.append(this.timepos);
+        buffer.append(this.power);
+        buffer.append(this.price);
+        return buffer.toString().hashCode();
+    }
+
+    @Override
     public String toString() {
-        return "" + article;
+        return "Actuator{" + "article='" + article + '\'' + ", voltage='" + voltage + '\'' + ", signal='" + signal + '\'' + ", nonc='" + nonc + '\'' + ", endpos='" + endpos + '\'' + ", timepos='" + timepos + '\'' + ", power='" + power + '\'' + ", stroke='" + stroke + '\'' + ", price=" + price + '}';
     }
 }

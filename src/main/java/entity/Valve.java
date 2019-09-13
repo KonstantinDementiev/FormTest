@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class Valve extends Model {
     private double price;
     private String imageurl;
 
-    @ManyToMany(mappedBy = "valves")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
     private Set<Actuator> actuators = new HashSet<Actuator>();
 
     @ManyToOne
@@ -127,7 +128,31 @@ public class Valve extends Model {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Valve valve = (Valve) o;
+        if (this.hashCode()== valve.hashCode())return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(this.article);
+        buffer.append(this.kvs);
+        buffer.append(this.dn);
+        buffer.append(this.ports);
+        buffer.append(this.pn);
+        buffer.append(this.connection);
+        buffer.append(this.type);
+        buffer.append(this.temperature);
+        buffer.append(this.price);
+        return buffer.toString().hashCode();
+    }
+
+    @Override
     public String toString() {
-        return "Valve{" + "article='" + article + '\'' + ", kvs=" + kvs + ", dn=" + dn + ", ports=" + ports + ", pn='" + pn + '\'' + ", connection='" + connection + '\'' + ", type='" + type + '\'' + ", temperature='" + temperature + '\'' + ", price=" + price +  '}';
+        return "Valve{" + "article='" + article + '\'' + ", kvs=" + kvs + ", dn=" + dn + ", ports=" + ports + ", pn='" + pn + '\'' + ", connection='" + connection + '\'' + ", type='" + type + '\'' + ", temperature='" + temperature + '\'' + ", price=" + price + '}';
     }
 }
