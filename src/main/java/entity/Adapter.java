@@ -1,21 +1,20 @@
 package entity;
 
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Adapter extends Model{
+@Entity
+public class Adapter extends Model {
 
     @Id
     private String article;
+    private String image;
     private double price;
 
-    @OneToMany
-    private Set<Valve> valve = new HashSet<Valve>();
-    @OneToMany
-    private Set<Actuator> actuator = new HashSet<Actuator>();
-
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(name = "kit", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
+    private Set<Valve> valves = new HashSet<Valve>();
 
     public Adapter() {
     }
@@ -30,6 +29,14 @@ public class Adapter extends Model{
         this.article = article;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -38,11 +45,16 @@ public class Adapter extends Model{
         this.price = price;
     }
 
+    public Set<Valve> getValves() {
+        return valves;
+    }
+
+    public void setValves(Set<Valve> valves) {
+        this.valves = valves;
+    }
+
     @Override
     public String toString() {
-        return "Adapter{" +
-                "article='" + article + '\'' +
-                ", price=" + price +
-                '}';
+        return "Adapter{" + "article='" + article + ", valves=" + valves + '\n' + '}';
     }
 }

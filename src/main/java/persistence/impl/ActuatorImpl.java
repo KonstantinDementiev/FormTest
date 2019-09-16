@@ -31,7 +31,14 @@ public class ActuatorImpl extends ModelImpl {
 
     public List<Actuator> findActuatorByComboBox(String desiredVoltage, String desiredSignal, String desiredNonc, String desiredEndpos, String desiredTimepos, String desiredPower, String desiredStroke, Valve candidateValve) {
 
-        Object[][] listComboBoxes = {{desiredVoltage, "voltage"}, {desiredSignal, "signal"}, {desiredNonc, "nonc"}, {desiredEndpos, "endpos"}, {desiredTimepos, "timepos"}, {desiredPower, "power"}, {desiredStroke, "stroke"}};
+        Object[][] listComboBoxes = {
+                {desiredVoltage, "voltage"},
+                {desiredSignal, "signal"},
+                {desiredNonc, "nonc"},
+                {desiredEndpos, "endpos"},
+                {desiredTimepos, "timepos"},
+                {desiredPower, "power"},
+                {desiredStroke, "stroke"}};
         List<Actuator> listActuatorsWithValve = new ArrayList<>();
         List<Actuator> listActuatorsWithoutValve = modelImpl.findModelByComboBox(listComboBoxes, "Actuator");
         int j = 0;

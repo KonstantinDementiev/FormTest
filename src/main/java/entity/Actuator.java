@@ -2,7 +2,6 @@ package entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -23,7 +22,6 @@ public class Actuator extends Model {
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "kit", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
     private Set<Valve> valves = new HashSet<Valve>();
-
 
     public Actuator() {
     }

@@ -17,6 +17,7 @@
         <mapping class="entity.Actuator"/>
         <mapping class="entity.Valve"/>
         <mapping class="entity.Nuts"/>
+        <mapping class="entity.Adapter"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -1,6 +1,5 @@
 package persistence.impl;
 
-import entity.Model;
 import entity.Valve;
 import java.util.List;
 
@@ -29,7 +28,8 @@ public class ValveImpl extends ModelImpl {
 
     public List<Valve> findValveByComboBox(Double desiredKvs, Integer desiredDn, Integer desiredPorts, String desiredPn, String desiredConn, String desiredType) {
 
-        Object[][] listComboBoxes = {{desiredKvs, "kvs"},
+        Object[][] listComboBoxes = {
+                {desiredKvs, "kvs"},
                 {desiredDn, "dn"},
                 {desiredPorts, "ports"},
                 {desiredPn, "pn"},

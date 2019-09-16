@@ -2,7 +2,6 @@ package entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -23,13 +22,17 @@ public class Valve extends Model {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
     private Set<Actuator> actuators = new HashSet<Actuator>();
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
+    private Set<Adapter> adapters = new HashSet<Adapter>();
+
     @ManyToOne
-    @JoinColumn (name = "nutsart")
+    @JoinColumn(name = "nutsart")
     private Nuts nuts;
 
 
     public Valve() {
     }
+
 
     public String getArticle() {
         return article;
@@ -127,12 +130,20 @@ public class Valve extends Model {
         this.nuts = nuts_art;
     }
 
+    public Set<Adapter> getAdapters() {
+        return adapters;
+    }
+
+    public void setAdapters(Set<Adapter> adapters) {
+        this.adapters = adapters;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Valve valve = (Valve) o;
-        if (this.hashCode()== valve.hashCode())return true;
+        if (this.hashCode() == valve.hashCode()) return true;
         return false;
     }
 
@@ -153,6 +164,6 @@ public class Valve extends Model {
 
     @Override
     public String toString() {
-        return "Valve{" + "article='" + article + '\'' + ", kvs=" + kvs + ", dn=" + dn + ", ports=" + ports + ", pn='" + pn + '\'' + ", connection='" + connection + '\'' + ", type='" + type + '\'' + ", temperature='" + temperature + '\'' + ", price=" + price + '}';
+        return "Valve{" + "article='" + article + '\'' + '}';
     }
 }

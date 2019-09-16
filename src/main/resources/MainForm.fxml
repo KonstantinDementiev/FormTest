@@ -367,15 +367,15 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="labelActuatorArticle" alignment="CENTER" layoutX="207.0" layoutY="34.0" text="0000000" />
-                              <Label fx:id="labelActuatorPrice" alignment="CENTER" layoutX="304.0" layoutY="34.0" text="00,00" />
-                              <Label fx:id="labelAdapterArticle1" alignment="CENTER" layoutX="207.0" layoutY="54.0" text="0000000" />
-                              <Label fx:id="labelAdapterPrice1" alignment="CENTER" layoutX="304.0" layoutY="54.0" text="00,00" />
-                              <Label fx:id="labelValveArticle" alignment="CENTER" layoutX="207.0" layoutY="74.0" text="0000000" />
-                              <Label fx:id="labelValvePrice" alignment="CENTER" layoutX="304.0" layoutY="74.0" text="00,00" />
-                              <Label fx:id="labelNutsArticle3" alignment="CENTER" layoutX="207.0" layoutY="94.0" text="0000000" />
-                              <Label fx:id="labelNutsPrice3" alignment="CENTER" layoutX="304.0" layoutY="94.0" text="00,00" />
-                              <Label fx:id="labelSumm" alignment="CENTER" layoutX="304.0" layoutY="122.0" text="00,00">
+                              <Label fx:id="labelActuatorArticle" alignment="CENTER" layoutX="207.0" layoutY="34.0" />
+                              <Label fx:id="labelActuatorPrice" alignment="CENTER" layoutX="304.0" layoutY="34.0" />
+                              <Label fx:id="labelAdapterArticle1" alignment="CENTER" layoutX="207.0" layoutY="54.0" />
+                              <Label fx:id="labelAdapterPrice1" alignment="CENTER" layoutX="304.0" layoutY="54.0" />
+                              <Label fx:id="labelValveArticle" alignment="CENTER" layoutX="207.0" layoutY="74.0" />
+                              <Label fx:id="labelValvePrice" alignment="CENTER" layoutX="304.0" layoutY="74.0" />
+                              <Label fx:id="labelNutsArticle3" alignment="CENTER" layoutX="207.0" layoutY="94.0" />
+                              <Label fx:id="labelNutsPrice3" alignment="CENTER" layoutX="304.0" layoutY="94.0" />
+                              <Label fx:id="labelSumm" alignment="CENTER" layoutX="304.0" layoutY="122.0">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
