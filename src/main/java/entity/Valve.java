@@ -176,6 +176,18 @@ public class Valve extends Model {
 
     @Override
     public String toString() {
-        return "Valve{" + "article='" + article + '}';
+        return "Valve{" +
+                "article='" + article + '\'' +
+                ", kvs=" + kvs +
+                ", dn=" + dn +
+                ", ports=" + ports +
+                ", pn='" + pn + '\'' +
+                ", connection='" + connection + '\'' +
+                ", type='" + type + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", price=" + price +
+                ", imageurl='" + imageurl + '\'' +
+                ", nuts=" + nuts +
+                '}' + "\n";
     }
 }

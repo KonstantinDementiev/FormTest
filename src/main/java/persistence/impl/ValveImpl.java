@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import utils.HibernateSessionFactory;
 
 import java.util.List;
+import java.util.Set;
 
 public class ValveImpl extends ModelImpl {
 
@@ -19,18 +20,35 @@ public class ValveImpl extends ModelImpl {
         return modelImpl.findAll("Valve");
     }
 
-    public void insertValve(List <Valve> valve) {
+
+    public void insertValve(Valve valve) {
 
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(valve);
         session.getTransaction().commit();
         session.close();
+    }
 
+
+    public void updateAllValves(Set<Valve> valves) {
+
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        delAllValves();
+        for (Valve list : valves) {
+            session.save(list);
+        }
+        session.getTransaction().commit();
+        session.close();
     }
 
     public void delValveByArticle() {
         modelImpl.del("Valve", "article");
+    }
+
+    public void delAllValves() {
+        modelImpl.delAll("Valve");
     }
 
 

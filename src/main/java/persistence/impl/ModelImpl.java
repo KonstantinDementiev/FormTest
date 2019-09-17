@@ -38,15 +38,6 @@ class ModelImpl {
         return models;
     }
 
-//    void add(Model model) {
-//        session = HibernateSessionFactory.getSessionFactory().openSession();
-//        session.beginTransaction();
-//        model.setArticle("0000000");
-//        session.save(model);
-//        session.getTransaction().commit();
-//        session.close();
-//    }
-
     void del(String tableName, String columnName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
@@ -61,6 +52,17 @@ class ModelImpl {
         }
         session.getTransaction().commit();
         scanner.close();
+        session.close();
+    }
+
+    void delAll(String tableName) {
+        session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query deleteQuery = session.createQuery("DELETE FROM " + tableName);
+        int result = deleteQuery.executeUpdate();
+        if (result > 0) {
+            System.out.println(result + " element(s) has been deleted!");}
+        session.getTransaction().commit();
         session.close();
     }
 
