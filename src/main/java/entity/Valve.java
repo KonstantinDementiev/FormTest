@@ -19,10 +19,10 @@ public class Valve extends Model {
     private double price;
     private String imageurl;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valvesAct")
     private Set<Actuator> actuators = new HashSet<Actuator>();
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valvesAda")
     private Set<Adapter> adapters = new HashSet<Adapter>();
 
     @ManyToOne
@@ -106,14 +106,6 @@ public class Valve extends Model {
         this.price = price;
     }
 
-    public Set<Actuator> getActuators() {
-        return actuators;
-    }
-
-    public void setActuators(Set<Actuator> actuators) {
-        this.actuators = actuators;
-    }
-
     public String getImageurl() {
         return imageurl;
     }
@@ -128,6 +120,14 @@ public class Valve extends Model {
 
     public void setNuts(Nuts nuts_art) {
         this.nuts = nuts_art;
+    }
+
+    public Set<Actuator> getActuators() {
+        return actuators;
+    }
+
+    public void setActuators(Set<Actuator> actuators) {
+        this.actuators = actuators;
     }
 
     public Set<Adapter> getAdapters() {

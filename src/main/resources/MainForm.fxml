@@ -303,7 +303,7 @@
                               <Image url="@images/0.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imageNuts2" fitHeight="85.0" fitWidth="85.0" layoutX="904.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageNuts2" fitHeight="85.0" fitWidth="85.0" layoutX="904.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/0.jpg" />
                            </image>
@@ -328,7 +328,7 @@
                               <Image url="@images/0.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imageAdapter" fitHeight="85.0" fitWidth="85.0" layoutX="904.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageAdapter" fitHeight="85.0" fitWidth="85.0" layoutX="904.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/0.jpg" />
                            </image>
@@ -357,25 +357,25 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="205.0" layoutY="9.0" text="Артикул">
+                              <Label layoutX="200.0" layoutY="9.0" text="Артикул">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="304.0" layoutY="9.0" text="Ціна">
+                              <Label layoutX="308.0" layoutY="9.0" text="Ціна">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="labelActuatorArticle" alignment="CENTER" layoutX="207.0" layoutY="34.0" />
-                              <Label fx:id="labelActuatorPrice" alignment="CENTER" layoutX="304.0" layoutY="34.0" />
-                              <Label fx:id="labelAdapterArticle1" alignment="CENTER" layoutX="207.0" layoutY="54.0" />
-                              <Label fx:id="labelAdapterPrice1" alignment="CENTER" layoutX="304.0" layoutY="54.0" />
-                              <Label fx:id="labelValveArticle" alignment="CENTER" layoutX="207.0" layoutY="74.0" />
-                              <Label fx:id="labelValvePrice" alignment="CENTER" layoutX="304.0" layoutY="74.0" />
-                              <Label fx:id="labelNutsArticle3" alignment="CENTER" layoutX="207.0" layoutY="94.0" />
-                              <Label fx:id="labelNutsPrice3" alignment="CENTER" layoutX="304.0" layoutY="94.0" />
-                              <Label fx:id="labelSumm" alignment="CENTER" layoutX="304.0" layoutY="122.0">
+                              <Label fx:id="labelActuatorArticle" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="34.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelActuatorPrice" alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="34.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelAdapterArticle1" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="54.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelAdapterPrice1" alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="54.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelValveArticle" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="74.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelValvePrice" alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="74.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelNutsArticle3" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="94.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelNutsPrice3" alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="94.0" prefWidth="70.0" textAlignment="CENTER" />
+                              <Label fx:id="labelSumm" alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="122.0" prefHeight="17.0" prefWidth="70.0" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>

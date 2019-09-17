@@ -41,13 +41,16 @@ public class ActuatorImpl extends ModelImpl {
                 {desiredStroke, "stroke"}};
         List<Actuator> listActuatorsWithValve = new ArrayList<>();
         List<Actuator> listActuatorsWithoutValve = modelImpl.findModelByComboBox(listComboBoxes, "Actuator");
+
         int j = 0;
         for (int i = 0; i < listActuatorsWithoutValve.size(); i++) {
-            if (listActuatorsWithoutValve.get(i).getValves().contains(candidateValve)) {
-                listActuatorsWithValve.add(j, listActuatorsWithoutValve.get(i));
-                j++;
+                if (listActuatorsWithoutValve.get(i).getValvesAct().contains(candidateValve)) {
+                    listActuatorsWithValve.add(j, listActuatorsWithoutValve.get(i));
+                    j++;
+                }
             }
-        }
+
         return listActuatorsWithValve;
     }
+
 }

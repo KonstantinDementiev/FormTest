@@ -4,7 +4,6 @@ import calculations.Kvs;
 import calculations.KvsKlapana;
 import entity.Actuator;
 import entity.Adapter;
-import entity.Kit;
 import entity.Valve;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,10 +16,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import persistence.impl.ActuatorImpl;
-import persistence.impl.AdapterImpl;
-import persistence.impl.KitImpl;
 import persistence.impl.ValveImpl;
 
 import java.io.IOException;
@@ -449,11 +447,6 @@ public class ControllerMain {
         valveTableView.getSelectionModel().select(0);
         valveTableView.getFocusModel().focus(0);
 
-
-        AdapterImpl ak = new AdapterImpl();
-        System.out.println(ak.findAllAdapter().toString());
-
-
     }
 
     @FXML
@@ -461,6 +454,7 @@ public class ControllerMain {
 
         ValveImpl findArt = new ValveImpl();
         candidateValve = findArt.findValveByArticle(TextFieldArtValveForActuator.getText());
+
 
         ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(), comboStock.getValue(), candidateValve));
 
@@ -496,7 +490,7 @@ public class ControllerMain {
                     imageValve1.setImage(new Image(newValue.getImageurl()));
                     imageValve2.setImage(imageValve1.getImage());
                     labelValveArticle.setText(newValue.getArticle());
-                    labelValvePrice.setText(String.valueOf(newValue.getPrice()));
+                    labelValvePrice.setText(String.format("%.2f", newValue.getPrice()));
                     clearAllActuators();
                     summCalculation();
                     labelActuatorArticle.setText("");
@@ -507,6 +501,13 @@ public class ControllerMain {
                     labelAdapterPrice2.setText("");
                     //Double speed = 4 * kvs.getFlow() / (3600 * Math.PI * Math.pow(newValue.getDn() / 1000.0, 2));
                     Double speed = kvs.getFlow() * 10000 / (newValue.getKvs() * 828);
+
+                    if (speed > 3.0) {
+                        labelWaterSpeed.setTextFill(Color.web("red"));
+                    } else {
+                        labelWaterSpeed.setTextFill(Color.web("black"));
+
+                    }
                     labelWaterSpeed.setText(String.format("%.1f", speed));
                     TextFieldArtValveForActuator.setText(newValue.getArticle());
 
@@ -516,9 +517,9 @@ public class ControllerMain {
                         labelNutsArticle1.setText(newValue.getNuts().getArticle());
                         labelNutsArticle2.setText(labelNutsArticle1.getText());
                         labelNutsArticle3.setText(labelNutsArticle1.getText());
-                        labelNutsPrice1.setText(String.valueOf(newValue.getNuts().getPrice()));
+                        labelNutsPrice1.setText(String.format("%.2f", newValue.getNuts().getPrice()));
                         labelNutsPrice2.setText(labelNutsPrice1.getText());
-                        labelNutsPrice3.setText(labelNutsPrice1.getText());
+                        labelNutsPrice3.setText(String.format("%.2f", newValue.getNuts().getPrice() * newValue.getPorts()));
                     } else {
                         imageNuts1.setImage(new Image("images/0.jpg"));
                         imageNuts2.setImage(imageNuts1.getImage());
@@ -536,13 +537,8 @@ public class ControllerMain {
 
     }
 
-
     @FXML
     private void handleRowActuatorSelect() {
-
-        KitImpl kitImpl = new KitImpl();
-        List<Kit> listKits = kitImpl.findAllKits();
-        Adapter adapter = new Adapter();
 
         TableView.TableViewSelectionModel<Actuator> selectionActuator = actuatorTableView.getSelectionModel();
         selectionActuator.selectedItemProperty().addListener(new ChangeListener<Actuator>() {
@@ -552,20 +548,16 @@ public class ControllerMain {
                 if (newValue != null) {
                     imageActuator.setImage(new Image(newValue.getImageurl()));
                     labelActuatorArticle.setText(newValue.getArticle());
-                    labelActuatorPrice.setText(String.valueOf(newValue.getPrice()));
+                    labelActuatorPrice.setText(String.format("%.2f", newValue.getPrice()));
+                    Adapter adapter = findAdapter(newValue);
 
-                    for (Kit list : listKits) {
-                        if (list.getValve_art().equals(candidateValve.getArticle()) && list.getActuator_art().equals(newValue.getArticle())) {
-                            adapter.setArticle(list.getAdapter_art());
-                        }
-                    }
-                    if (adapter!=null) {
+                    if (adapter != null) {
                         labelAdapterArticle1.setText(adapter.getArticle());
-                        labelAdapterPrice1.setText(String.valueOf(adapter.getPrice()));
+                        labelAdapterPrice1.setText(String.format("%.2f", adapter.getPrice()));
                         labelAdapterArticle2.setText(labelAdapterArticle1.getText());
                         labelAdapterPrice2.setText(labelAdapterPrice1.getText());
-                        imageAdapter.setImage(new Image(adapter.getImage()));
-                    }else{
+                        imageAdapter.setImage(new Image(adapter.getImageurl()));
+                    } else {
                         labelAdapterArticle1.setText("");
                         labelAdapterPrice1.setText("");
                         labelAdapterArticle2.setText("");
@@ -588,18 +580,32 @@ public class ControllerMain {
 
         double summ = 0.0;
         if (!labelActuatorPrice.getText().equals("")) {
-            summ = summ + Double.valueOf(labelActuatorPrice.getText());
+            summ = summ + Double.valueOf(labelActuatorPrice.getText().replaceAll(",", "."));
         }
         if (!labelAdapterPrice1.getText().equals("")) {
-            summ = summ + Double.valueOf(labelAdapterPrice1.getText());
+            summ = summ + Double.valueOf(labelAdapterPrice1.getText().replaceAll(",", "."));
         }
         if (!labelValvePrice.getText().equals("")) {
-            summ = summ + Double.valueOf(labelValvePrice.getText());
+            summ = summ + Double.valueOf(labelValvePrice.getText().replaceAll(",", "."));
         }
         if (!labelNutsPrice3.getText().equals("")) {
-            summ = summ + Double.valueOf(labelNutsPrice3.getText());
+            summ = summ + Double.valueOf(labelNutsPrice3.getText().replaceAll(",", "."));
         }
         labelSumm.setText(String.format("%.2f", summ));
+    }
+
+    private Adapter findAdapter(Actuator actuator) {
+        Adapter adapter = null;
+        List<Adapter> list1 = new ArrayList<>(actuator.getAdapters());
+        List<Adapter> list2 = new ArrayList<>(candidateValve.getAdapters());
+        for (Adapter a1 : list1) {
+            for (Adapter a2 : list2) {
+                if (a1.equals(a2)) {
+                    adapter = a1;
+                }
+            }
+        }
+        return adapter;
     }
 
 }

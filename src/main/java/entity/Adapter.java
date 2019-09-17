@@ -9,12 +9,17 @@ public class Adapter extends Model {
 
     @Id
     private String article;
-    private String image;
+    private String imageurl;
     private double price;
 
     @ManyToMany (fetch = FetchType.EAGER)
-    @JoinTable(name = "kit", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
-    private Set<Valve> valves = new HashSet<Valve>();
+    @JoinTable(name = "valve_adapter", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
+    private Set<Valve> valvesAda = new HashSet<Valve>();
+
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(name = "actuator_adapter", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "actuator_art")})
+    private Set<Actuator> actuators = new HashSet<Actuator>();
+
 
     public Adapter() {
     }
@@ -29,12 +34,12 @@ public class Adapter extends Model {
         this.article = article;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageurl() {
+        return imageurl;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageurl(String image) {
+        this.imageurl = image;
     }
 
     public double getPrice() {
@@ -45,16 +50,47 @@ public class Adapter extends Model {
         this.price = price;
     }
 
-    public Set<Valve> getValves() {
-        return valves;
+    public Set<Valve> getValvesAda() {
+        return valvesAda;
     }
 
-    public void setValves(Set<Valve> valves) {
-        this.valves = valves;
+    public void setValvesAda(Set<Valve> valvesAda) {
+        this.valvesAda = valvesAda;
+    }
+
+    public Set<Actuator> getActuators() {
+        return actuators;
+    }
+
+    public void setActuators(Set<Actuator> actuators) {
+        this.actuators = actuators;
     }
 
     @Override
     public String toString() {
-        return "Adapter{" + "article='" + article + ", valves=" + valves + '\n' + '}';
+        return "Adapter{" +
+                "article='" + article + '\'' +
+                ", image='" + imageurl + '\'' +
+                ", price=" + price +
+                '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Adapter adapter = (Adapter) o;
+        if (this.hashCode()== adapter.hashCode())return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(this.article);
+        buffer.append(this.imageurl);
+        buffer.append(this.price);
+        return buffer.toString().hashCode();
+    }
+
 }

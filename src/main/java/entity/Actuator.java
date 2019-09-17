@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
 public class Actuator extends Model {
 
@@ -20,8 +21,13 @@ public class Actuator extends Model {
     private String imageurl;
 
     @ManyToMany (fetch = FetchType.EAGER)
-    @JoinTable(name = "kit", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
-    private Set<Valve> valves = new HashSet<Valve>();
+    @JoinTable(name = "valve_actuator", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
+    private Set<Valve> valvesAct = new HashSet<Valve>();
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "actuators")
+    private Set<Adapter> adapters = new HashSet<Adapter>();
+
+
 
     public Actuator() {
     }
@@ -98,20 +104,28 @@ public class Actuator extends Model {
         this.price = price;
     }
 
-    public Set<Valve> getValves() {
-        return valves;
-    }
-
-    public void setValves(Set<Valve> valves) {
-        this.valves = valves;
-    }
-
     public String getImageurl() {
         return imageurl;
     }
 
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
+    }
+
+    public Set<Valve> getValvesAct() {
+        return valvesAct;
+    }
+
+    public void setValvesAct(Set<Valve> valvesAct) {
+        this.valvesAct = valvesAct;
+    }
+
+    public Set<Adapter> getAdapters() {
+        return adapters;
+    }
+
+    public void setAdapters(Set<Adapter> adapters) {
+        this.adapters = adapters;
     }
 
     @Override
