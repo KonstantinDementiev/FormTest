@@ -33,6 +33,18 @@ public class Valve extends Model {
     public Valve() {
     }
 
+    public Valve(String article, double kvs, Integer dn, Integer ports, String pn, String connection, String type, String temperature, double price, String imageurl) {
+        this.article = article;
+        this.kvs = kvs;
+        this.dn = dn;
+        this.ports = ports;
+        this.pn = pn;
+        this.connection = connection;
+        this.type = type;
+        this.temperature = temperature;
+        this.price = price;
+        this.imageurl = imageurl;
+    }
 
     public String getArticle() {
         return article;
@@ -164,6 +176,6 @@ public class Valve extends Model {
 
     @Override
     public String toString() {
-        return "Valve{" + "article='" + article + '\'' + '}';
+        return "Valve{" + "article='" + article + '}';
     }
 }

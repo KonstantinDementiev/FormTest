@@ -1,6 +1,9 @@
 package persistence.impl;
 
 import entity.Valve;
+import org.hibernate.Session;
+import utils.HibernateSessionFactory;
+
 import java.util.List;
 
 public class ValveImpl extends ModelImpl {
@@ -16,9 +19,14 @@ public class ValveImpl extends ModelImpl {
         return modelImpl.findAll("Valve");
     }
 
-    public void addValve() {
-        Valve valve = new Valve();
-        modelImpl.add(valve);
+    public void insertValve(List <Valve> valve) {
+
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(valve);
+        session.getTransaction().commit();
+        session.close();
+
     }
 
     public void delValveByArticle() {

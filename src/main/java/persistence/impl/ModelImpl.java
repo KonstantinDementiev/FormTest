@@ -1,16 +1,12 @@
 package persistence.impl;
 
 import entity.Model;
-import entity.Valve;
-import javafx.scene.control.ComboBox;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.HibernateSessionFactory;
 
-import javax.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,17 +38,14 @@ class ModelImpl {
         return models;
     }
 
-    void add(Model model) {
-        session = HibernateSessionFactory.getSessionFactory().openSession();
-        session.beginTransaction();
-        System.out.println("Insert article of new " + model.getClass().getSimpleName() + ":");
-        scanner = new Scanner(System.in);
-        model.setArticle(scanner.nextLine());
-        session.save(model);
-        session.getTransaction().commit();
-        scanner.close();
-        session.close();
-    }
+//    void add(Model model) {
+//        session = HibernateSessionFactory.getSessionFactory().openSession();
+//        session.beginTransaction();
+//        model.setArticle("0000000");
+//        session.save(model);
+//        session.getTransaction().commit();
+//        session.close();
+//    }
 
     void del(String tableName, String columnName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();

@@ -19,10 +19,6 @@ public class ActuatorImpl extends ModelImpl {
         return modelImpl.findAll("Actuator");
     }
 
-    public void addActuator() {
-        Actuator actuator = new Actuator();
-        modelImpl.add(actuator);
-    }
 
     public void delActuatorByArticle() {
         modelImpl.del("Actuator", "article");
