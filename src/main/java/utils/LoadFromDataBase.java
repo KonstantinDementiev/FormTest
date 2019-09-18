@@ -20,18 +20,16 @@ import java.io.IOException;
 
 public class LoadFromDataBase {
 
-    private String pathFileName = "C:\\Users\\kdeme\\IdeaProjects\\Form2\\src\\main\\resources\\herz_db.xlsx";
+    private String pathFileName = "F:\\JavaProject\\FormTest\\src\\main\\resources\\herz_db.xlsx";
 
     public void valveFromExcel() throws IOException {
         Valve valve = new Valve();
         ValveImpl valveImpl = new ValveImpl();
         NutsImpl nutsImpl = new NutsImpl();
-
         try {
             FileInputStream fis = new FileInputStream(new File(pathFileName));
             Workbook workbook = new XSSFWorkbook(fis);
             Sheet sheet1 = workbook.getSheet("Valves");
-            valveImpl.delAllValves();
             Row row;
             for (int i = 1; i <= sheet1.getLastRowNum(); i++) {
                 row = sheet1.getRow(i);
@@ -60,20 +58,19 @@ public class LoadFromDataBase {
             FileInputStream fis = new FileInputStream(new File(pathFileName));
             Workbook workbook = new XSSFWorkbook(fis);
             Sheet sheet3 = workbook.getSheet("Actuators");
-            actuatorImpl.delAllActuators();
             Row row;
             for (int i = 1; i <= sheet3.getLastRowNum(); i++) {
                 row = sheet3.getRow(i);
                 actuator.setArticle(row.getCell(0).getStringCellValue());
                 actuator.setVoltage(row.getCell(1).getStringCellValue());
                 actuator.setSignal(row.getCell(2).getStringCellValue());
-                actuator.setNonc(row.getCell(3).getStringCellValue());
-                actuator.setEndpos(row.getCell(4).getStringCellValue());
+                actuator.setNormalyopenclose(row.getCell(3).getStringCellValue());
+                actuator.setOnoffendpos(row.getCell(4).getStringCellValue());
                 actuator.setTimepos(row.getCell(5).getStringCellValue());
                 actuator.setPower(row.getCell(6).getStringCellValue());
                 actuator.setStroke(row.getCell(7).getStringCellValue());
                 actuator.setPrice(row.getCell(8).getNumericCellValue());
-                actuator.setImageurl(row.getCell(9).getStringCellValue());
+                actuator.setActuatorimageurl(row.getCell(9).getStringCellValue());
                 actuatorImpl.insertActuator(actuator);
             }
         } catch (FileNotFoundException e) {
@@ -109,7 +106,6 @@ public class LoadFromDataBase {
             FileInputStream fis = new FileInputStream(new File(pathFileName));
             Workbook workbook = new XSSFWorkbook(fis);
             Sheet sheet7 = workbook.getSheet("Nuts");
-            nutsImpl.delAllNuts();
             Row row;
             for (int i = 1; i <= sheet7.getLastRowNum(); i++) {
                 row = sheet7.getRow(i);
@@ -118,6 +114,30 @@ public class LoadFromDataBase {
                 nutsImpl.insertNuts(nuts);
             }
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void fillingValvesAndNuts() {
+
+        ValveImpl valveImpl = new ValveImpl();
+        NutsImpl nutsImpl = new NutsImpl();
+
+        try {
+            valveImpl.delAllValves();
+            nutsImpl.delAllNuts();
+            nutsFromExcel();
+            valveFromExcel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void fillingActuators() {
+
+        try {
+            actuatorFromExcel();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

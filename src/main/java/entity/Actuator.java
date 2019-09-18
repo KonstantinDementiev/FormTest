@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 public class Actuator extends Model {
 
@@ -12,13 +11,13 @@ public class Actuator extends Model {
     private String article;
     private String voltage;
     private String signal;
-    private String nonc;
-    private String endpos;
+    private String normalyopenclose;
+    private String onoffendpos;
     private String timepos;
     private String power;
     private String stroke;
     private double price;
-    private String imageurl;
+    private String actuatorimageurl;
 
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "valve_actuator", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
@@ -28,8 +27,20 @@ public class Actuator extends Model {
     private Set<Adapter> adapters = new HashSet<Adapter>();
 
 
-
     public Actuator() {
+    }
+
+    public Actuator(String article, String voltage, String signal, String normalyopenclose, String onoffendpos, String timepos, String power, String stroke, double price, String actuatorimageurl) {
+        this.article = article;
+        this.voltage = voltage;
+        this.signal = signal;
+        this.normalyopenclose = normalyopenclose;
+        this.onoffendpos = onoffendpos;
+        this.timepos = timepos;
+        this.power = power;
+        this.stroke = stroke;
+        this.price = price;
+        this.actuatorimageurl = actuatorimageurl;
     }
 
     public String getArticle() {
@@ -56,20 +67,20 @@ public class Actuator extends Model {
         this.signal = signal;
     }
 
-    public String getNonc() {
-        return nonc;
+    public String getNormalyopenclose() {
+        return normalyopenclose;
     }
 
-    public void setNonc(String nonc) {
-        this.nonc = nonc;
+    public void setNormalyopenclose(String nonc) {
+        this.normalyopenclose = nonc;
     }
 
-    public String getEndpos() {
-        return endpos;
+    public String getOnoffendpos() {
+        return onoffendpos;
     }
 
-    public void setEndpos(String endPos) {
-        this.endpos = endPos;
+    public void setOnoffendpos(String endPos) {
+        this.onoffendpos = endPos;
     }
 
     public String getTimepos() {
@@ -104,12 +115,12 @@ public class Actuator extends Model {
         this.price = price;
     }
 
-    public String getImageurl() {
-        return imageurl;
+    public String getActuatorimageurl() {
+        return actuatorimageurl;
     }
 
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setActuatorimageurl(String imageurl) {
+        this.actuatorimageurl = imageurl;
     }
 
     public Set<Valve> getValves() {
@@ -143,16 +154,28 @@ public class Actuator extends Model {
         buffer.append(this.article);
         buffer.append(this.voltage);
         buffer.append(this.signal);
-        buffer.append(this.nonc);
-        buffer.append(this.endpos);
+        buffer.append(this.normalyopenclose);
+        buffer.append(this.onoffendpos);
         buffer.append(this.timepos);
         buffer.append(this.power);
+        buffer.append(this.stroke);
         buffer.append(this.price);
+        buffer.append(this.actuatorimageurl);
         return buffer.toString().hashCode();
     }
 
     @Override
     public String toString() {
-        return "Actuator{" + "article='" + article + '\'' + ", voltage='" + voltage + '\'' + ", signal='" + signal + '\'' + ", nonc='" + nonc + '\'' + ", endpos='" + endpos + '\'' + ", timepos='" + timepos + '\'' + ", power='" + power + '\'' + ", stroke='" + stroke + '\'' + ", price=" + price + '}';
+        return "Actuator{" +
+                "article='" + article + '\'' +
+                ", voltage='" + voltage + '\'' +
+                ", signal='" + signal + '\'' +
+                ", nonc='" + normalyopenclose + '\'' +
+                ", endpos='" + onoffendpos + '\'' +
+                ", timepos='" + timepos + '\'' +
+                ", power='" + power + '\'' +
+                ", stroke='" + stroke + '\'' +
+                ", price=" + price +
+                '}' + "\n";
     }
 }

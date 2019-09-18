@@ -455,7 +455,6 @@ public class ControllerMain {
         ValveImpl findArt = new ValveImpl();
         candidateValve = findArt.findValveByArticle(TextFieldArtValveForActuator.getText());
 
-
         ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(), comboStock.getValue(), candidateValve));
 
         articleActuatorColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
@@ -474,7 +473,6 @@ public class ControllerMain {
         handleRowActuatorSelect();
         actuatorTableView.getSelectionModel().select(0);
         actuatorTableView.getFocusModel().focus(0);
-
 
     }
 
@@ -546,7 +544,7 @@ public class ControllerMain {
             @Override
             public void changed(ObservableValue<? extends Actuator> observable, Actuator oldValue, Actuator newValue) {
                 if (newValue != null) {
-                    imageActuator.setImage(new Image(newValue.getImageurl()));
+                    imageActuator.setImage(new Image(newValue.getActuatorimageurl()));
                     labelActuatorArticle.setText(newValue.getArticle());
                     labelActuatorPrice.setText(String.format("%.2f", newValue.getPrice()));
                     Adapter adapter = findAdapter(newValue);
