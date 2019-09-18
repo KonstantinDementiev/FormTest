@@ -22,7 +22,7 @@ public class Actuator extends Model {
 
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "valve_actuator", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
-    private Set<Valve> valvesAct = new HashSet<Valve>();
+    private Set<Valve> valves = new HashSet<Valve>();
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "actuators")
     private Set<Adapter> adapters = new HashSet<Adapter>();
@@ -112,12 +112,12 @@ public class Actuator extends Model {
         this.imageurl = imageurl;
     }
 
-    public Set<Valve> getValvesAct() {
-        return valvesAct;
+    public Set<Valve> getValves() {
+        return valves;
     }
 
-    public void setValvesAct(Set<Valve> valvesAct) {
-        this.valvesAct = valvesAct;
+    public void setValves(Set<Valve> valvesAct) {
+        this.valves = valvesAct;
     }
 
     public Set<Adapter> getAdapters() {

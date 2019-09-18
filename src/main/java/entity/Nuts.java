@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Nuts extends Model {
@@ -8,6 +9,9 @@ public class Nuts extends Model {
     @Id
     private String article;
     private double price;
+
+    @OneToMany (mappedBy = "nuts", cascade={CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    private Set<Valve> valves;
 
     public Nuts() {
     }
@@ -30,7 +34,13 @@ public class Nuts extends Model {
         this.price = price;
     }
 
+    public Set<Valve> getValves() {
+        return valves;
+    }
 
+    public void setValves(Set<Valve> valves) {
+        this.valves = valves;
+    }
 
     @Override
     public String toString() {

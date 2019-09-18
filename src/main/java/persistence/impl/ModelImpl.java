@@ -10,6 +10,7 @@ import utils.HibernateSessionFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 class ModelImpl {
 
@@ -25,17 +26,29 @@ class ModelImpl {
         queryFind.setParameter("paramName", article);
         models = queryFind.list();
         session.close();
-        return models.get(0);
+        if (models.size() != 0) {
+            return models.get(0);
+        } else {
+            return null;
+        }
     }
 
-
-    List findAll(String tableName) {
+    Set findAll(String tableName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         Query queryFindAll = session.createQuery("FROM " + tableName);
         models = queryFindAll.list();
         session.close();
-        return models;
+        return (Set)models;
+    }
+
+    public void insertModel(Model model) {
+
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(model);
+        session.getTransaction().commit();
+        session.close();
     }
 
     void del(String tableName, String columnName) {

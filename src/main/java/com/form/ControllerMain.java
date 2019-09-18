@@ -105,8 +105,8 @@ public class ControllerMain {
 
     private ValveImpl valveImpl = new ValveImpl();
     private ActuatorImpl actuatorImpl = new ActuatorImpl();
-    private List<Valve> allValves = valveImpl.findAllValve();
-    private List<Actuator> allActuators = actuatorImpl.findAllActuator();
+    private Set<Valve> allValves = valveImpl.findAllValve();
+    private Set<Actuator> allActuators = actuatorImpl.findAllActuator();
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
     private Kvs kvs = new Kvs();
@@ -133,8 +133,8 @@ public class ControllerMain {
 
         buttonCalcFlow.setOnAction(event -> openCalcForm());
         buttonAboutProgram.setOnAction(event -> openAboutProgramForm());
-        fillingValveCombo(allValves);
-        fillingActuatorCombo(allActuators);
+        fillingValveCombo(new ArrayList<>(allValves));
+        fillingActuatorCombo(new ArrayList<>(allActuators));
         //printSortedKvs();
 
     }

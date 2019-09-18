@@ -19,10 +19,10 @@ public class Valve extends Model {
     private double price;
     private String imageurl;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valvesAct")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
     private Set<Actuator> actuators = new HashSet<Actuator>();
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valvesAda")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
     private Set<Adapter> adapters = new HashSet<Adapter>();
 
     @ManyToOne

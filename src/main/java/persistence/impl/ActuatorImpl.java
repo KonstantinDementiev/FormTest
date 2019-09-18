@@ -5,6 +5,7 @@ import entity.Valve;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ActuatorImpl extends ModelImpl {
 
@@ -15,10 +16,17 @@ public class ActuatorImpl extends ModelImpl {
         modelImpl.find("Actuator", "article", article);
     }
 
-    public List<Actuator> findAllActuator() {
+    public Set<Actuator> findAllActuator() {
         return modelImpl.findAll("Actuator");
     }
 
+    public void insertActuator(Actuator actuator) {
+        modelImpl.insertModel(actuator);
+    }
+
+    public void delAllActuators() {
+        modelImpl.delAll("Actuator");
+    }
 
     public void delActuatorByArticle() {
         modelImpl.del("Actuator", "article");
@@ -40,7 +48,7 @@ public class ActuatorImpl extends ModelImpl {
 
         int j = 0;
         for (int i = 0; i < listActuatorsWithoutValve.size(); i++) {
-                if (listActuatorsWithoutValve.get(i).getValvesAct().contains(candidateValve)) {
+                if (listActuatorsWithoutValve.get(i).getValves().contains(candidateValve)) {
                     listActuatorsWithValve.add(j, listActuatorsWithoutValve.get(i));
                     j++;
                 }

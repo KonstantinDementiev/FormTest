@@ -16,20 +16,13 @@ public class ValveImpl extends ModelImpl {
         return (Valve) modelImpl.find("Valve", "article", article);
     }
 
-    public List<Valve> findAllValve() {
+    public Set<Valve> findAllValve() {
         return modelImpl.findAll("Valve");
     }
 
-
     public void insertValve(Valve valve) {
-
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(valve);
-        session.getTransaction().commit();
-        session.close();
+        modelImpl.insertModel(valve);
     }
-
 
     public void updateAllValves(Set<Valve> valves) {
 
