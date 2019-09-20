@@ -7,16 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.HibernateSessionFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 class ModelImpl {
 
     private static List<Model> models = new ArrayList<>();
     private static final Logger LOG = LoggerFactory.getLogger(ActuatorImpl.class);
-    private Scanner scanner;
     private Session session;
 
     Model find(String tableName, String columnName, String article) {
@@ -38,33 +34,48 @@ class ModelImpl {
         session.beginTransaction();
         Query queryFindAll = session.createQuery("FROM " + tableName);
         models = queryFindAll.list();
+        Set<Model> model = new HashSet<>(models);
         session.close();
-        return (Set)models;
+        return model;
     }
 
-    public void insertModel(Model model) {
+    void insertModel(Model model) {
 
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(model);
         session.getTransaction().commit();
         session.close();
     }
 
-    void del(String tableName, String columnName) {
+    void saveOrUpdateModel(Model model) {
+
+        session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(model);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    void del(Model model) {
+        session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(model);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    void delByArticle(String tableName, String columnName) {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert " + columnName + " for deleting: ");
-        scanner = new Scanner(System.in);
-        String deleteName = scanner.nextLine();
         Query deleteQuery = session.createQuery("DELETE " + tableName + " WHERE " + columnName + " = :paramName");
-        deleteQuery.setParameter("paramName", deleteName);
+        deleteQuery.setParameter("paramName", "xxxxxxxx");
         int result = deleteQuery.executeUpdate();
         if (result > 0) {
             System.out.println(result + " element(s) has been deleted!");
         }
         session.getTransaction().commit();
-        scanner.close();
         session.close();
     }
 
@@ -74,7 +85,8 @@ class ModelImpl {
         Query deleteQuery = session.createQuery("DELETE FROM " + tableName);
         int result = deleteQuery.executeUpdate();
         if (result > 0) {
-            System.out.println(result + " element(s) has been deleted!");}
+            System.out.println(result + " element(s) has been deleted!");
+        }
         session.getTransaction().commit();
         session.close();
     }
@@ -83,33 +95,29 @@ class ModelImpl {
         session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.println("Insert name for updating: ");
-        scanner = new Scanner(System.in);
-        String updateName = scanner.nextLine();
+
         Query queryUpdate = session.createQuery("FROM Actuator WHERE article = :paramName");
-        queryUpdate.setParameter("paramName", updateName);
+        queryUpdate.setParameter("paramName", "ooooooooooo");
         models = queryUpdate.list();
         System.out.println("Insert new name: ");
-        scanner = new Scanner(System.in);
-        String rename = scanner.nextLine();
 
         for (Model modelUp : models) {
-            modelUp.setArticle(rename);
+            modelUp.setArticle("ttttttttt");
             session.update(modelUp);
         }
         session.getTransaction().commit();
         System.out.println(models.size() + " element(s) has been updated!");
-        scanner.close();
         session.close();
     }
 
-     List findModelByComboBox(Object[][] listComboBoxes, String tableName) {
+    List findModelByComboBox(Object[][] listComboBoxes, String tableName) {
 
         StringBuilder strQuery = new StringBuilder("FROM " + tableName);
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
 
 
-        for (int i = 0; i < listComboBoxes.length-1; i++) {
+        for (int i = 0; i < listComboBoxes.length; i++) {
 
             if (listComboBoxes[i][0] != null) {
                 if (strQuery.toString().equals("FROM " + tableName)) {
@@ -122,7 +130,7 @@ class ModelImpl {
 
         Query queryFind = session.createQuery(strQuery.toString());
 
-        for (int i = 0; i < listComboBoxes.length-1; i++) {
+        for (int i = 0; i < listComboBoxes.length; i++) {
             if (listComboBoxes[i][0] != null) {
                 queryFind.setParameter("param" + listComboBoxes[i][1], listComboBoxes[i][0]);
             }

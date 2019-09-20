@@ -10,7 +10,7 @@ public class Adapter extends Model {
     @Id
     private String article;
     private String imageurl;
-    private double price;
+    private Double price;
 
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "valve_adapter", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})

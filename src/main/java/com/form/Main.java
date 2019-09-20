@@ -4,24 +4,14 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import utils.LoadFromDataBase;
 
-import java.io.IOException;
-
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
 
         LoadFromDataBase lfdb = new LoadFromDataBase();
-        try {
-
-            lfdb.valveFromExcel();
-            lfdb.nutsFromExcel();
-//            lfdb.actuatorFromExcel();
-//            lfdb.adapterFromExcel();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //lfdb.fillingEntityFromDB();
+        lfdb.fillingDependencyFromDB();
 
         ControllerMain controllerMain = new ControllerMain();
         controllerMain.showStage();

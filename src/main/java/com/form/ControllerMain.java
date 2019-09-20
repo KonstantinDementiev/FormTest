@@ -455,12 +455,11 @@ public class ControllerMain {
         ValveImpl findArt = new ValveImpl();
         candidateValve = findArt.findValveByArticle(TextFieldArtValveForActuator.getText());
 
-
         ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(), comboStock.getValue(), candidateValve));
 
         articleActuatorColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
         voltageColumn.setCellValueFactory(new PropertyValueFactory<>("voltage"));
-        signalColumn.setCellValueFactory(new PropertyValueFactory<>("signal"));
+        signalColumn.setCellValueFactory(new PropertyValueFactory<>("signaltype"));
         noncColumn.setCellValueFactory(new PropertyValueFactory<>("nonc"));
         endposColumn.setCellValueFactory(new PropertyValueFactory<>("endpos"));
         timeposColumn.setCellValueFactory(new PropertyValueFactory<>("timepos"));
@@ -474,7 +473,6 @@ public class ControllerMain {
         handleRowActuatorSelect();
         actuatorTableView.getSelectionModel().select(0);
         actuatorTableView.getFocusModel().focus(0);
-
 
     }
 

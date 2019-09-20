@@ -8,9 +8,9 @@ public class Nuts extends Model {
 
     @Id
     private String article;
-    private double price;
+    private Double price;
 
-    @OneToMany (mappedBy = "nuts", cascade={CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "nuts")
     private Set<Valve> valves;
 
     public Nuts() {

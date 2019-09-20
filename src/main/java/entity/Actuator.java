@@ -4,32 +4,42 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 public class Actuator extends Model {
 
     @Id
     private String article;
     private String voltage;
-    private String signal;
+    private String signaltype;
     private String nonc;
     private String endpos;
     private String timepos;
     private String power;
     private String stroke;
-    private double price;
+    private Double price;
     private String imageurl;
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany (fetch = FetchType.LAZY)
     @JoinTable(name = "valve_actuator", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
-    private Set<Valve> valves = new HashSet<Valve>();
+    private Set<Valve> valves = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "actuators")
-    private Set<Adapter> adapters = new HashSet<Adapter>();
-
-
+    private Set<Adapter> adapters = new HashSet<>();
 
     public Actuator() {
+    }
+
+    public Actuator(String article, String voltage, String signaltype, String nonc, String endpos, String timepos, String power, String stroke, Double price, String imageurl) {
+        this.article = article;
+        this.voltage = voltage;
+        this.signaltype = signaltype;
+        this.nonc = nonc;
+        this.endpos = endpos;
+        this.timepos = timepos;
+        this.power = power;
+        this.stroke = stroke;
+        this.price = price;
+        this.imageurl = imageurl;
     }
 
     public String getArticle() {
@@ -48,12 +58,12 @@ public class Actuator extends Model {
         this.voltage = voltage;
     }
 
-    public String getSignal() {
-        return signal;
+    public String getSignaltype() {
+        return signaltype;
     }
 
-    public void setSignal(String signal) {
-        this.signal = signal;
+    public void setSignaltype(String signal) {
+        this.signaltype = signal;
     }
 
     public String getNonc() {
@@ -142,17 +152,29 @@ public class Actuator extends Model {
         StringBuffer buffer = new StringBuffer();
         buffer.append(this.article);
         buffer.append(this.voltage);
-        buffer.append(this.signal);
+        buffer.append(this.signaltype);
         buffer.append(this.nonc);
         buffer.append(this.endpos);
         buffer.append(this.timepos);
         buffer.append(this.power);
+        buffer.append(this.stroke);
         buffer.append(this.price);
+        buffer.append(this.imageurl);
         return buffer.toString().hashCode();
     }
 
     @Override
     public String toString() {
-        return "Actuator{" + "article='" + article + '\'' + ", voltage='" + voltage + '\'' + ", signal='" + signal + '\'' + ", nonc='" + nonc + '\'' + ", endpos='" + endpos + '\'' + ", timepos='" + timepos + '\'' + ", power='" + power + '\'' + ", stroke='" + stroke + '\'' + ", price=" + price + '}';
+        return "Actuator{" +
+                "article='" + article + '\'' +
+                ", voltage='" + voltage + '\'' +
+                ", signaltype='" + signaltype + '\'' +
+                ", nonc='" + nonc + '\'' +
+                ", endpos='" + endpos + '\'' +
+                ", timepos='" + timepos + '\'' +
+                ", power='" + power + '\'' +
+                ", stroke='" + stroke + '\'' +
+                ", price=" + price +
+                '}' + "\n";
     }
 }

@@ -37,7 +37,7 @@ public class ValveImpl extends ModelImpl {
     }
 
     public void delValveByArticle() {
-        modelImpl.del("Valve", "article");
+        modelImpl.delByArticle("Valve", "article");
     }
 
     public void delAllValves() {

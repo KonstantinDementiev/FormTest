@@ -9,21 +9,21 @@ public class Valve extends Model {
 
     @Id
     private String article;
-    private double kvs;
+    private Double kvs;
     private Integer dn;
     private Integer ports;
     private String pn;
     private String connection;
     private String type;
     private String temperature;
-    private double price;
+    private Double price;
     private String imageurl;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
-    private Set<Actuator> actuators = new HashSet<Actuator>();
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "valves")
+    private Set<Actuator> actuators = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
-    private Set<Adapter> adapters = new HashSet<Adapter>();
+    private Set<Adapter> adapters = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "nutsart")
@@ -33,7 +33,7 @@ public class Valve extends Model {
     public Valve() {
     }
 
-    public Valve(String article, double kvs, Integer dn, Integer ports, String pn, String connection, String type, String temperature, double price, String imageurl) {
+    public Valve(String article, Double kvs, Integer dn, Integer ports, String pn, String connection, String type, String temperature, Double price, String imageurl) {
         this.article = article;
         this.kvs = kvs;
         this.dn = dn;

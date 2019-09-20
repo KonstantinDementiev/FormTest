@@ -24,12 +24,16 @@ public class ActuatorImpl extends ModelImpl {
         modelImpl.insertModel(actuator);
     }
 
+    public void saveOrUpdateActuator(Actuator actuator){
+        modelImpl.saveOrUpdateModel(actuator);
+    }
+
     public void delAllActuators() {
         modelImpl.delAll("Actuator");
     }
 
     public void delActuatorByArticle() {
-        modelImpl.del("Actuator", "article");
+        modelImpl.delByArticle("Actuator", "article");
     }
 
 
