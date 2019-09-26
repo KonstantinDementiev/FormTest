@@ -4,7 +4,6 @@ import entity.Actuator;
 import entity.Adapter;
 import entity.Nuts;
 import entity.Valve;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -30,17 +29,17 @@ public class LoadFromDataBase {
     private String pathFileName = "C:\\Users\\kdeme\\IdeaProjects\\Form2\\src\\main\\resources\\herz_db.xlsx";
 
 
-     Valve valve = new Valve();
-     ValveImpl valveImpl = new ValveImpl();
+    Valve valve = new Valve();
+    ValveImpl valveImpl = new ValveImpl();
 
-     Nuts nuts = new Nuts();
-     NutsImpl nutsImpl = new NutsImpl();
+    Nuts nuts = new Nuts();
+    NutsImpl nutsImpl = new NutsImpl();
 
-     Actuator actuator = new Actuator();
-     ActuatorImpl actuatorImpl = new ActuatorImpl();
+    Actuator actuator = new Actuator();
+    ActuatorImpl actuatorImpl = new ActuatorImpl();
 
-     Adapter adapter = new Adapter();
-     AdapterImpl adapterImpl = new AdapterImpl();
+    Adapter adapter = new Adapter();
+    AdapterImpl adapterImpl = new AdapterImpl();
 
 
     public void valveFromExcel() throws IOException {
@@ -141,6 +140,19 @@ public class LoadFromDataBase {
     }
 
     public void fillingDependencyValvesActuators() throws Exception {
+        dependencyOfTwoColunms("Valves-Actuators", "valve_actuator", "valve_art", "actuator_art");
+    }
+
+    public void fillingDependencyActuatorsAdapters() throws Exception {
+        dependencyOfTwoColunms("Actuators-Adapters", "actuator_adapter", "actuator_art", "adapter_art");
+    }
+
+    public void fillingDependencyValvesAdapters() throws Exception {
+        dependencyOfTwoColunms("Valves-Adapters", "valve_adapter", "valve_art", "adapter_art");
+    }
+
+    private void dependencyOfTwoColunms(String tableNameExcel, String tableNameDataBase, String columnNameDB1, String columnNameDB2) throws Exception {
+
         try {
             Connection con = null;
             String sql;
@@ -149,24 +161,37 @@ public class LoadFromDataBase {
             PreparedStatement pstm = null;
             FileInputStream fis = new FileInputStream(new File(pathFileName));
             Workbook workbook = new XSSFWorkbook(fis);
-            Sheet sheet2 = workbook.getSheet("Valves-Actuators");
+            Sheet sheet = workbook.getSheet(tableNameExcel);
             Row row;
-            String actuatorStr;
-            String valveStr;
+            String columnName1 = null;
+            String columnName2 = null;
 
-            for (int i = 1; i <= sheet2.getLastRowNum(); i++) {
-                row = sheet2.getRow(i);
-                if (row.getCell(0).getCellType() == CellType.STRING) {
-                    actuatorStr = row.getCell(0).getStringCellValue();
-                } else {
-                    actuatorStr = String.valueOf(row.getCell(0).getNumericCellValue()).substring(0, 7);
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                row = sheet.getRow(i);
+                switch (row.getCell(0).getCellType()) {
+                    case STRING:
+                        columnName1 = row.getCell(0).getStringCellValue();
+                        break;
+                    case NUMERIC:
+                        columnName1 = String.valueOf(row.getCell(0).getNumericCellValue()).substring(0, 7);
+                        break;
+                    default:
+                        columnName1 = null;
+                        break;
                 }
-                if (row.getCell(1).getCellType() == CellType.STRING) {
-                    valveStr = row.getCell(1).getStringCellValue();
-                } else {
-                    valveStr = String.valueOf(row.getCell(1).getNumericCellValue()).substring(0, 7);
+                switch (row.getCell(1).getCellType()) {
+                    case STRING:
+                        columnName2 = row.getCell(1).getStringCellValue();
+                        break;
+                    case NUMERIC:
+                        columnName2 = String.valueOf(row.getCell(1).getNumericCellValue()).substring(0, 7);
+                        break;
+                    default:
+                        columnName2 = "";
+                        break;
                 }
-                sql = "INSERT INTO valve_actuator (valve_art, actuator_art) VALUES('" + valveStr + "','" + actuatorStr + "')";
+
+                sql = "INSERT INTO " + tableNameDataBase + " ('" + columnNameDB1 + ", " + columnNameDB2 + "') VALUES('" + columnName1 + "', '" + columnName2 + "') ";
                 pstm = con.prepareStatement(sql);
                 pstm.execute();
             }
@@ -177,6 +202,7 @@ public class LoadFromDataBase {
             e.printStackTrace();
         }
     }
+
 
     public void fillingEntityFromDB() {
 
@@ -201,6 +227,8 @@ public class LoadFromDataBase {
     public void fillingDependencyFromDB() {
         try {
             fillingDependencyValvesActuators();
+            fillingDependencyValvesAdapters();
+            fillingDependencyActuatorsAdapters();
         } catch (Exception e) {
             e.printStackTrace();
         }

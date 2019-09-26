@@ -1,30 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/140061.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/140062.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/140064.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/140066.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/1771220.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/1771222.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/F400639.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/F400661.png" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Dependency from Excel">
+      <change afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1eaf233e-468f-473f-8a95-21fc9bd8d27a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1eaf233e-468f-473f-8a95-21fc9bd8d27a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Form2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Form2/com/form/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Form2/com/form/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Form2/com/form/MyForm.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/form/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/form/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/Actuator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Actuator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Nuts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Nuts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Valve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Valve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/herz_db.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/herz_db.xlsx" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -77,13 +65,6 @@
         <item name="herz_select: schema" type="c314c289:MysqlImplModel$Schema" />
         <item name="actuator: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="herz_select@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="herz_select: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="valve_actuator: table" type="98d5ac3d:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -129,76 +110,77 @@
     <session id="-2086227061">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="27" />
           <entry key="project.open.time.0" value="6" />
           <entry key="project.open.time.10" value="2" />
-          <entry key="project.open.time.11" value="8" />
+          <entry key="project.open.time.11" value="10" />
           <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="actuator" value="15" />
-          <entry key="actuator_adapter" value="1" />
-          <entry key="adapter" value="5" />
-          <entry key="class" value="2" />
+          <entry key="actuator" value="39" />
+          <entry key="actuator_adapter" value="19" />
+          <entry key="adapter" value="10" />
+          <entry key="class" value="3" />
           <entry key="fxml" value="23" />
           <entry key="gitignore" value="1" />
           <entry key="ico" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="120" />
-          <entry key="jpg" value="37" />
+          <entry key="java" value="149" />
+          <entry key="jpg" value="38" />
           <entry key="kit" value="11" />
-          <entry key="nuts" value="4" />
+          <entry key="nuts" value="10" />
           <entry key="png" value="11" />
           <entry key="sql" value="2" />
           <entry key="tif" value="4" />
-          <entry key="valve" value="15" />
-          <entry key="valve_actuator" value="1" />
-          <entry key="valve_adapter" value="1" />
-          <entry key="xml" value="19" />
+          <entry key="txt" value="2" />
+          <entry key="valve" value="33" />
+          <entry key="valve_actuator" value="33" />
+          <entry key="valve_adapter" value="19" />
+          <entry key="xml" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="2" />
-          <entry key="Database Element" value="53" />
+          <entry key="CLASS" value="3" />
+          <entry key="Database Element" value="174" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="Image" value="53" />
-          <entry key="JAVA" value="120" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Image" value="54" />
+          <entry key="JAVA" value="149" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="SQL" value="1" />
           <entry key="Scratch" value="1" />
-          <entry key="XML" value="42" />
+          <entry key="XML" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cell" value="274" />
+          <entry key="cell" value="316" />
           <entry key="dummy" value="22" />
           <entry key="fxml" value="160" />
           <entry key="gitignore" value="1" />
-          <entry key="java" value="13580" />
+          <entry key="java" value="15594" />
           <entry key="regexp" value="1" />
           <entry key="sql" value="10" />
-          <entry key="txt" value="267" />
-          <entry key="xml" value="22" />
+          <entry key="txt" value="295" />
+          <entry key="xml" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="13580" />
-          <entry key="PLAIN_TEXT" value="290" />
+          <entry key="JAVA" value="15594" />
+          <entry key="PLAIN_TEXT" value="318" />
           <entry key="RegExp" value="1" />
           <entry key="SQL" value="10" />
-          <entry key="Scratch" value="274" />
-          <entry key="XML" value="182" />
+          <entry key="Scratch" value="316" />
+          <entry key="XML" value="183" />
         </counts>
       </usages-collector>
     </session>
@@ -252,45 +234,15 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/form/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="238">
+              <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="73" column="54" lean-forward="true" selection-start-line="73" selection-start-column="54" selection-end-line="73" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -298,13 +250,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/entity/Valve.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+            <state relative-caret-position="527">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
-                <element signature="e#2820#2821#0" expanded="true" />
-                <element signature="e#2852#2853#0" expanded="true" />
-                <element signature="e#2909#2910#0" expanded="true" />
-                <element signature="e#2951#2952#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -313,28 +262,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/entity/Actuator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-              <folding>
-                <element signature="e#779#788#0" expanded="true" />
-                <element signature="e#2779#2780#0" expanded="true" />
-                <element signature="e#2808#2809#0" expanded="true" />
-                <element signature="e#2859#2860#0" expanded="true" />
-                <element signature="e#2898#2899#0" expanded="true" />
-                <element signature="e#2939#2940#0" expanded="true" />
-                <element signature="e#2970#2971#0" expanded="true" />
-                <element signature="e#3024#3025#0" expanded="true" />
-                <element signature="e#3064#3065#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-273">
-              <caret line="474" column="51" selection-start-line="474" selection-start-column="51" selection-end-line="474" selection-end-column="51" />
+            <state relative-caret-position="646">
+              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="537">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -343,20 +290,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+            <state relative-caret-position="6528">
+              <caret line="492" column="81" lean-forward="true" selection-start-line="492" selection-start-column="81" selection-end-line="492" selection-end-column="81" />
               <folding>
-                <element signature="e#514#515#0" expanded="true" />
-                <element signature="e#561#562#0" expanded="true" />
-                <element signature="e#606#607#0" expanded="true" />
-                <element signature="e#630#631#0" expanded="true" />
-                <element signature="e#658#659#0" expanded="true" />
-                <element signature="e#702#703#0" expanded="true" />
-                <element signature="e#744#745#0" expanded="true" />
-                <element signature="e#805#806#0" expanded="true" />
+                <element signature="e#4128#4129#0" expanded="true" />
+                <element signature="e#4160#4161#0" expanded="true" />
+                <element signature="e#4206#4207#0" expanded="true" />
+                <element signature="e#4241#4242#0" expanded="true" />
+                <element signature="e#24284#24285#0" expanded="true" />
+                <element signature="e#24349#24350#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2278">
+              <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
             </state>
           </provider>
         </entry>
@@ -411,24 +365,25 @@
         <option value="$PROJECT_DIR$/src/main/resources/MainForm.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/form/ControllerAboutProgram.java" />
         <option value="$PROJECT_DIR$/src/main/java/calculations/KvsKlapana.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/entity/AdapterKit.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Kit.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/KitImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/DataBase.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Adapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/NutsImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Nuts.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/form/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Nuts.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Adapter.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Valve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Actuator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/form/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java" />
       </list>
     </option>
   </component>
@@ -455,8 +410,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="width" value="640" />
+    <option name="height" value="520" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -486,85 +441,84 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="calculations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="form" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="persistence" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="persistence" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
+              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Form2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -586,11 +540,11 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1568846857919" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569510240339" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last.edited.regexp" value="," />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jar_files" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Рабочий стол/HERZ Select 3.0/БД/Valves-Actuators.csv" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15496369" />
     <property name="project.structure.side.proportion" value="0.31499556" />
@@ -803,6 +757,8 @@
       <workItem from="1568699825474" duration="19698000" />
       <workItem from="1568808344521" duration="11095000" />
       <workItem from="1568836866377" duration="9867000" />
+      <workItem from="1569415575348" duration="7994000" />
+      <workItem from="1569476898539" duration="18185000" />
     </task>
     <task id="LOCAL-00001" summary="gg">
       <created>1566567184524</created>
@@ -895,17 +851,24 @@
       <option name="project" value="LOCAL" />
       <updated>1568733143438</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Dependency from Excel">
+      <created>1568990067368</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1568990067368</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264435000" />
+    <option name="totallyTimeSpent" value="317212000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16684435" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1609808" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -915,8 +878,8 @@
       <window_info id="Persistence" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.15755627" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.41157556" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.13557483" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.1626898" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -925,8 +888,8 @@
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.17792068" />
+      <window_info anchor="bottom" id="Event Log" order="12" weight="0.329718" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.1778742" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
       <window_info anchor="bottom" id="Terminal" order="15" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.329718" />
@@ -935,7 +898,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="JetGradle" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.17217484" />
+      <window_info anchor="right" id="Database" order="4" weight="0.1673774" />
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" weight="0.32995737" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
@@ -951,7 +914,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="gg" />
     <MESSAGE value="ComboBox problem" />
@@ -966,46 +928,15 @@
     <MESSAGE value="Find actuators good!" />
     <MESSAGE value="Try to find Adapter..." />
     <MESSAGE value="Try to load DB from Excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try to load DB from Excel" />
+    <MESSAGE value="at work" />
+    <MESSAGE value="Dependency from Excel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dependency from Excel" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/77601.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/77611.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/77621.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/79901.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/142061.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/142062.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/142064.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/142066.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/1771222.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/1771225.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/1771228.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/images/1771230.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1075,27 +1006,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/images/1771220.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/valve">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/nuts">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Nuts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/images/17708411.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1106,7 +1016,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/actuator">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/NutsImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/HibernateSessionFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/jre/lib/rt.jar!/sun/reflect/DelegatingConstructorAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Adapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Рабочий стол/HERZ Select 3.0/БД/valve_actuator_2019_09_20_12_18_26.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Рабочий стол/HERZ Select 3.0/БД/valve_actuator_2019_09_20_12_21_02.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Nuts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="92" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/images/77121.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/nuts">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/valve">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/adapter">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -1120,98 +1111,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Actuator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entity/Valve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+        <state relative-caret-position="527">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <element signature="e#2820#2821#0" expanded="true" />
-            <element signature="e#2852#2853#0" expanded="true" />
-            <element signature="e#2909#2910#0" expanded="true" />
-            <element signature="e#2951#2952#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-273">
-          <caret line="474" column="51" selection-start-line="474" selection-start-column="51" selection-end-line="474" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/valve_adapter">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/actuator_adapter">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="73" column="54" lean-forward="true" selection-start-line="73" selection-start-column="54" selection-end-line="73" selection-end-column="54" />
+        <state relative-caret-position="2228">
+          <caret line="198" column="25" lean-forward="true" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#561#562#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#744#745#0" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="646">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Actuator.java">
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/actuator">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="2278">
+          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6528">
+          <caret line="492" column="81" lean-forward="true" selection-start-line="492" selection-start-column="81" selection-end-line="492" selection-end-column="81" />
           <folding>
-            <element signature="e#779#788#0" expanded="true" />
-            <element signature="e#2779#2780#0" expanded="true" />
-            <element signature="e#2808#2809#0" expanded="true" />
-            <element signature="e#2859#2860#0" expanded="true" />
-            <element signature="e#2898#2899#0" expanded="true" />
-            <element signature="e#2939#2940#0" expanded="true" />
-            <element signature="e#2970#2971#0" expanded="true" />
-            <element signature="e#3024#3025#0" expanded="true" />
-            <element signature="e#3064#3065#0" expanded="true" />
+            <element signature="e#4128#4129#0" expanded="true" />
+            <element signature="e#4160#4161#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+            <element signature="e#4241#4242#0" expanded="true" />
+            <element signature="e#24284#24285#0" expanded="true" />
+            <element signature="e#24349#24350#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/form/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="238">
+          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

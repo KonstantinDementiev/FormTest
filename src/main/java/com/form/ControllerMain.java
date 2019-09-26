@@ -19,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import persistence.impl.ActuatorImpl;
+import persistence.impl.ActuatorImplLocal;
 import persistence.impl.ValveImpl;
 
 import java.io.IOException;
@@ -112,8 +113,15 @@ public class ControllerMain {
     private Kvs kvs = new Kvs();
     private Valve candidateValve = new Valve();
 
+    public Set<Valve> getAllValves() {
+        return allValves;
+    }
 
-    ControllerMain() {
+    public Set<Actuator> getAllActuators() {
+        return allActuators;
+    }
+
+    public ControllerMain() {
 
         thisStage = new Stage();
 
@@ -399,7 +407,7 @@ public class ControllerMain {
 
         ObservableList<String> fillingVoltage = FXCollections.observableArrayList("230 В", "24 В");
         comboVoltage.setItems(fillingVoltage);
-        ObservableList<String> fillingSignal = FXCollections.observableArrayList("Відкр./Закр.", "3 точки", "0-10 В");
+        ObservableList<String> fillingSignal = FXCollections.observableArrayList("2 точки", "3 точки", "0-10 В");
         comboSignal.setItems(fillingSignal);
         ObservableList<String> fillingContacts = FXCollections.observableArrayList("НВ", "НЗ", "НВ/НЗ");
         comboContacts.setItems(fillingContacts);
@@ -452,10 +460,30 @@ public class ControllerMain {
     @FXML
     public void buttonFindActuatorAction() {
 
-        ValveImpl findArt = new ValveImpl();
-        candidateValve = findArt.findValveByArticle(TextFieldArtValveForActuator.getText());
-
-        ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImpl.findActuatorByComboBox(comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(), comboStock.getValue(), candidateValve));
+        for (Valve valve : allValves) {
+            if (valve.getArticle().equals(TextFieldArtValveForActuator.getText())) {
+                candidateValve = valve;
+                imageValve2.setImage(new Image(candidateValve.getImageurl()));
+                labelValveArticle.setText(candidateValve.getArticle());
+                labelValvePrice.setText(String.format("%.2f", candidateValve.getPrice()));
+                if (candidateValve.getConnection().equals("Зовнішня різьба")) {
+                    imageNuts2.setImage(new Image("images/62201.jpg"));
+                    labelNutsArticle2.setText(candidateValve.getNuts().getArticle());
+                    labelNutsArticle3.setText(labelNutsArticle2.getText());
+                    labelNutsPrice2.setText(String.format("%.2f", candidateValve.getNuts().getPrice()));
+                    labelNutsPrice3.setText(String.format("%.2f", candidateValve.getNuts().getPrice() * candidateValve.getPorts()));
+                } else {
+                    imageNuts2.setImage(new Image("images/0.jpg"));
+                    labelNutsArticle2.setText("");
+                    labelNutsPrice2.setText("");
+                    labelNutsArticle3.setText("");
+                    labelNutsPrice3.setText("");
+                }
+                summCalculation();
+            }
+        }
+        ActuatorImplLocal actuatorImplLocal = new ActuatorImplLocal();
+        ObservableList<Actuator> arrActuatorForTable = FXCollections.observableArrayList(actuatorImplLocal.findActuatorByComboBoxLocal(comboVoltage.getValue(), comboSignal.getValue(), comboContacts.getValue(), comboEndSwitch.getValue(), comboTimeWay.getValue(), comboPower.getValue(), comboStock.getValue(), candidateValve));
 
         articleActuatorColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
         voltageColumn.setCellValueFactory(new PropertyValueFactory<>("voltage"));

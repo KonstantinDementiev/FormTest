@@ -116,7 +116,6 @@ class ModelImpl {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
 
-
         for (int i = 0; i < listComboBoxes.length; i++) {
 
             if (listComboBoxes[i][0] != null) {
@@ -140,7 +139,6 @@ class ModelImpl {
         session.close();
         return findedModels;
     }
-
 
     private void printModel(List<Model> models) {
         for (Model model : models) {

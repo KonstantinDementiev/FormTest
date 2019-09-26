@@ -19,7 +19,7 @@ public class Actuator extends Model {
     private Double price;
     private String imageurl;
 
-    @ManyToMany (fetch = FetchType.LAZY)
+    @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "valve_actuator", joinColumns = {@JoinColumn(name = "actuator_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
     private Set<Valve> valves = new HashSet<>();
 

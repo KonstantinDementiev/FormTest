@@ -19,7 +19,7 @@ public class Valve extends Model {
     private Double price;
     private String imageurl;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "valves")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
     private Set<Actuator> actuators = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
