@@ -85,11 +85,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/Downloads/jar_files" />
+          <root url="file://F:/Загрузки/jar_files_4" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/Downloads/jar_files" recursive="false" />
+        <jarDirectory url="file://F:/Загрузки/jar_files_4" recursive="false" />
       </library>
     </orderEntry>
   </component>

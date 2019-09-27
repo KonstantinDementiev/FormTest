@@ -286,15 +286,15 @@
                         </AnchorPane>
                         <TableView fx:id="actuatorTableView" layoutX="7.0" layoutY="242.0" onMouseClicked="#handleRowActuatorSelect" prefHeight="379.0" prefWidth="777.0">
                            <columns>
-                              <TableColumn fx:id="articleActuatorColumn" prefWidth="88.0" style="-fx-alignment: CENTER;" text="Артикул" />
-                              <TableColumn fx:id="voltageColumn" prefWidth="74.0" style="-fx-alignment: center;" text="Напруга" />
-                              <TableColumn fx:id="signalColumn" prefWidth="90.0" style="-fx-alignment: center;" text="Керув." />
-                              <TableColumn fx:id="noncColumn" prefWidth="65.0" style="-fx-alignment: center;" text="НВ/НЗ" />
-                              <TableColumn fx:id="endposColumn" prefWidth="89.0" style="-fx-alignment: center;" text="Кінц. вим." />
-                              <TableColumn fx:id="timeposColumn" prefWidth="85.0" style="-fx-alignment: center;" text="Час ходу" />
-                              <TableColumn fx:id="powerColumn" prefWidth="85.0" style="-fx-alignment: center;" text="Зусилля" />
-                              <TableColumn fx:id="strokeColumn" prefWidth="94.0" style="-fx-alignment: center;" text="Хід штока" />
-                              <TableColumn fx:id="priceActuatorColumn" prefWidth="104.0" style="-fx-alignment: center;" text="Ціна, євро" />
+                              <TableColumn fx:id="articleActuatorColumn" prefWidth="88.0" resizable="false" style="-fx-alignment: CENTER;" text="Артикул" />
+                              <TableColumn fx:id="voltageColumn" prefWidth="74.0" resizable="false" style="-fx-alignment: center;" text="Напруга" />
+                              <TableColumn fx:id="signalColumn" prefWidth="90.0" resizable="false" style="-fx-alignment: center;" text="Керув." />
+                              <TableColumn fx:id="noncColumn" prefWidth="65.0" resizable="false" style="-fx-alignment: center;" text="НВ/НЗ" />
+                              <TableColumn fx:id="endposColumn" prefWidth="89.0" resizable="false" style="-fx-alignment: center;" text="Кінц. вим." />
+                              <TableColumn fx:id="timeposColumn" prefWidth="85.0" resizable="false" style="-fx-alignment: center;" text="Час ходу" />
+                              <TableColumn fx:id="powerColumn" prefWidth="85.0" resizable="false" style="-fx-alignment: center;" text="Зусилля" />
+                              <TableColumn fx:id="strokeColumn" prefWidth="94.0" resizable="false" style="-fx-alignment: center;" text="Хід штока" />
+                              <TableColumn fx:id="priceActuatorColumn" prefWidth="104.0" resizable="false" style="-fx-alignment: center;" text="Ціна, євро" />
                            </columns>
                         </TableView>
                         <Label layoutX="797.0" layoutY="498.0" text="Накидні гайки" underline="true" />

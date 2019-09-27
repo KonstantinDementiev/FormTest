@@ -106,8 +106,8 @@ public class ControllerMain {
 
     private ValveImpl valveImpl = new ValveImpl();
     private ActuatorImpl actuatorImpl = new ActuatorImpl();
-    private Set<Valve> allValves = valveImpl.findAllValve();
-    private Set<Actuator> allActuators = actuatorImpl.findAllActuator();
+    private Set<Valve> allValves = new HashSet<>();
+    private Set<Actuator> allActuators = new HashSet<>();
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
     private Kvs kvs = new Kvs();
@@ -139,6 +139,8 @@ public class ControllerMain {
     @FXML
     public void initialize() {
 
+        allValves = valveImpl.findAllValve();
+        allActuators = actuatorImpl.findAllActuator();
         buttonCalcFlow.setOnAction(event -> openCalcForm());
         buttonAboutProgram.setOnAction(event -> openAboutProgramForm());
         fillingValveCombo(new ArrayList<>(allValves));
