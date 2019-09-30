@@ -14,6 +14,8 @@ public class Main extends Application {
 
         ControllerMain controllerMain = new ControllerMain();
         controllerMain.showStage();
+
+
     }
 
     public static void main(String[] args) {
