@@ -4,6 +4,7 @@ import calculations.Kvs;
 import calculations.KvsKlapana;
 import entity.Actuator;
 import entity.Adapter;
+import entity.Nuts;
 import entity.Valve;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,9 +19,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import persistence.impl.ActuatorImpl;
-import persistence.impl.ActuatorImplLocal;
-import persistence.impl.ValveImpl;
+import persistence.impl.*;
+import utils.PriceFromXML;
 
 import java.io.IOException;
 import java.util.*;
@@ -106,8 +106,12 @@ public class ControllerMain {
 
     private ValveImpl valveImpl = new ValveImpl();
     private ActuatorImpl actuatorImpl = new ActuatorImpl();
-    private Set<Valve> allValves = valveImpl.findAllValve();
-    private Set<Actuator> allActuators = actuatorImpl.findAllActuator();
+    private NutsImpl nutsImpl = new NutsImpl();
+    private AdapterImpl adapterImpl = new AdapterImpl();
+    private Set<Valve> allValves = new HashSet<>();
+    private Set<Actuator> allActuators = new HashSet<>();
+    private Set<Nuts> allNuts = new HashSet<>();
+    private Set<Adapter> allAdapters = new HashSet<>();
     private List<Double> sortedArrayKvs;
     private Double currentFlow;
     private Kvs kvs = new Kvs();
@@ -121,9 +125,18 @@ public class ControllerMain {
         return allActuators;
     }
 
+    public Set<Nuts> getAllNuts() {
+        return allNuts;
+    }
+
+    public Set<Adapter> getAllAdapters() {
+        return allAdapters;
+    }
+
     public ControllerMain() {
 
         thisStage = new Stage();
+
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainForm.fxml"));
@@ -138,13 +151,20 @@ public class ControllerMain {
 
     @FXML
     public void initialize() {
+//        allValves = loadValvePrice();
+//        allActuators = loadActuatorPrice();
+//        allNuts = loadNutsPrice();
+//        allAdapters = loadAdapterPrice();
+
+        allValves = valveImpl.findAllValve();
+        allActuators = actuatorImpl.findAllActuator();
+        allNuts = nutsImpl.findAllNuts();
+        allAdapters = adapterImpl.findAllAdapter();
 
         buttonCalcFlow.setOnAction(event -> openCalcForm());
         buttonAboutProgram.setOnAction(event -> openAboutProgramForm());
         fillingValveCombo(new ArrayList<>(allValves));
         fillingActuatorCombo(new ArrayList<>(allActuators));
-        //printSortedKvs();
-
     }
 
     @FXML
@@ -435,8 +455,8 @@ public class ControllerMain {
 
     @FXML
     public void buttonFindValveAction() {
-
-        ObservableList<Valve> arrValveForTable = FXCollections.observableArrayList(valveImpl.findValveByComboBox(comboKvs.getValue(), comboDn.getValue(), comboPorts.getValue(), comboPn.getValue(), comboConnection.getValue(), comboType.getValue()));
+        ValveImplLocal valveImplLocal = new ValveImplLocal();
+        ObservableList<Valve> arrValveForTable = FXCollections.observableArrayList(valveImplLocal.findValveByComboBoxLocal(comboKvs.getValue(), comboDn.getValue(), comboPorts.getValue(), comboPn.getValue(), comboConnection.getValue(), comboType.getValue()));
 
         articleValveColumn.setCellValueFactory(new PropertyValueFactory<>("article"));
         kvsColumn.setCellValueFactory(new PropertyValueFactory<>("kvs"));
@@ -454,32 +474,33 @@ public class ControllerMain {
         handleRowValveSelect();
         valveTableView.getSelectionModel().select(0);
         valveTableView.getFocusModel().focus(0);
-
     }
 
     @FXML
     public void buttonFindActuatorAction() {
 
-        for (Valve valve : allValves) {
-            if (valve.getArticle().equals(TextFieldArtValveForActuator.getText())) {
-                candidateValve = valve;
-                imageValve2.setImage(new Image(candidateValve.getImageurl()));
-                labelValveArticle.setText(candidateValve.getArticle());
-                labelValvePrice.setText(String.format("%.2f", candidateValve.getPrice()));
-                if (candidateValve.getConnection().equals("Зовнішня різьба")) {
-                    imageNuts2.setImage(new Image("images/62201.jpg"));
-                    labelNutsArticle2.setText(candidateValve.getNuts().getArticle());
-                    labelNutsArticle3.setText(labelNutsArticle2.getText());
-                    labelNutsPrice2.setText(String.format("%.2f", candidateValve.getNuts().getPrice()));
-                    labelNutsPrice3.setText(String.format("%.2f", candidateValve.getNuts().getPrice() * candidateValve.getPorts()));
-                } else {
-                    imageNuts2.setImage(new Image("images/0.jpg"));
-                    labelNutsArticle2.setText("");
-                    labelNutsPrice2.setText("");
-                    labelNutsArticle3.setText("");
-                    labelNutsPrice3.setText("");
+        if (!TextFieldArtValveForActuator.getText().equals("")) {
+            for (Valve valve : allValves) {
+                if (valve.getArticle().equals(TextFieldArtValveForActuator.getText())) {
+                    candidateValve = valve;
+                    imageValve2.setImage(new Image(candidateValve.getImageurl()));
+                    labelValveArticle.setText(candidateValve.getArticle());
+                    labelValvePrice.setText(String.format("%.2f", candidateValve.getPrice()));
+                    if (candidateValve.getConnection().equals("Зовнішня різьба")) {
+                        imageNuts2.setImage(new Image("images/62201.jpg"));
+                        labelNutsArticle2.setText(candidateValve.getNuts().getArticle());
+                        labelNutsArticle3.setText(labelNutsArticle2.getText());
+                        labelNutsPrice2.setText(String.format("%.2f", candidateValve.getNuts().getPrice()));
+                        labelNutsPrice3.setText(String.format("%.2f", candidateValve.getNuts().getPrice() * candidateValve.getPorts()));
+                    } else {
+                        imageNuts2.setImage(new Image("images/0.jpg"));
+                        labelNutsArticle2.setText("");
+                        labelNutsPrice2.setText("");
+                        labelNutsArticle3.setText("");
+                        labelNutsPrice3.setText("");
+                    }
+                    summCalculation();
                 }
-                summCalculation();
             }
         }
         ActuatorImplLocal actuatorImplLocal = new ActuatorImplLocal();
@@ -632,6 +653,43 @@ public class ControllerMain {
             }
         }
         return adapter;
+    }
+
+    private Set<Valve> loadValvePrice() {
+        PriceFromXML priceFromXML = new PriceFromXML();
+        Set <Valve> allValvesWithPrice = new HashSet<>();
+        for (Valve valvePrice : valveImpl.findAllValve()) {
+            valvePrice.setPrice(priceFromXML.findPrice(valvePrice.getArticle()));
+            allValvesWithPrice.add (valvePrice);
+        }
+        return allValvesWithPrice;
+    }
+    private Set<Actuator> loadActuatorPrice() {
+        PriceFromXML priceFromXML = new PriceFromXML();
+        Set <Actuator> allValvesWithPrice = new HashSet<>();
+        for (Actuator actuatorPrice : actuatorImpl.findAllActuator()) {
+            actuatorPrice.setPrice(priceFromXML.findPrice(actuatorPrice.getArticle()));
+            allValvesWithPrice.add (actuatorPrice);
+        }
+        return allValvesWithPrice;
+    }
+    private Set<Nuts> loadNutsPrice() {
+        PriceFromXML priceFromXML = new PriceFromXML();
+        Set <Nuts> allNutsWithPrice = new HashSet<>();
+        for (Nuts nutsPrice : nutsImpl.findAllNuts()) {
+            nutsPrice.setPrice(priceFromXML.findPrice(nutsPrice.getArticle()));
+            allNutsWithPrice.add (nutsPrice);
+        }
+        return allNutsWithPrice;
+    }
+    private Set<Adapter> loadAdapterPrice() {
+        PriceFromXML priceFromXML = new PriceFromXML();
+        Set <Adapter> allAdapterWithPrice = new HashSet<>();
+        for (Adapter adapterPrice : adapterImpl.findAllAdapter()) {
+            adapterPrice.setPrice(priceFromXML.findPrice(adapterPrice.getArticle()));
+            allAdapterWithPrice.add (adapterPrice);
+        }
+        return allAdapterWithPrice;
     }
 
 }

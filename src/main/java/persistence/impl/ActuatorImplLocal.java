@@ -29,37 +29,71 @@ public class ActuatorImplLocal {
         }
 
         Set<String> sortedSignal = new HashSet<>();
-        //Set<Actuator> arr = cm.getAllActuators();
+        Set<Actuator> listActuatorsWithoutValve1 = cm.getAllActuators();
+        Set<Actuator> listActuatorsWithoutValve2 = new HashSet<>();
 
         if (desiredSignalFinal != null) {
-            for (Actuator actuator : cm.getAllActuators()) {
-                if (actuator.getSignaltype().contains(desiredSignalFinal)) sortedSignal.add(actuator.getSignaltype());
+            for (Actuator actuator : listActuatorsWithoutValve1) {
+                if (actuator.getSignaltype().contains(desiredSignalFinal)) {
+                    sortedSignal.add(actuator.getSignaltype());
+                }
             }
         } else {
             sortedSignal.add(null);
         }
 
-        List<Actuator> listActuatorsWithoutValve = new ArrayList<>();
+        boolean b1, b2, b3, b4, b5, b6, b7;
 
         for (String signalIterate : sortedSignal) {
-            for (Actuator actuator : cm.getAllActuators()) {
-                if (desiredVoltage != null && desiredVoltage.equals(actuator.getVoltage())) {
+            for (Actuator actuatorIterate : listActuatorsWithoutValve1) {
 
+                if (desiredVoltage != null) {
+                    b1 = desiredVoltage.equals(actuatorIterate.getVoltage());
+                } else {
+                    b1 = true;
+                }
+                if (signalIterate != null) {
+                    b2 = signalIterate.equals(actuatorIterate.getSignaltype());
+                } else {
+                    b2 = true;
+                }
+                if (desiredNonc != null) {
+                    b3 = desiredNonc.equals(actuatorIterate.getNonc());
+                } else {
+                    b3 = true;
+                }
+                if (desiredEndpos != null) {
+                    b4 = desiredEndpos.equals(actuatorIterate.getEndpos());
+                } else {
+                    b4 = true;
+                }
+                if (desiredTimepos != null) {
+                    b5 = desiredTimepos.equals(actuatorIterate.getTimepos());
+                } else {
+                    b5 = true;
+                }
+                if (desiredPower != null) {
+                    b6 = desiredPower.equals(actuatorIterate.getPower());
+                } else {
+                    b6 = true;
+                }
+                if (desiredStroke != null) {
+                    b7 = desiredStroke.equals(actuatorIterate.getStroke());
+                } else {
+                    b7 = true;
                 }
 
-
-                signalIterate.equals(actuator.getSignaltype()) && desiredNonc.equals(actuator.getNonc()) && desiredEndpos.equals(actuator.getEndpos()) && desiredTimepos.equals(actuator.getTimepos()) && desiredPower.equals(actuator.getPower()) && desiredStroke.equals(actuator.getStroke()))
-                {
-                    listActuatorsWithoutValve.add(actuator);
+                if (b1 && b2 && b3 && b4 && b5 && b6 && b7){
+                    listActuatorsWithoutValve2.add(actuatorIterate);
                 }
             }
         }
 
         List<Actuator> listActuatorsWithValve = new ArrayList<>();
         int j = 0;
-        for (int i = 0; i < listActuatorsWithoutValve.size(); i++) {
-            if (listActuatorsWithoutValve.get(i).getValves().contains(candidateValve)) {
-                listActuatorsWithValve.add(j, listActuatorsWithoutValve.get(i));
+        for (Actuator actuatorWithValve : listActuatorsWithoutValve2) {
+            if (actuatorWithValve.getValves().contains(candidateValve)) {
+                listActuatorsWithValve.add(actuatorWithValve);
                 j++;
             }
         }

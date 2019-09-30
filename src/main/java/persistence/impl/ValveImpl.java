@@ -57,6 +57,4 @@ public class ValveImpl extends ModelImpl {
         };
         return modelImpl.findModelByComboBox(listComboBoxes, "Valve");
     }
-
-
 }
