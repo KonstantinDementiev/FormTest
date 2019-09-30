@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Link on local set">
-      <change afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImplLocal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/NutsImplLocal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImplLocal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/PriceFromXML.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/13092019.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1eaf233e-468f-473f-8a95-21fc9bd8d27a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1eaf233e-468f-473f-8a95-21fc9bd8d27a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Actuator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Actuator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Adapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Nuts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Nuts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Valve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Valve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/herz_db.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/herz_db.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImplLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImplLocal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PriceFromXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/PriceFromXML.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,14 +61,7 @@
         <item name="herz_select@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="herz_select: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="actuator: table" type="98d5ac3d:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="herz_select@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="herz_select: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="adapter: table" type="98d5ac3d:MysqlImplModel$Table" />
+        <item name="actuator_adapter: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -85,6 +76,20 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="herz_select: schema" type="c314c289:MysqlImplModel$Schema" />
         <item name="valve: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="herz_select@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="herz_select: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="valve_actuator: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="herz_select@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="herz_select: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="valve_adapter: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -208,38 +213,39 @@
     <session id="-1781220474">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="actuator" value="2" />
+          <entry key="actuator" value="3" />
+          <entry key="adapter" value="1" />
           <entry key="article_unique" value="1" />
           <entry key="class" value="1" />
           <entry key="fknanhs1dnrjxlbl1cq7lsbsdgx" value="1" />
           <entry key="ico" value="2" />
-          <entry key="java" value="18" />
+          <entry key="java" value="42" />
           <entry key="jpg" value="30" />
-          <entry key="nuts" value="2" />
+          <entry key="nuts" value="6" />
           <entry key="png" value="13" />
-          <entry key="valve" value="2" />
-          <entry key="valve_actuator" value="1" />
+          <entry key="valve" value="5" />
+          <entry key="valve_actuator" value="2" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="Database Element" value="7" />
+          <entry key="Database Element" value="17" />
           <entry key="Image" value="45" />
-          <entry key="JAVA" value="18" />
+          <entry key="JAVA" value="42" />
           <entry key="SQL" value="2" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="403" />
+          <entry key="java" value="733" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="403" />
+          <entry key="JAVA" value="733" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -259,41 +265,70 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/form/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="272">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="597">
+              <caret line="156" column="43" lean-forward="true" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
+              <folding>
+                <element signature="e#10081#10082#0" expanded="true" />
+                <element signature="e#10125#10126#0" expanded="true" />
+                <element signature="e#10177#10178#0" expanded="true" />
+                <element signature="e#10219#10220#0" expanded="true" />
+                <element signature="e#10271#10272#0" expanded="true" />
+                <element signature="e#10316#10317#0" expanded="true" />
+                <element signature="e#12238#12239#0" expanded="true" />
+                <element signature="e#12277#12278#0" expanded="true" />
+                <element signature="e#12664#12665#0" expanded="true" />
+                <element signature="e#12707#12708#0" expanded="true" />
+                <element signature="e#26022#26023#0" expanded="true" />
+                <element signature="e#26079#26080#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-993">
-              <caret line="581" column="9" lean-forward="true" selection-start-line="581" selection-start-column="9" selection-end-line="581" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Model.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/PriceFromXML.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Valve.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Nuts.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Actuator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -315,6 +350,7 @@
       <find>labelArtValveForActuator</find>
       <find>labelNutsArticle</find>
       <find>candidateValve</find>
+      <find>findNutsByArticle</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -355,20 +391,20 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/NutsImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Nuts.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Adapter.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Valve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Actuator.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/form/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImplLocal.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/NutsImplLocal.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImplLocal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/impl/ValveImplLocal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Adapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Actuator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Nuts.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Valve.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/PriceFromXML.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java" />
       </list>
@@ -433,84 +469,83 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="calculations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="form" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="persistence" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="persistence" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Form2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Form2" type="462c0819:PsiDirectoryNode" />
+              <item name="FormTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FormTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -519,6 +554,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -532,7 +569,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569857211949" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569871159076" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last.edited.regexp" value="," />
@@ -864,13 +901,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331821000" />
+    <option name="totallyTimeSpent" value="342795000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16577825" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.17643923" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -880,8 +916,8 @@
       <window_info id="Persistence" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21366595" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28850326" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.07073955" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34405145" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -891,7 +927,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.329718" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.1778742" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.17684887" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
       <window_info anchor="bottom" id="Terminal" order="15" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.329718" />
@@ -900,7 +936,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="JetGradle" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.1673774" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.17803837" />
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" weight="0.32995737" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
@@ -940,12 +976,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/17712111.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/images/17712701.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/images/17712711.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1015,22 +1045,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Adapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Documents/Рабочий стол/HERZ Select 3.0/БД/valve_actuator_2019_09_20_12_18_26.txt" />
     <entry file="file://$USER_HOME$/Documents/Рабочий стол/HERZ Select 3.0/БД/valve_actuator_2019_09_20_12_21_02.txt" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Nuts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1040,13 +1056,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/images/77121.jpg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/valve_actuator">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
     </entry>
     <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/valve_adapter">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -1062,31 +1071,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Actuator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImplLocal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1256">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Valve.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="255">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/13092019.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3009">
-          <caret line="198" column="25" lean-forward="true" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+        <state relative-caret-position="238">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="82" column="66" selection-start-line="82" selection-start-column="66" selection-end-line="82" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ModelImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        <state relative-caret-position="658">
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/actuator">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/adapter">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="1770" selection-start-line="1770" selection-end-line="1770" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/valve_actuator">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/javafx-src.zip!/javafx/collections/FXCollections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="341" selection-start-line="341" selection-end-line="341" />
+          <folding>
+            <element signature="e#11614#11615#0" expanded="true" />
+            <element signature="e#11668#11669#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-608">
+          <caret line="23" column="42" lean-forward="true" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/NutsImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/LoadFromDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="69" column="43" lean-forward="true" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ValveImplLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1100,65 +1202,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/NutsImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Adapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImplLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImplLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ValveImplLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/AdapterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ActuatorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="48" column="42" lean-forward="true" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/impl/ValveImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/adapter">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+        <state relative-caret-position="1207">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
         </state>
       </provider>
     </entry>
@@ -1176,47 +1223,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://1eaf233e-468f-473f-8a95-21fc9bd8d27a/schema/herz_select/table/actuator">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Actuator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/13092019.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/form/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/PriceFromXML.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Valve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="459">
+          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/form/ControllerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-993">
-          <caret line="581" column="9" lean-forward="true" selection-start-line="581" selection-start-column="9" selection-end-line="581" selection-end-column="9" />
+        <state relative-caret-position="597">
+          <caret line="156" column="43" lean-forward="true" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
+          <folding>
+            <element signature="e#10081#10082#0" expanded="true" />
+            <element signature="e#10125#10126#0" expanded="true" />
+            <element signature="e#10177#10178#0" expanded="true" />
+            <element signature="e#10219#10220#0" expanded="true" />
+            <element signature="e#10271#10272#0" expanded="true" />
+            <element signature="e#10316#10317#0" expanded="true" />
+            <element signature="e#12238#12239#0" expanded="true" />
+            <element signature="e#12277#12278#0" expanded="true" />
+            <element signature="e#12664#12665#0" expanded="true" />
+            <element signature="e#12707#12708#0" expanded="true" />
+            <element signature="e#26022#26023#0" expanded="true" />
+            <element signature="e#26079#26080#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Nuts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/PriceFromXML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
         </state>
       </provider>
     </entry>

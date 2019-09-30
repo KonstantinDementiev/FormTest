@@ -18,7 +18,7 @@ public class PriceFromXML {
         Double price = 0.0;
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = documentBuilder.parse("C:\\Users\\kdeme\\IdeaProjects\\Form2\\src\\main\\resources\\13092019.xml");
+            Document document = documentBuilder.parse("F:\\JavaProject\\FormTest\\src\\main\\resources\\13092019.xml");
 
             XPathFactory pathFactory = XPathFactory.newInstance();
             XPath xpath = pathFactory.newXPath();
@@ -41,7 +41,7 @@ public class PriceFromXML {
         return price;
     }
 
-    private static String delSpace(String s) {
+    private String delSpace(String s) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             if (!Character.isSpaceChar(s.charAt(i))) sb.append(s.charAt(i));

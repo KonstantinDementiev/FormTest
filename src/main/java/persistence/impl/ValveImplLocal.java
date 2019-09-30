@@ -12,7 +12,7 @@ public class ValveImplLocal {
 
     public Set<Valve> findValveByComboBoxLocal(Double desiredKvs, Integer desiredDn, Integer desiredPorts, String desiredPn, String desiredConn, String desiredType) {
 
-        Set<Valve> listValveStart = cm.getAllValves();
+        Set<Valve> listValveStart = new HashSet<>(cm.getAllValves());
         Set<Valve> listValveSorted = new HashSet<>();
 
         boolean b1, b2, b3, b4, b5, b6;

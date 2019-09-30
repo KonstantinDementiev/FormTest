@@ -29,7 +29,7 @@ public class ActuatorImplLocal {
         }
 
         Set<String> sortedSignal = new HashSet<>();
-        Set<Actuator> listActuatorsWithoutValve1 = cm.getAllActuators();
+        Set<Actuator> listActuatorsWithoutValve1 = new HashSet<>(cm.getAllActuators());
         Set<Actuator> listActuatorsWithoutValve2 = new HashSet<>();
 
         if (desiredSignalFinal != null) {

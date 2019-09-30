@@ -1,7 +1,7 @@
 package entity;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Nuts extends Model {
@@ -10,8 +10,8 @@ public class Nuts extends Model {
     private String article;
     private Double price;
 
-    @OneToMany (mappedBy = "nuts")
-    private Set<Valve> valves;
+//    @OneToMany (mappedBy = "nuts")
+//    private Set<Valve> valves;
 
     public Nuts() {
     }
@@ -34,12 +34,11 @@ public class Nuts extends Model {
         this.price = price;
     }
 
-    public Set<Valve> getValves() {
-        return valves;
-    }
 
-    public void setValves(Set<Valve> valves) {
-        this.valves = valves;
+    @Override
+    public int hashCode() {
+        String str = this.article;
+        return str.hashCode();
     }
 
     @Override

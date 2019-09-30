@@ -38,8 +38,6 @@ public class Actuator extends Model {
         this.timepos = timepos;
         this.power = power;
         this.stroke = stroke;
-        this.price = price;
-        this.imageurl = imageurl;
     }
 
     public String getArticle() {

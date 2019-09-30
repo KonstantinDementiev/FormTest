@@ -22,7 +22,7 @@ public class Valve extends Model {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
     private Set<Actuator> actuators = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "valves")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "valves")
     private Set<Adapter> adapters = new HashSet<>();
 
     @ManyToOne
@@ -170,7 +170,7 @@ public class Valve extends Model {
         buffer.append(this.connection);
         buffer.append(this.type);
         buffer.append(this.temperature);
-        buffer.append(this.price);
+        buffer.append(this.nuts);
         return buffer.toString().hashCode();
     }
 

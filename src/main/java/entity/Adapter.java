@@ -12,11 +12,11 @@ public class Adapter extends Model {
     private String imageurl;
     private Double price;
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany (fetch = FetchType.LAZY)
     @JoinTable(name = "valve_adapter", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
     private Set<Valve> valves = new HashSet<Valve>();
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany (fetch = FetchType.LAZY)
     @JoinTable(name = "actuator_adapter", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "actuator_art")})
     private Set<Actuator> actuators = new HashSet<Actuator>();
 
@@ -86,11 +86,8 @@ public class Adapter extends Model {
 
     @Override
     public int hashCode() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append(this.article);
-        buffer.append(this.imageurl);
-        buffer.append(this.price);
-        return buffer.toString().hashCode();
+        String str = this.article;
+        return str.hashCode();
     }
 
 }

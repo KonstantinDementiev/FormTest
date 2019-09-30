@@ -104,10 +104,6 @@ public class ControllerMain {
     private ImageView imageActuator, imageAdapter;
 
 
-    private ValveImpl valveImpl = new ValveImpl();
-    private ActuatorImpl actuatorImpl = new ActuatorImpl();
-    private NutsImpl nutsImpl = new NutsImpl();
-    private AdapterImpl adapterImpl = new AdapterImpl();
     private Set<Valve> allValves = new HashSet<>();
     private Set<Actuator> allActuators = new HashSet<>();
     private Set<Nuts> allNuts = new HashSet<>();
@@ -151,15 +147,26 @@ public class ControllerMain {
 
     @FXML
     public void initialize() {
-//        allValves = loadValvePrice();
-//        allActuators = loadActuatorPrice();
-//        allNuts = loadNutsPrice();
-//        allAdapters = loadAdapterPrice();
+        ValveImpl valveImpl = new ValveImpl();
+        ActuatorImpl actuatorImpl = new ActuatorImpl();
+        //NutsImpl nutsImpl = new NutsImpl();
+        AdapterImpl adapterImpl = new AdapterImpl();
 
         allValves = valveImpl.findAllValve();
         allActuators = actuatorImpl.findAllActuator();
-        allNuts = nutsImpl.findAllNuts();
+        //allNuts = nutsImpl.findAllNuts();
         allAdapters = adapterImpl.findAllAdapter();
+
+        loadValvePrice();
+        loadActuatorPrice();
+        //loadNutsPrice();
+        loadAdapterPrice();
+
+        for (Valve v : allValves) {
+            if (v.getNuts() != null) {
+                System.out.println(v.getNuts().getPrice());
+            }
+        }
 
         buttonCalcFlow.setOnAction(event -> openCalcForm());
         buttonAboutProgram.setOnAction(event -> openAboutProgramForm());
@@ -622,7 +629,6 @@ public class ControllerMain {
         buttonFindActuator.setDefaultButton(true);
     }
 
-
     private void summCalculation() {
 
         double summ = 0.0;
@@ -655,41 +661,35 @@ public class ControllerMain {
         return adapter;
     }
 
-    private Set<Valve> loadValvePrice() {
+    private void loadValvePrice() {
         PriceFromXML priceFromXML = new PriceFromXML();
-        Set <Valve> allValvesWithPrice = new HashSet<>();
-        for (Valve valvePrice : valveImpl.findAllValve()) {
+        for (Valve valvePrice : allValves) {
             valvePrice.setPrice(priceFromXML.findPrice(valvePrice.getArticle()));
-            allValvesWithPrice.add (valvePrice);
+            if (valvePrice.getNuts() != null) {
+                valvePrice.getNuts().setPrice(priceFromXML.findPrice(valvePrice.getNuts().getArticle()));
+            }
         }
-        return allValvesWithPrice;
     }
-    private Set<Actuator> loadActuatorPrice() {
+
+    private void loadActuatorPrice() {
         PriceFromXML priceFromXML = new PriceFromXML();
-        Set <Actuator> allValvesWithPrice = new HashSet<>();
-        for (Actuator actuatorPrice : actuatorImpl.findAllActuator()) {
+        for (Actuator actuatorPrice : allActuators) {
             actuatorPrice.setPrice(priceFromXML.findPrice(actuatorPrice.getArticle()));
-            allValvesWithPrice.add (actuatorPrice);
         }
-        return allValvesWithPrice;
     }
-    private Set<Nuts> loadNutsPrice() {
+
+//    private void loadNutsPrice() {
+//        PriceFromXML priceFromXML = new PriceFromXML();
+//        for (Nuts nutsPrice : allNuts) {
+//            nutsPrice.setPrice(priceFromXML.findPrice(nutsPrice.getArticle()));
+//        }
+//    }
+
+    private void loadAdapterPrice() {
         PriceFromXML priceFromXML = new PriceFromXML();
-        Set <Nuts> allNutsWithPrice = new HashSet<>();
-        for (Nuts nutsPrice : nutsImpl.findAllNuts()) {
-            nutsPrice.setPrice(priceFromXML.findPrice(nutsPrice.getArticle()));
-            allNutsWithPrice.add (nutsPrice);
-        }
-        return allNutsWithPrice;
-    }
-    private Set<Adapter> loadAdapterPrice() {
-        PriceFromXML priceFromXML = new PriceFromXML();
-        Set <Adapter> allAdapterWithPrice = new HashSet<>();
-        for (Adapter adapterPrice : adapterImpl.findAllAdapter()) {
+        for (Adapter adapterPrice : allAdapters) {
             adapterPrice.setPrice(priceFromXML.findPrice(adapterPrice.getArticle()));
-            allAdapterWithPrice.add (adapterPrice);
         }
-        return allAdapterWithPrice;
     }
 
 }
