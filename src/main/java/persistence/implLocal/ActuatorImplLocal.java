@@ -1,15 +1,16 @@
-package persistence.impl;
+package persistence.implLocal;
 
 import com.form.ControllerMain;
 import entity.Actuator;
 import entity.Valve;
+import persistence.ActuatorRepository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ActuatorImplLocal {
+public class ActuatorImplLocal implements ActuatorRepository {
 
     private ControllerMain cm = new ControllerMain();
 

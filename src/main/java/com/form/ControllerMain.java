@@ -20,6 +20,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import persistence.impl.*;
+import persistence.implLocal.ActuatorImplLocal;
+import persistence.implLocal.ValveImplLocal;
 import utils.PriceFromXML;
 
 import java.io.IOException;
@@ -149,24 +151,18 @@ public class ControllerMain {
     public void initialize() {
         ValveImpl valveImpl = new ValveImpl();
         ActuatorImpl actuatorImpl = new ActuatorImpl();
-        //NutsImpl nutsImpl = new NutsImpl();
+//        NutsImpl nutsImpl = new NutsImpl();
         AdapterImpl adapterImpl = new AdapterImpl();
 
         allValves = valveImpl.findAllValve();
         allActuators = actuatorImpl.findAllActuator();
-        //allNuts = nutsImpl.findAllNuts();
+//        allNuts = nutsImpl.findAllNuts();
         allAdapters = adapterImpl.findAllAdapter();
 
         loadValvePrice();
         loadActuatorPrice();
-        //loadNutsPrice();
+//        loadNutsPrice();
         loadAdapterPrice();
-
-        for (Valve v : allValves) {
-            if (v.getNuts() != null) {
-                System.out.println(v.getNuts().getPrice());
-            }
-        }
 
         buttonCalcFlow.setOnAction(event -> openCalcForm());
         buttonAboutProgram.setOnAction(event -> openAboutProgramForm());
@@ -665,7 +661,7 @@ public class ControllerMain {
         PriceFromXML priceFromXML = new PriceFromXML();
         for (Valve valvePrice : allValves) {
             valvePrice.setPrice(priceFromXML.findPrice(valvePrice.getArticle()));
-            if (valvePrice.getNuts() != null) {
+            if (valvePrice.getNuts() != null && valvePrice.getNuts().getPrice() == 0.0) {
                 valvePrice.getNuts().setPrice(priceFromXML.findPrice(valvePrice.getNuts().getArticle()));
             }
         }
@@ -678,12 +674,12 @@ public class ControllerMain {
         }
     }
 
-//    private void loadNutsPrice() {
-//        PriceFromXML priceFromXML = new PriceFromXML();
-//        for (Nuts nutsPrice : allNuts) {
-//            nutsPrice.setPrice(priceFromXML.findPrice(nutsPrice.getArticle()));
-//        }
-//    }
+    private void loadNutsPrice() {
+        PriceFromXML priceFromXML = new PriceFromXML();
+        for (Nuts nutsPrice : allNuts) {
+            nutsPrice.setPrice(priceFromXML.findPrice(nutsPrice.getArticle()));
+        }
+    }
 
     private void loadAdapterPrice() {
         PriceFromXML priceFromXML = new PriceFromXML();

@@ -1,10 +1,11 @@
 package persistence.impl;
 
 import entity.Adapter;
+import persistence.AdapterRepository;
 
 import java.util.Set;
 
-public class AdapterImpl extends ModelImpl {
+public class AdapterImpl extends ModelImpl implements AdapterRepository {
 
     private ModelImpl modelImpl = new ModelImpl();
 

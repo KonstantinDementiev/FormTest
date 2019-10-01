@@ -5,11 +5,12 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import persistence.ModelRepository;
 import utils.HibernateSessionFactory;
 
 import java.util.*;
 
-class ModelImpl {
+class ModelImpl implements ModelRepository {
 
     private static List<Model> models = new ArrayList<>();
     private static final Logger LOG = LoggerFactory.getLogger(ActuatorImpl.class);

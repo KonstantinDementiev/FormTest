@@ -1,12 +1,13 @@
-package persistence.impl;
+package persistence.implLocal;
 
 import com.form.ControllerMain;
 import entity.Valve;
+import persistence.ValveRepository;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class ValveImplLocal {
+public class ValveImplLocal implements ValveRepository {
 
     private ControllerMain cm = new ControllerMain();
 

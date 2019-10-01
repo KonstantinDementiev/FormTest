@@ -2,13 +2,14 @@ package persistence.impl;
 
 import entity.Actuator;
 import entity.Valve;
+import persistence.ActuatorRepository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ActuatorImpl extends ModelImpl {
+public class ActuatorImpl extends ModelImpl implements ActuatorRepository {
 
 
     private ModelImpl modelImpl = new ModelImpl();

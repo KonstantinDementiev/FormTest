@@ -2,10 +2,11 @@ package persistence.impl;
 
 import entity.Model;
 import entity.Nuts;
+import persistence.NutsRepository;
 
 import java.util.Set;
 
-public class NutsImpl extends Model {
+public class NutsImpl extends Model implements NutsRepository {
 
     private ModelImpl modelImpl = new ModelImpl();
 

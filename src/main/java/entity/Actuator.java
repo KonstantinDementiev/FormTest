@@ -29,7 +29,7 @@ public class Actuator extends Model {
     public Actuator() {
     }
 
-    public Actuator(String article, String voltage, String signaltype, String nonc, String endpos, String timepos, String power, String stroke, Double price, String imageurl) {
+    public Actuator(String article, String voltage, String signaltype, String nonc, String endpos, String timepos, String power, String stroke) {
         this.article = article;
         this.voltage = voltage;
         this.signaltype = signaltype;
@@ -156,7 +156,6 @@ public class Actuator extends Model {
         buffer.append(this.timepos);
         buffer.append(this.power);
         buffer.append(this.stroke);
-        buffer.append(this.price);
         buffer.append(this.imageurl);
         return buffer.toString().hashCode();
     }

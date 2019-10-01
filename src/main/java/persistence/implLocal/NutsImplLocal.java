@@ -1,9 +1,10 @@
-package persistence.impl;
+package persistence.implLocal;
 
 import com.form.ControllerMain;
 import entity.Nuts;
+import persistence.NutsRepository;
 
-public class NutsImplLocal {
+public class NutsImplLocal implements NutsRepository {
 
     private ControllerMain cm = new ControllerMain();
 

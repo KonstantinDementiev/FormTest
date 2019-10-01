@@ -1,7 +1,11 @@
 package entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Nuts extends Model {
@@ -10,8 +14,8 @@ public class Nuts extends Model {
     private String article;
     private Double price;
 
-//    @OneToMany (mappedBy = "nuts")
-//    private Set<Valve> valves;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "nuts")
+    private Set<Valve> valves = new HashSet<>();
 
     public Nuts() {
     }
@@ -30,10 +34,17 @@ public class Nuts extends Model {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
+    public Set<Valve> getValves() {
+        return valves;
+    }
+
+    public void setValves(Set<Valve> valves) {
+        this.valves = valves;
+    }
 
     @Override
     public int hashCode() {
@@ -46,6 +57,7 @@ public class Nuts extends Model {
         return "Nuts{" +
                 "article='" + article + '\'' +
                 ", price=" + price +
+                ", valves=" + valves +
                 '}';
     }
 }

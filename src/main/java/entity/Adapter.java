@@ -12,11 +12,11 @@ public class Adapter extends Model {
     private String imageurl;
     private Double price;
 
-    @ManyToMany (fetch = FetchType.LAZY)
+    @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "valve_adapter", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "valve_art")})
     private Set<Valve> valves = new HashSet<Valve>();
 
-    @ManyToMany (fetch = FetchType.LAZY)
+    @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "actuator_adapter", joinColumns = {@JoinColumn(name = "adapter_art")}, inverseJoinColumns = {@JoinColumn(name = "actuator_art")})
     private Set<Actuator> actuators = new HashSet<Actuator>();
 

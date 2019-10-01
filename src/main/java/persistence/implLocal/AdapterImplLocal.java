@@ -1,9 +1,10 @@
-package persistence.impl;
+package persistence.implLocal;
 
 import com.form.ControllerMain;
 import entity.Adapter;
+import persistence.AdapterRepository;
 
-public class AdapterImplLocal {
+public class AdapterImplLocal implements AdapterRepository {
     private ControllerMain cm = new ControllerMain();
 
     public Adapter findAdapterByArticleLocal(String article) {

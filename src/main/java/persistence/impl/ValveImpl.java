@@ -2,12 +2,13 @@ package persistence.impl;
 
 import entity.Valve;
 import org.hibernate.Session;
+import persistence.ValveRepository;
 import utils.HibernateSessionFactory;
 
 import java.util.List;
 import java.util.Set;
 
-public class ValveImpl extends ModelImpl {
+public class ValveImpl extends ModelImpl implements ValveRepository {
 
 
     private ModelImpl modelImpl = new ModelImpl();
